@@ -18,7 +18,11 @@ class RegisterViewController: UIViewController {
     
     @IBAction func CreateBtn(_ sender: Any) {
         
-         performSegue(withIdentifier: "BackToSignIn", sender: self)
+        
+        performSegue(withIdentifier: "RegisterBackToMenu", sender: self)
+        
+        
+        
     }
     
     override func viewDidLoad() {

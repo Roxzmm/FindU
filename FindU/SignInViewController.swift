@@ -27,7 +27,7 @@ class SignInViewController: UIViewController {
     
     @IBAction func SignInAction(_ sender: Any) {
         
-        
+         performSegue(withIdentifier: "SignInBacktoMenu", sender: self)
     }
     override func viewDidLoad() {
         super.viewDidLoad()

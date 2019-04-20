@@ -119,6 +119,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="SignInAction:" destination="ymf-SF-ltw" eventType="touchUpInside" id="f05-v4-R7Y"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="SignInBacktoMenu" id="Fkc-yl-1he"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bVV-Wh-Gym">
@@ -131,6 +132,7 @@
                                 </state>
                                 <connections>
                                     <action selector="registerBtn:" destination="ymf-SF-ltw" eventType="touchUpInside" id="sLk-bD-Gbm"/>
+                                    <segue destination="8Qd-2D-h0G" kind="show" identifier="ToRegister" id="5qH-fe-6Wv"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -170,7 +172,6 @@
                         <outlet property="UserIDText" destination="7hz-Dw-hoe" id="Lqi-o1-kBb"/>
                         <outlet property="UserIDlabel" destination="rsv-9j-85T" id="bf5-P0-mkj"/>
                         <outlet property="logo" destination="Dmt-xc-hwH" id="mD3-rQ-mem"/>
-                        <segue destination="8Qd-2D-h0G" kind="show" identifier="ToRegister" id="6r4-M5-yKg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FbV-iP-PwZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -260,6 +261,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="CreateBtn:" destination="8Qd-2D-h0G" eventType="touchUpInside" id="NTn-AP-w58"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="RegisterBackToMenu" id="Spy-hL-T7n"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Register" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ff3-tP-E5R">
@@ -309,7 +311,6 @@
                         <outlet property="passwordInput" destination="ceV-PM-zgS" id="MOl-zM-7Ck"/>
                         <outlet property="registerTitle" destination="Ff3-tP-E5R" id="83o-L1-JXp"/>
                         <outlet property="userNameInput" destination="8RP-c1-eJO" id="lJC-Lb-zwV"/>
-                        <segue destination="ymf-SF-ltw" kind="show" identifier="BackToSignIn" id="1ie-zv-8XW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kvl-Qt-z4M" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -338,16 +339,65 @@
                     <view key="view" contentMode="scaleToFill" id="zsy-Bq-am3">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hbT-MX-Kz9">
+                                <rect key="frame" x="0.0" y="44" width="414" height="766"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Start Position :" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pWC-ZK-zGT" userLabel="InputStartPosition">
+                                <rect key="frame" x="10" y="54" width="269" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Facility Name :" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K6x-9A-FYO" userLabel="InputFacility">
+                                <rect key="frame" x="10" y="106" width="269" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xLQ-nC-Vdr" userLabel="Search">
+                                <rect key="frame" x="334" y="54" width="48" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Search"/>
+                                <connections>
+                                    <action selector="SearchBtn:" destination="wsj-UH-f9o" eventType="touchUpInside" id="Ncd-sL-pLG"/>
+                                </connections>
+                            </button>
+                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5ao-Lr-FW8">
+                                <rect key="frame" x="0.0" y="810" width="414" height="49"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <tabBarItem systemItem="search" id="2PZ-4y-Fhb"/>
+                                    <tabBarItem title="Event" image="eventLogo.png" selectedImage="eventLogo.png" id="zkI-bs-yxZ"/>
+                                    <tabBarItem title="Me" id="qvT-uy-Gmj"/>
+                                </items>
+                            </tabBar>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="KTp-Dt-Qcz"/>
                     </view>
+                    <connections>
+                        <outlet property="EventBarItem" destination="zkI-bs-yxZ" id="5lp-1i-fpr"/>
+                        <outlet property="InputFacility" destination="K6x-9A-FYO" id="2cO-w4-Dkt"/>
+                        <outlet property="bottomBar" destination="5ao-Lr-FW8" id="xrb-3e-whG"/>
+                        <outlet property="inputStartPosition" destination="pWC-ZK-zGT" id="sL2-EH-0l2"/>
+                        <outlet property="map" destination="hbT-MX-Kz9" id="4EB-py-Og1"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a9u-ZC-y2T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-894" y="21"/>
+            <point key="canvasLocation" x="-894.20289855072474" y="20.758928571428569"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="eventLogo.png" width="71" height="53"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="1ie-zv-8XW"/>
+        <segue reference="Spy-hL-T7n"/>
     </inferredMetricsTieBreakers>
 </document>

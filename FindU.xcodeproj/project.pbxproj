@@ -46,6 +46,7 @@
 		61593438224BF6EB00E5E7FB /* SignIn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SignIn.png; sourceTree = "<group>"; };
 		6159343A224BF89A00E5E7FB /* SearchFacilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFacilityViewController.swift; sourceTree = "<group>"; };
 		6159343C224BF8B600E5E7FB /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
+		61EE6FE3226AE3D7003F0A76 /* AshtonBuilding.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = AshtonBuilding.gpx; path = ../../COMP228/sWift/Comp228Assignment2/AshtonBuilding.gpx; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +63,7 @@
 		6158ECF2224A694B00818A1C = {
 			isa = PBXGroup;
 			children = (
+				61EE6FE3226AE3D7003F0A76 /* AshtonBuilding.gpx */,
 				6158ECFD224A694B00818A1C /* FindU */,
 				6158ECFC224A694B00818A1C /* Products */,
 			);
