@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3E44CF2E226B561E000937FE /* FindU_Login.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3E44CF2C226B561E000937FE /* FindU_Login.xcdatamodeld */; };
+		3E229D0E226B6A5F00F87E17 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E229D0D226B6A5F00F87E17 /* User.swift */; };
+		3E229D1C226B73E100F87E17 /* FindUTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E229D1B226B73E100F87E17 /* FindUTests.swift */; };
 		61559BD7224D0998008F77AF /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61559BD6224D0998008F77AF /* RegisterViewController.swift */; };
 		61559BD9224D1115008F77AF /* register.png in Resources */ = {isa = PBXBuildFile; fileRef = 61559BD8224D1115008F77AF /* register.png */; };
 		6158ECFF224A694B00818A1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6158ECFE224A694B00818A1C /* AppDelegate.swift */; };
@@ -27,8 +28,23 @@
 		6159343D224BF8B600E5E7FB /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6159343C224BF8B600E5E7FB /* EventViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		3E229D1E226B73E100F87E17 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 6158ECF3224A694B00818A1C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 6158ECFA224A694B00818A1C;
+			remoteInfo = FindU;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
-		3E44CF2D226B561E000937FE /* FindU_Login.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = FindU_Login.xcdatamodel; sourceTree = "<group>"; };
+		3E229D0D226B6A5F00F87E17 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../Model/User.swift; sourceTree = "<group>"; };
+		3E229D19226B73E100F87E17 /* FindUTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FindUTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3E229D1B226B73E100F87E17 /* FindUTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindUTests.swift; sourceTree = "<group>"; };
+		3E229D1D226B73E100F87E17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3E229D23226BA41300F87E17 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
+		3E229D24226BA41300F87E17 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		61559BD6224D0998008F77AF /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		61559BD8224D1115008F77AF /* register.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = register.png; sourceTree = "<group>"; };
 		6158ECFB224A694B00818A1C /* FindU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindU.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,6 +68,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		3E229D16226B73E100F87E17 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6158ECF8224A694B00818A1C /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -62,11 +85,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3E229D14226B72E600F87E17 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				3E229D0D226B6A5F00F87E17 /* User.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		3E229D1A226B73E100F87E17 /* FindUTests */ = {
+			isa = PBXGroup;
+			children = (
+				3E229D1B226B73E100F87E17 /* FindUTests.swift */,
+				3E229D1D226B73E100F87E17 /* Info.plist */,
+			);
+			path = FindUTests;
+			sourceTree = "<group>";
+		};
 		6158ECF2224A694B00818A1C = {
 			isa = PBXGroup;
 			children = (
 				61EE6FE3226AE3D7003F0A76 /* AshtonBuilding.gpx */,
 				6158ECFD224A694B00818A1C /* FindU */,
+				3E229D1A226B73E100F87E17 /* FindUTests */,
 				6158ECFC224A694B00818A1C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -75,6 +116,7 @@
 			isa = PBXGroup;
 			children = (
 				6158ECFB224A694B00818A1C /* FindU.app */,
+				3E229D19226B73E100F87E17 /* FindUTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -82,9 +124,9 @@
 		6158ECFD224A694B00818A1C /* FindU */ = {
 			isa = PBXGroup;
 			children = (
+				3E229D14226B72E600F87E17 /* Model */,
 				6158ECFE224A694B00818A1C /* AppDelegate.swift */,
 				6158ED00224A694B00818A1C /* ViewController.swift */,
-				3E44CF2C226B561E000937FE /* FindU_Login.xcdatamodeld */,
 				61593436224BF43400E5E7FB /* SignInViewController.swift */,
 				6159343C224BF8B600E5E7FB /* EventViewController.swift */,
 				6159343A224BF89A00E5E7FB /* SearchFacilityViewController.swift */,
@@ -108,6 +150,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		3E229D18226B73E100F87E17 /* FindUTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3E229D20226B73E100F87E17 /* Build configuration list for PBXNativeTarget "FindUTests" */;
+			buildPhases = (
+				3E229D15226B73E100F87E17 /* Sources */,
+				3E229D16226B73E100F87E17 /* Frameworks */,
+				3E229D17226B73E100F87E17 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3E229D1F226B73E100F87E17 /* PBXTargetDependency */,
+			);
+			name = FindUTests;
+			productName = FindUTests;
+			productReference = 3E229D19226B73E100F87E17 /* FindUTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		6158ECFA224A694B00818A1C /* FindU */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6158ED10224A695000818A1C /* Build configuration list for PBXNativeTarget "FindU" */;
@@ -135,6 +195,10 @@
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = Jing;
 				TargetAttributes = {
+					3E229D18226B73E100F87E17 = {
+						CreatedOnToolsVersion = 10.2.1;
+						TestTargetID = 6158ECFA224A694B00818A1C;
+					};
 					6158ECFA224A694B00818A1C = {
 						CreatedOnToolsVersion = 10.2;
 					};
@@ -147,6 +211,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"zh-Hans",
 			);
 			mainGroup = 6158ECF2224A694B00818A1C;
 			productRefGroup = 6158ECFC224A694B00818A1C /* Products */;
@@ -154,11 +219,19 @@
 			projectRoot = "";
 			targets = (
 				6158ECFA224A694B00818A1C /* FindU */,
+				3E229D18226B73E100F87E17 /* FindUTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		3E229D17226B73E100F87E17 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6158ECF9224A694B00818A1C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -179,6 +252,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		3E229D15226B73E100F87E17 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3E229D1C226B73E100F87E17 /* FindUTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6158ECF7224A694B00818A1C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -188,19 +269,28 @@
 				61559BD7224D0998008F77AF /* RegisterViewController.swift in Sources */,
 				6159343B224BF89A00E5E7FB /* SearchFacilityViewController.swift in Sources */,
 				6158ED07224A694B00818A1C /* FindU.xcdatamodeld in Sources */,
+				3E229D0E226B6A5F00F87E17 /* User.swift in Sources */,
 				6158ECFF224A694B00818A1C /* AppDelegate.swift in Sources */,
-				3E44CF2E226B561E000937FE /* FindU_Login.xcdatamodeld in Sources */,
 				6159343D224BF8B600E5E7FB /* EventViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		3E229D1F226B73E100F87E17 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 6158ECFA224A694B00818A1C /* FindU */;
+			targetProxy = 3E229D1E226B73E100F87E17 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		6158ED02224A694B00818A1C /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				6158ED03224A694B00818A1C /* Base */,
+				3E229D23226BA41300F87E17 /* zh-Hans */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -209,6 +299,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				6158ED0B224A695000818A1C /* Base */,
+				3E229D24226BA41300F87E17 /* zh-Hans */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -216,10 +307,51 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		3E229D21226B73E100F87E17 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2Z4MYX6495;
+				INFOPLIST_FILE = FindUTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = rochus.FindUTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FindU.app/FindU";
+			};
+			name = Debug;
+		};
+		3E229D22226B73E100F87E17 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2Z4MYX6495;
+				INFOPLIST_FILE = FindUTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = rochus.FindUTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FindU.app/FindU";
+			};
+			name = Release;
+		};
 		6158ED0E224A695000818A1C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -281,6 +413,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -369,6 +502,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		3E229D20226B73E100F87E17 /* Build configuration list for PBXNativeTarget "FindUTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3E229D21226B73E100F87E17 /* Debug */,
+				3E229D22226B73E100F87E17 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		6158ECF6224A694B00818A1C /* Build configuration list for PBXProject "FindU" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -390,16 +532,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		3E44CF2C226B561E000937FE /* FindU_Login.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				3E44CF2D226B561E000937FE /* FindU_Login.xcdatamodel */,
-			);
-			currentVersion = 3E44CF2D226B561E000937FE /* FindU_Login.xcdatamodel */;
-			path = FindU_Login.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
 		6158ED05224A694B00818A1C /* FindU.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
