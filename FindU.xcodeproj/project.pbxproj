@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3E229D0E226B6A5F00F87E17 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E229D0D226B6A5F00F87E17 /* User.swift */; };
-		3E229D1C226B73E100F87E17 /* FindUTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E229D1B226B73E100F87E17 /* FindUTests.swift */; };
+		3EE539B9226CD53F00181BBB /* DatabaseConnectUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE539B8226CD53F00181BBB /* DatabaseConnectUtil.swift */; };
+		3EFE2D5B226CE0B600F93243 /* FindUTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFE2D5A226CE0B600F93243 /* FindUTests.swift */; };
 		61559BD7224D0998008F77AF /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61559BD6224D0998008F77AF /* RegisterViewController.swift */; };
 		61559BD9224D1115008F77AF /* register.png in Resources */ = {isa = PBXBuildFile; fileRef = 61559BD8224D1115008F77AF /* register.png */; };
 		6158ECFF224A694B00818A1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6158ECFE224A694B00818A1C /* AppDelegate.swift */; };
@@ -26,10 +26,12 @@
 		61593439224BF6EC00E5E7FB /* SignIn.png in Resources */ = {isa = PBXBuildFile; fileRef = 61593438224BF6EB00E5E7FB /* SignIn.png */; };
 		6159343B224BF89A00E5E7FB /* SearchFacilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6159343A224BF89A00E5E7FB /* SearchFacilityViewController.swift */; };
 		6159343D224BF8B600E5E7FB /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6159343C224BF8B600E5E7FB /* EventViewController.swift */; };
+		8A92D916567A59F194B6C4F7 /* Pods_FindUTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF9F5E0E75C730968884829 /* Pods_FindUTests.framework */; };
+		D322200EF00030DAE952B95C /* Pods_FindU.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8BB5EB63A5B98B383C86652 /* Pods_FindU.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		3E229D1E226B73E100F87E17 /* PBXContainerItemProxy */ = {
+		3EFE2D5D226CE0B600F93243 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 6158ECF3224A694B00818A1C /* Project object */;
 			proxyType = 1;
@@ -39,12 +41,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3E229D0D226B6A5F00F87E17 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = ../Model/User.swift; sourceTree = "<group>"; };
-		3E229D19226B73E100F87E17 /* FindUTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FindUTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		3E229D1B226B73E100F87E17 /* FindUTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindUTests.swift; sourceTree = "<group>"; };
-		3E229D1D226B73E100F87E17 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		217CBDFA25351DB5AC91EC4F /* Pods-FindU.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindU.release.xcconfig"; path = "Target Support Files/Pods-FindU/Pods-FindU.release.xcconfig"; sourceTree = "<group>"; };
 		3E229D23226BA41300F87E17 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		3E229D24226BA41300F87E17 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		3EE539B8226CD53F00181BBB /* DatabaseConnectUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseConnectUtil.swift; sourceTree = "<group>"; };
+		3EFE2D58226CE0B600F93243 /* FindUTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FindUTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		3EFE2D5A226CE0B600F93243 /* FindUTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindUTests.swift; sourceTree = "<group>"; };
+		3EFE2D5C226CE0B600F93243 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5CF9F5E0E75C730968884829 /* Pods_FindUTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindUTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		61559BD6224D0998008F77AF /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		61559BD8224D1115008F77AF /* register.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = register.png; sourceTree = "<group>"; };
 		6158ECFB224A694B00818A1C /* FindU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindU.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,13 +69,18 @@
 		6159343A224BF89A00E5E7FB /* SearchFacilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFacilityViewController.swift; sourceTree = "<group>"; };
 		6159343C224BF8B600E5E7FB /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		61EE6FE3226AE3D7003F0A76 /* AshtonBuilding.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = AshtonBuilding.gpx; path = ../../COMP228/sWift/Comp228Assignment2/AshtonBuilding.gpx; sourceTree = "<group>"; };
+		7AEED146AB83C7E403BE2613 /* Pods-FindU.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindU.debug.xcconfig"; path = "Target Support Files/Pods-FindU/Pods-FindU.debug.xcconfig"; sourceTree = "<group>"; };
+		A2870D54A91C4185AA0096B7 /* Pods-FindUTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindUTests.debug.xcconfig"; path = "Target Support Files/Pods-FindUTests/Pods-FindUTests.debug.xcconfig"; sourceTree = "<group>"; };
+		E1A17E7F0C81A10EB55740E1 /* Pods-FindUTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindUTests.release.xcconfig"; path = "Target Support Files/Pods-FindUTests/Pods-FindUTests.release.xcconfig"; sourceTree = "<group>"; };
+		E8BB5EB63A5B98B383C86652 /* Pods_FindU.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindU.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		3E229D16226B73E100F87E17 /* Frameworks */ = {
+		3EFE2D55226CE0B600F93243 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A92D916567A59F194B6C4F7 /* Pods_FindUTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,25 +88,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D322200EF00030DAE952B95C /* Pods_FindU.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		3E229D14226B72E600F87E17 /* Model */ = {
+		3EE539B7226CD4FA00181BBB /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				3E229D0D226B6A5F00F87E17 /* User.swift */,
+				3EE539B8226CD53F00181BBB /* DatabaseConnectUtil.swift */,
 			);
-			path = Model;
+			path = Utility;
 			sourceTree = "<group>";
 		};
-		3E229D1A226B73E100F87E17 /* FindUTests */ = {
+		3EFE2D59226CE0B600F93243 /* FindUTests */ = {
 			isa = PBXGroup;
 			children = (
-				3E229D1B226B73E100F87E17 /* FindUTests.swift */,
-				3E229D1D226B73E100F87E17 /* Info.plist */,
+				3EFE2D5A226CE0B600F93243 /* FindUTests.swift */,
+				3EFE2D5C226CE0B600F93243 /* Info.plist */,
 			);
 			path = FindUTests;
 			sourceTree = "<group>";
@@ -107,8 +117,10 @@
 			children = (
 				61EE6FE3226AE3D7003F0A76 /* AshtonBuilding.gpx */,
 				6158ECFD224A694B00818A1C /* FindU */,
-				3E229D1A226B73E100F87E17 /* FindUTests */,
+				3EFE2D59226CE0B600F93243 /* FindUTests */,
 				6158ECFC224A694B00818A1C /* Products */,
+				992E69D5A7DFCC28DFDD8452 /* Pods */,
+				F9FD1550DE940BFFC3E447B8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -116,7 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				6158ECFB224A694B00818A1C /* FindU.app */,
-				3E229D19226B73E100F87E17 /* FindUTests.xctest */,
+				3EFE2D58226CE0B600F93243 /* FindUTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -124,7 +136,7 @@
 		6158ECFD224A694B00818A1C /* FindU */ = {
 			isa = PBXGroup;
 			children = (
-				3E229D14226B72E600F87E17 /* Model */,
+				3EE539B7226CD4FA00181BBB /* Utility */,
 				6158ECFE224A694B00818A1C /* AppDelegate.swift */,
 				6158ED00224A694B00818A1C /* ViewController.swift */,
 				61593436224BF43400E5E7FB /* SignInViewController.swift */,
@@ -147,34 +159,57 @@
 			path = FindU;
 			sourceTree = "<group>";
 		};
+		992E69D5A7DFCC28DFDD8452 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7AEED146AB83C7E403BE2613 /* Pods-FindU.debug.xcconfig */,
+				217CBDFA25351DB5AC91EC4F /* Pods-FindU.release.xcconfig */,
+				A2870D54A91C4185AA0096B7 /* Pods-FindUTests.debug.xcconfig */,
+				E1A17E7F0C81A10EB55740E1 /* Pods-FindUTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		F9FD1550DE940BFFC3E447B8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E8BB5EB63A5B98B383C86652 /* Pods_FindU.framework */,
+				5CF9F5E0E75C730968884829 /* Pods_FindUTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		3E229D18226B73E100F87E17 /* FindUTests */ = {
+		3EFE2D57226CE0B600F93243 /* FindUTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 3E229D20226B73E100F87E17 /* Build configuration list for PBXNativeTarget "FindUTests" */;
+			buildConfigurationList = 3EFE2D61226CE0B600F93243 /* Build configuration list for PBXNativeTarget "FindUTests" */;
 			buildPhases = (
-				3E229D15226B73E100F87E17 /* Sources */,
-				3E229D16226B73E100F87E17 /* Frameworks */,
-				3E229D17226B73E100F87E17 /* Resources */,
+				148031949C6361B0A8E65096 /* [CP] Check Pods Manifest.lock */,
+				3EFE2D54226CE0B600F93243 /* Sources */,
+				3EFE2D55226CE0B600F93243 /* Frameworks */,
+				3EFE2D56226CE0B600F93243 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				3E229D1F226B73E100F87E17 /* PBXTargetDependency */,
+				3EFE2D5E226CE0B600F93243 /* PBXTargetDependency */,
 			);
 			name = FindUTests;
 			productName = FindUTests;
-			productReference = 3E229D19226B73E100F87E17 /* FindUTests.xctest */;
+			productReference = 3EFE2D58226CE0B600F93243 /* FindUTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		6158ECFA224A694B00818A1C /* FindU */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6158ED10224A695000818A1C /* Build configuration list for PBXNativeTarget "FindU" */;
 			buildPhases = (
+				FEF8F7F4C6C3BBE4AECF8B9A /* [CP] Check Pods Manifest.lock */,
 				6158ECF7224A694B00818A1C /* Sources */,
 				6158ECF8224A694B00818A1C /* Frameworks */,
 				6158ECF9224A694B00818A1C /* Resources */,
+				32078798ACE5C73509FADFC4 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -195,7 +230,7 @@
 				LastUpgradeCheck = 1020;
 				ORGANIZATIONNAME = Jing;
 				TargetAttributes = {
-					3E229D18226B73E100F87E17 = {
+					3EFE2D57226CE0B600F93243 = {
 						CreatedOnToolsVersion = 10.2.1;
 						TestTargetID = 6158ECFA224A694B00818A1C;
 					};
@@ -219,13 +254,13 @@
 			projectRoot = "";
 			targets = (
 				6158ECFA224A694B00818A1C /* FindU */,
-				3E229D18226B73E100F87E17 /* FindUTests */,
+				3EFE2D57226CE0B600F93243 /* FindUTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		3E229D17226B73E100F87E17 /* Resources */ = {
+		3EFE2D56226CE0B600F93243 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -251,12 +286,83 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		148031949C6361B0A8E65096 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FindUTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		32078798ACE5C73509FADFC4 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-FindU/Pods-FindU-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/OHMySQL/OHMySQL.framework",
+				"${BUILT_PRODUCTS_DIR}/Sync/Sync.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/OHMySQL.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Sync.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-FindU/Pods-FindU-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FEF8F7F4C6C3BBE4AECF8B9A /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-FindU-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
-		3E229D15226B73E100F87E17 /* Sources */ = {
+		3EFE2D54226CE0B600F93243 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3E229D1C226B73E100F87E17 /* FindUTests.swift in Sources */,
+				3EFE2D5B226CE0B600F93243 /* FindUTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,7 +375,7 @@
 				61559BD7224D0998008F77AF /* RegisterViewController.swift in Sources */,
 				6159343B224BF89A00E5E7FB /* SearchFacilityViewController.swift in Sources */,
 				6158ED07224A694B00818A1C /* FindU.xcdatamodeld in Sources */,
-				3E229D0E226B6A5F00F87E17 /* User.swift in Sources */,
+				3EE539B9226CD53F00181BBB /* DatabaseConnectUtil.swift in Sources */,
 				6158ECFF224A694B00818A1C /* AppDelegate.swift in Sources */,
 				6159343D224BF8B600E5E7FB /* EventViewController.swift in Sources */,
 			);
@@ -278,10 +384,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		3E229D1F226B73E100F87E17 /* PBXTargetDependency */ = {
+		3EFE2D5E226CE0B600F93243 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 6158ECFA224A694B00818A1C /* FindU */;
-			targetProxy = 3E229D1E226B73E100F87E17 /* PBXContainerItemProxy */;
+			targetProxy = 3EFE2D5D226CE0B600F93243 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -307,8 +413,9 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		3E229D21226B73E100F87E17 /* Debug */ = {
+		3EFE2D5F226CE0B600F93243 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A2870D54A91C4185AA0096B7 /* Pods-FindUTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -327,8 +434,9 @@
 			};
 			name = Debug;
 		};
-		3E229D22226B73E100F87E17 /* Release */ = {
+		3EFE2D60226CE0B600F93243 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E1A17E7F0C81A10EB55740E1 /* Pods-FindUTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -467,6 +575,7 @@
 		};
 		6158ED11224A695000818A1C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AEED146AB83C7E403BE2613 /* Pods-FindU.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -484,6 +593,7 @@
 		};
 		6158ED12224A695000818A1C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 217CBDFA25351DB5AC91EC4F /* Pods-FindU.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -502,11 +612,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		3E229D20226B73E100F87E17 /* Build configuration list for PBXNativeTarget "FindUTests" */ = {
+		3EFE2D61226CE0B600F93243 /* Build configuration list for PBXNativeTarget "FindUTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				3E229D21226B73E100F87E17 /* Debug */,
-				3E229D22226B73E100F87E17 /* Release */,
+				3EFE2D5F226CE0B600F93243 /* Debug */,
+				3EFE2D60226CE0B600F93243 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

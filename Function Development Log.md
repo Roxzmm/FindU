@@ -83,3 +83,11 @@
 
 
 
+#### \#2019/4/21
+
+1. use CocoaPods to manage dependencies
+
+**Open FindU.xcworkspace to edit the project instead of FindU.xcodeproj (they are both in /FindU/)**
+
+1. use third-party tool —> 3lvis/Sync to parse JSON to core data and back
+2. use third-party tool —> OHMySQL

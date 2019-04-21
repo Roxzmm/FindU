@@ -2,39 +2,40 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.99" systemVersion="18E226" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Building" representedClassName="Building" syncable="YES" codeGenerationType="class">
         <attribute name="buldingID" attributeType="String" minValueString="10" maxValueString="10" syncable="YES"/>
-        <attribute name="location" syncable="YES"/>
+        <attribute name="location" attributeType="String" syncable="YES"/>
         <attribute name="name" attributeType="String" minValueString="1" maxValueString="30" syncable="YES"/>
-        <relationship name="containFacilities" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Facility" syncable="YES"/>
-        <relationship name="toMarker" maxCount="1" deletionRule="Nullify" destinationEntity="Marker" syncable="YES"/>
+        <relationship name="containFacilities" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Facility" inverseName="toBuidling" inverseEntity="Facility" syncable="YES"/>
+        <relationship name="toMarker" maxCount="1" deletionRule="Nullify" destinationEntity="Marker" inverseName="toBuilding" inverseEntity="Marker" syncable="YES"/>
     </entity>
     <entity name="Comment" representedClassName="Comment" syncable="YES" codeGenerationType="class">
         <attribute name="commentID" attributeType="String" minValueString="10" maxValueString="10" syncable="YES"/>
         <attribute name="conent" attributeType="String" minValueString="1" maxValueString="100" syncable="YES"/>
-        <relationship name="owner" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
-        <relationship name="toEvent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Event" syncable="YES"/>
-        <relationship name="toFaility" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Facility" syncable="YES"/>
+        <relationship name="owner" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="comments" inverseEntity="User" syncable="YES"/>
+        <relationship name="toEvent" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Event" inverseName="comment" inverseEntity="Event" syncable="YES"/>
+        <relationship name="toFaility" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Facility" inverseName="comments" inverseEntity="Facility" syncable="YES"/>
     </entity>
     <entity name="Event" representedClassName="Event" syncable="YES" codeGenerationType="class">
         <attribute name="date" attributeType="Date" minDateTimeInterval="-31622400" maxDateTimeInterval="3092601600" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="eventID" attributeType="String" minValueString="8" maxValueString="8" syncable="YES"/>
         <attribute name="name" attributeType="String" minValueString="1" maxValueString="20" syncable="YES"/>
         <attribute name="numOfParticipant" attributeType="Integer 32" minValueString="0" maxValueString="1000" defaultValueString="1" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="place" syncable="YES"/>
-        <relationship name="comment" toMany="YES" minCount="1" deletionRule="Nullify" ordered="YES" destinationEntity="Comment" syncable="YES"/>
-        <relationship name="host" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
-        <relationship name="participate" toMany="YES" minCount="1" deletionRule="Nullify" ordered="YES" destinationEntity="User" syncable="YES"/>
+        <attribute name="place" attributeType="String" syncable="YES"/>
+        <relationship name="beFavorite" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="wishlist" inverseEntity="User" syncable="YES"/>
+        <relationship name="comment" toMany="YES" minCount="1" deletionRule="Nullify" ordered="YES" destinationEntity="Comment" inverseName="toEvent" inverseEntity="Comment" syncable="YES"/>
+        <relationship name="host" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="createdEvent" inverseEntity="User" syncable="YES"/>
+        <relationship name="participate" toMany="YES" minCount="1" deletionRule="Nullify" ordered="YES" destinationEntity="User" inverseName="joinedEvent" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Facility" representedClassName="Facility" syncable="YES" codeGenerationType="class">
         <attribute name="facilityID" attributeType="String" minValueString="10" maxValueString="10" syncable="YES"/>
         <attribute name="name" attributeType="String" minValueString="1" maxValueString="20" syncable="YES"/>
         <attribute name="state" attributeType="String" minValueString="0" maxValueString="8" syncable="YES"/>
-        <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Comment" syncable="YES"/>
-        <relationship name="founder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
-        <relationship name="toBuidling" maxCount="1" deletionRule="Nullify" destinationEntity="Building" syncable="YES"/>
+        <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Comment" inverseName="toFaility" inverseEntity="Comment" syncable="YES"/>
+        <relationship name="founder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="foundFacility" inverseEntity="User" syncable="YES"/>
+        <relationship name="toBuidling" maxCount="1" deletionRule="Nullify" destinationEntity="Building" inverseName="containFacilities" inverseEntity="Building" syncable="YES"/>
     </entity>
     <entity name="Marker" representedClassName="Marker" syncable="YES" codeGenerationType="class">
-        <attribute name="position" syncable="YES"/>
-        <relationship name="toBuilding" maxCount="1" deletionRule="Nullify" destinationEntity="Building" syncable="YES"/>
+        <attribute name="position" attributeType="String" syncable="YES"/>
+        <relationship name="toBuilding" maxCount="1" deletionRule="Nullify" destinationEntity="Building" inverseName="toMarker" inverseEntity="Building" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
         <attribute name="credit" attributeType="Integer 32" minValueString="1" maxValueString="100" defaultValueString="80" usesScalarValueType="YES" syncable="YES"/>
@@ -42,18 +43,18 @@
         <attribute name="name" attributeType="String" minValueString="1" maxValueString="10" syncable="YES"/>
         <attribute name="password" attributeType="String" minValueString="6" maxValueString="15" syncable="YES"/>
         <attribute name="userID" attributeType="String" minValueString="8" maxValueString="8" syncable="YES"/>
-        <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Comment" syncable="YES"/>
-        <relationship name="createdEvent" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Event" syncable="YES"/>
-        <relationship name="foundFacility" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Facility" syncable="YES"/>
-        <relationship name="joinedEvent" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Event" syncable="YES"/>
-        <relationship name="wishlist" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Event" syncable="YES"/>
+        <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Comment" inverseName="owner" inverseEntity="Comment" syncable="YES"/>
+        <relationship name="createdEvent" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Event" inverseName="host" inverseEntity="Event" syncable="YES"/>
+        <relationship name="foundFacility" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Facility" inverseName="founder" inverseEntity="Facility" syncable="YES"/>
+        <relationship name="joinedEvent" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Event" inverseName="participate" inverseEntity="Event" syncable="YES"/>
+        <relationship name="wishlist" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Event" inverseName="beFavorite" inverseEntity="Event" syncable="YES"/>
     </entity>
     <elements>
-        <element name="User" positionX="-47.17578125" positionY="-42.7265625" width="128" height="193"/>
-        <element name="Event" positionX="104.59765625" positionY="219.03515625" width="128" height="163"/>
-        <element name="Comment" positionX="-46.43359375" positionY="486.96875" width="128" height="118"/>
-        <element name="Facility" positionX="225.40234375" positionY="474.87890625" width="128" height="133"/>
-        <element name="Building" positionX="212.4375" positionY="13.26171875" width="128" height="118"/>
-        <element name="Marker" positionX="117.10546875" positionY="-152.3515625" width="128" height="73"/>
+        <element name="Building" positionX="215.11328125" positionY="-1.62109375" width="128" height="120"/>
+        <element name="Comment" positionX="-35.01171875" positionY="441.96875" width="128" height="120"/>
+        <element name="Event" positionX="-34.11328125" positionY="-160.6328125" width="128" height="178"/>
+        <element name="Facility" positionX="240.359375" positionY="417.0703125" width="128" height="135"/>
+        <element name="Marker" positionX="212.73046875" positionY="-185.2890625" width="128" height="75"/>
+        <element name="User" positionX="109.9453125" positionY="130.640625" width="128" height="193"/>
     </elements>
 </model>
