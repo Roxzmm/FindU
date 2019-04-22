@@ -23,6 +23,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let mysqlConnect = DatabaseConnectUtil()
+        mysqlConnect.configureMySQL()
     }
     
     override func viewWillAppear(_ animated: Bool) {
