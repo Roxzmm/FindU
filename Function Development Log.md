@@ -93,3 +93,10 @@
 
 1. use third-party tool —> 3lvis/Sync to parse JSON to core data and back
 2. use third-party tool —> OHMySQL (when connect to mysql, turn off vpn)
+
+---
+
+#### \# 2019/4/22
+
+1. Sync mysql and core data successfully (to do: create api for other viewcontroller)
+2. 

@@ -15,7 +15,7 @@
         <relationship name="toFaility" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Facility" inverseName="comments" inverseEntity="Facility" syncable="YES"/>
     </entity>
     <entity name="Event" representedClassName="Event" syncable="YES" codeGenerationType="class">
-        <attribute name="date" optional="YES" attributeType="Date" minDateTimeInterval="-31622400" maxDateTimeInterval="3092601600" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="date" optional="YES" attributeType="Date" minDateTimeInterval="-31622400" maxDateTimeInterval="3092601600" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="eventID" optional="YES" attributeType="String" minValueString="8" maxValueString="8" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" minValueString="1" maxValueString="20" syncable="YES"/>
         <attribute name="numOfParticipant" optional="YES" attributeType="Integer 32" minValueString="0" maxValueString="1000" defaultValueString="1" usesScalarValueType="YES" syncable="YES"/>
@@ -34,6 +34,14 @@
         <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Comment" inverseName="toFaility" inverseEntity="Comment" syncable="YES"/>
         <relationship name="founder" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="foundFacility" inverseEntity="User" syncable="YES"/>
         <relationship name="toBuidling" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Building" inverseName="containFacilities" inverseEntity="Building" syncable="YES"/>
+    </entity>
+    <entity name="LastUpdateTime" representedClassName="LastUpdateTime" syncable="YES" codeGenerationType="class">
+        <attribute name="building" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="comment" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="event" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="facility" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="marker" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="user" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
     </entity>
     <entity name="Marker" representedClassName="Marker" syncable="YES" codeGenerationType="class">
         <attribute name="buildingName" optional="YES" attributeType="String" syncable="YES"/>
@@ -59,5 +67,6 @@
         <element name="Facility" positionX="240.359375" positionY="417.0703125" width="128" height="165"/>
         <element name="Marker" positionX="212.73046875" positionY="-185.2890625" width="128" height="90"/>
         <element name="User" positionX="109.9453125" positionY="130.640625" width="128" height="195"/>
+        <element name="LastUpdateTime" positionX="117" positionY="-18" width="128" height="135"/>
     </elements>
 </model>

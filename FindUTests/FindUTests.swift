@@ -11,11 +11,19 @@ import XCTest
 
 class FindUTests: XCTestCase {
     
-    func testDatabaseConnectUtil() {
+     let tables = ["Building": "Building", "User": "User", "Comment": "Comment", "Event": "Event", "Marker": "Marker", "Facility": "Facility"]
+    
+    func testCheckUpdateStatus() {
         let mysqlConnect = DatabaseConnectUtil()
         
-        XCTAssert(mysqlConnect.configureMySQL())
+        XCTAssertNotNil(mysqlConnect.checkUpdateStatus(table: "User"))
     }
+    
+//    func testDatabaseConnectUtil() {
+//        let mysqlConnect = DatabaseConnectUtil()
+//
+//        XCTAssert(mysqlConnect.configureMySQL())
+//    }
 
 //    override func setUp() {
 //        // Put setup code here. This method is called before the invocation of each test method in the class.
