@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CoreData
+import OHMySQL
 
 class ViewController: UIViewController {
 
@@ -17,14 +19,30 @@ class ViewController: UIViewController {
     @IBOutlet weak var event: UIImageView!
     @IBOutlet weak var me: UIImageView!
     
-    
+    // sync database
+//    let appDelegate = UIApplication.shared.delegate as! AppDelegate
+//    var context: NSManagedObjectContext?
    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let mysqlConnect = DatabaseConnectUtil()
-        mysqlConnect.configureMySQL()
+//        context = appDelegate.persistentContainer.viewContext
+//
+//        // store data into core data
+//        let newRecord = NSEntityDescription.insertNewObject(forEntityName: "Building", into: context!) as! Building
+//        newRecord.name = "testName"
+//        newRecord.buldingID = "testID"
+//        newRecord.position = "testPosition"
+//
+//        do {
+//            try context?.save()
+//            print("Data have been saved in Core data")
+//        } catch {
+//            let nserror = error as NSError
+////            print("there was an error: " + nserror.localizedDescription)
+//            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+//
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

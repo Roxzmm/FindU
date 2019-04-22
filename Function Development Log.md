@@ -92,4 +92,4 @@
 **Open FindU.xcworkspace to edit the project instead of FindU.xcodeproj (they are both in /FindU/)**
 
 1. use third-party tool —> 3lvis/Sync to parse JSON to core data and back
-2. use third-party tool —> OHMySQL
+2. use third-party tool —> OHMySQL (when connect to mysql, turn off vpn)

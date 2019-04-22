@@ -104,7 +104,9 @@ class DatabaseConnectUtil: UIViewController {
             try coredataContext?.save()
             print("Data have been saved in Core data")
         } catch {
-            print("there was an error")
+            let nserror = error as NSError
+//            print("there was an error: " + nserror.localizedDescription)
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
         }
     }
     
@@ -118,12 +120,12 @@ class DatabaseConnectUtil: UIViewController {
             newRecord.buldingID = (record["buildingNo"] as! String)
             newRecord.position = (record["position"] as! String)
         }
-        do {
-            try coredataContext?.save()
-            print("Data have been saved in Core data")
-        } catch {
-            print("there was an error")
-        }
+//        do {
+//            try coredataContext?.save()
+//            print("Data have been saved in Core data")
+//        } catch {
+//            print("there was an error")
+//        }
         
     }
     
