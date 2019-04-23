@@ -63,15 +63,26 @@ class DatabaseConnectUtil: NSObject {
 
             context.storeCoordinator = coordinator
             OHMySQLContainer.shared.mainQueryContext = context
-
-//            updateLocalData()
         }
         return sqlConnected
     }
     
+    //Sync core data with mysql
+    func sync() {
+        for table in tables {
+            let check = checkUpdateStatus(table: table.value)
+            if check.0 == false {
+                if updateTable(table: table.value) == true {
+                    updateTimeStamp(table: table.value, responseTime: check.1)
+                }
+            }
+        }
+    }
+    
     //Connect mysql and check last update time
-    func checkUpdateStatus(table: String) -> Bool {
+    func checkUpdateStatus(table: String) -> (Bool, Date) {
         var isUpdated = true
+        var responseDate: Date?
         
         //query last update time of specific table
         let query = OHMySQLQueryRequestFactory.select("information_schema.tables", condition: "TABLE_SCHEMA = \"userDatabase\" and TABLE_NAME = \"" + table.lowercased() + "\"", orderBy: ["UPDATE_TIME"], ascending: false)
@@ -82,7 +93,7 @@ class DatabaseConnectUtil: NSObject {
             dateFormatter.timeZone = TimeZone(abbreviation: "GMT+0:00")
             dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
             
-            var responseDate: Date?
+
             if let stringDate = response[0]["UPDATE_TIME"] as? String {
                 responseDate = dateFormatter.date(from: stringDate)
             }else {
@@ -98,24 +109,19 @@ class DatabaseConnectUtil: NSObject {
         }
 
         print(isUpdated)
-        return isUpdated
+        return (isUpdated, responseDate!)
     }
     
-    // Retrieve last update time of specific table stored locally
+    // Initialize or retrieve last update time of specific table stored locally
     func retrieveLastUpdateTime(tableName: String) -> Date {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "LastUpdateTime")
-        
-//        coredataContext = appDelegate.persistentContainer.viewContext
 
         var lastUpdateTime: Date = Date.distantPast
 //        fetchRequest.fetchLimit = 1
 //        fetchRequest.returnsObjectsAsFaults = false
         do{
             let result = try coredataContext?.fetch(fetchRequest)
-//            for data in result as! [NSManagedObject] {
-//                lastUpdateTime = data.value(forKey: tableName.lowercased()) as? Date
-//                print(lastUpdateTime as Any)
-//            }
+
             if result?.count == 0 {
                 let newTime = NSEntityDescription.insertNewObject(forEntityName: "LastUpdateTime", into: coredataContext!) as! LastUpdateTime
                 newTime.setValue(Date.distantPast, forKey: tableName.lowercased())
@@ -123,7 +129,7 @@ class DatabaseConnectUtil: NSObject {
                 // store the new update record
                 do {
                     try coredataContext?.save()
-                    print("Data have been saved in Core data")
+                    print("lastUpdateTime initializes successfully!")
                 } catch {
                     let nserror = error as NSError
                     fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
@@ -141,8 +147,105 @@ class DatabaseConnectUtil: NSObject {
         return lastUpdateTime
     }
     
-    // update local core data
-    func updateLocalData() {
+    // update lastUpdateTime for each table
+    func updateTimeStamp(table: String, responseTime: Date) -> Bool{
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "LastUpdateTime")
+        var boolTimeStamp = false
+        
+        do{
+            let result = try coredataContext?.fetch(fetchRequest)
+            
+            let timestampUpdate = result![0] as! NSManagedObject
+            timestampUpdate.setValue(responseTime, forKey: table.lowercased())
+            
+            do {
+                try coredataContext?.save()
+                boolTimeStamp = true
+                print(table + " lastUpdateTime updates successfully!")
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+            
+        }catch {
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+        return boolTimeStamp
+    }
+    
+    // update table based on existed local data
+    func updateTable(table: String) -> Bool{
+        let boolDelete = deleteTable(table: table)
+        let boolDownload = downloadTable(table: table)
+        return boolDelete && boolDownload
+    }
+    
+    // delete a full table stored in local database
+    func deleteTable(table: String) -> Bool{
+        let fetchReuest = NSFetchRequest<NSFetchRequestResult>(entityName: table)
+        
+        var boolDelete = false
+        do {
+            let result = try coredataContext?.fetch(fetchReuest)
+
+            for index in 0..<result!.count {
+                let objectToDelte = result![index] as! NSManagedObject
+                coredataContext?.delete(objectToDelte)
+            }
+            
+            do {
+                try coredataContext?.save()
+                boolDelete = true
+                print(table + " Data in Core Data have been deleted!")
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }catch {
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+        return boolDelete
+    }
+    
+    // download a full table from mysql
+    func downloadTable(table: String) -> Bool{
+        let query = OHMySQLQueryRequestFactory.select(table.lowercased(), condition: nil)
+        var boolDownload = false
+        
+        if let response = try? context.executeQueryRequestAndFetchResult(query) {
+            switch table.lowercased(){
+            case "building":
+                updateBuilding(response: response)
+            case "user":
+                updateUser(response: response)
+            case "comment":
+                updateComment(response: response)
+            case "event":
+                updateEvent(response: response)
+            case "marker":
+                updateMarker(response: response)
+            case "facility":
+                updateFacility(response: response)
+            default:
+                break;
+            }
+        }
+        
+        do {
+            try coredataContext?.save()
+            boolDownload = true
+            print(table + " Data have been saved in Core data!")
+        } catch {
+            let nserror = error as NSError
+            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+        }
+        return boolDownload
+    }
+    
+    // first time download local core data
+    func initLocalData() {
 //        coredataContext = appDelegate.persistentContainer.viewContext
 //        let coredataContext = appDelegate.persistentContainer.viewContext
 
@@ -170,7 +273,7 @@ class DatabaseConnectUtil: NSObject {
         
         do {
             try coredataContext?.save()
-            print("Data have been saved in Core data")
+            print("local data initializes successfully!")
         } catch {
             let nserror = error as NSError
             fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
@@ -236,6 +339,5 @@ class DatabaseConnectUtil: NSObject {
             newRecord.floor = (record["floor"] as! String)
             newRecord.state = (record["state"] as! String)
         }
-
     }
 }

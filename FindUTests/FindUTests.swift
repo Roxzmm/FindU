@@ -13,11 +13,17 @@ class FindUTests: XCTestCase {
     
      let tables = ["Building": "Building", "User": "User", "Comment": "Comment", "Event": "Event", "Marker": "Marker", "Facility": "Facility"]
     
-    func testCheckUpdateStatus() {
+    func testDatabaseConnectUtilSync() {
         let mysqlConnect = DatabaseConnectUtil()
         
-        XCTAssertNotNil(mysqlConnect.checkUpdateStatus(table: "User"))
+        XCTAssertNoThrow(mysqlConnect.sync())
     }
+    
+//    func testCheckUpdateStatus() {
+//        let mysqlConnect = DatabaseConnectUtil()
+//
+//        XCTAssertNotNil(mysqlConnect.checkUpdateStatus(table: "User"))
+//    }
     
 //    func testDatabaseConnectUtil() {
 //        let mysqlConnect = DatabaseConnectUtil()

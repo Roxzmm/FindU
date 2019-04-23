@@ -28,9 +28,7 @@ class ViewController: UIViewController {
         
         // updateLocaldata
         let mysqlConnect = DatabaseConnectUtil()
-//        mysqlConnect.updateLocalData();
-
-
+        mysqlConnect.sync()
     }
     
     override func viewWillAppear(_ animated: Bool) {

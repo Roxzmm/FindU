@@ -99,4 +99,5 @@
 #### \# 2019/4/22
 
 1. Sync mysql and core data successfully (to do: create api for other viewcontroller)
-2. 
+2. Sync timestamp between local data and mysql successfully (now could use existed data for testing)
+
