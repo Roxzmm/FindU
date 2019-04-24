@@ -30,6 +30,7 @@ class DatabaseConnectUtil: NSObject {
     // declare used tables and entities
     let tables = ["Building": "Building", "User": "User", "Comment": "Comment", "Event": "Event", "Marker": "Marker", "Facility": "Facility"]
 //    let entities = ["Building": Building(), "User": User(), "Comment": Comment(), "Event": Event(), "Marker": Marker(), "Facility": Facility(), "LastUpdateTime": LastUpdateTime()]
+//    var entity: EntityExtension
 
 //    let buildingTable = "building"
 //    let userTable = "user"
@@ -362,5 +363,66 @@ class DatabaseConnectUtil: NSObject {
             newRecord.floor = (record["floor"] as! String)
             newRecord.state = (record["state"] as! String)
         }
+    }
+    
+//    func findBuilding(_ sender: Any) {
+//        //查询请求
+//        let request:NSFetchRequest = Building.fetchRequest()
+//        //这里可以加入查询的条件
+//
+//        do{
+//            let result =  try coredataContext?.fetch(request)
+//        }catch{
+//            fatalError("find error")
+//        }
+//    }
+//
+//    func findEvent(_ sender: Any) {
+//        //查询请求
+//        let request:NSFetchRequest = Event.fetchRequest()
+//        //这里可以加入查询的条件
+//
+//        do{
+//            let result =  try coredataContext?.fetch(request)
+//        }catch{
+//            fatalError("find error")
+//        }
+//    }
+//
+//    func findFacility(_ sender: Any) {
+//        //查询请求
+//        let request:NSFetchRequest = Facility.fetchRequest()
+//        //这里可以加入查询的条件
+//
+//        do{
+//            let result =  try coredataContext?.fetch(request)
+//        }catch{
+//            fatalError("find error")
+//        }
+//    }
+    
+    func findObject(_ table:String, _ attributeType: String, _ input:String) {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: table)
+        var records: [Any] = []
+        do{
+            let result =  try coredataContext?.fetch(fetchRequest)
+            for data in result as! [NSManagedObject] {
+//                entity = EntityExtension(attributeType)
+
+                var attributeResult = data.value(forKey: attributeType) as? String
+                if attributeResult == input {
+                    records.append(data)
+                }
+            }
+        
+        }catch{
+            fatalError("find error")
+        }
+        
+    }
+    
+    
+    func deleteEevent(_ sender: Any) {
+        
     }
 }
