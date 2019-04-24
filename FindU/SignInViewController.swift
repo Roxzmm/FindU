@@ -53,7 +53,7 @@ class SignInViewController: UIViewController {
     func sign(_ identity: String, _ password: String) -> (Bool, errorIdentity: String){
         
         var boolSign = false
-        var errorIdentity = "Wrong credential! Please check your user identity and password!"
+        let errorIdentity = "Wrong credential! Please check your user identity and password!"
         
         let signStatus = databaseUtil.validateUser(identity, password)
         boolSign = signStatus.0

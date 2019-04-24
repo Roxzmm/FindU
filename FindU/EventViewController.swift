@@ -10,11 +10,25 @@ import UIKit
 
 class EventViewController: UIViewController {
 
+    @IBOutlet weak var addFunc: UIImageView!
+    
+    @IBOutlet weak var Event1: UIImageView!
+    
+    @IBOutlet weak var Event2: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Event")
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        self.view.backgroundColor = UIColorFromHex(rgbValue:1029623,alpha: 1)
+        
+        self.addFunc.image = UIImage(named: "addFunc.png")
+        
     }
     
 
