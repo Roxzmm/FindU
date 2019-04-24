@@ -101,3 +101,10 @@
 1. Sync mysql and core data successfully (to do: create api for other viewcontroller)
 2. Sync timestamp between local data and mysql successfully (now could use existed data for testing)
 
+---
+
+#### \# 2019/4/23
+
+1. (to do:) In Register view, we need to make the requirements for username, password clear and visvible for users
+2. try on register view and signin view (function seems work well but lacks explicit result UIView)
+3. (to do: for finishing InputHandlerUtil.swift) need a clear description of attributes' formats

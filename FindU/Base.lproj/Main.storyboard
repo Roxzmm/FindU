@@ -172,6 +172,8 @@
                         <outlet property="UserIDText" destination="7hz-Dw-hoe" id="Lqi-o1-kBb"/>
                         <outlet property="UserIDlabel" destination="rsv-9j-85T" id="bf5-P0-mkj"/>
                         <outlet property="logo" destination="Dmt-xc-hwH" id="mD3-rQ-mem"/>
+                        <outlet property="registerBtn" destination="bVV-Wh-Gym" id="LDM-9t-cY1"/>
+                        <outlet property="signinBtn" destination="Wy3-Dz-WkE" id="Wsg-BJ-FEO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FbV-iP-PwZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -217,7 +219,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Make sure it's more than 15 characters and at least 8 characters including a number and a lowercase letter." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzp-4V-xbC">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please make sure it's at least 6 characters and not more than 15 characters including a number and a lowercase letter." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzp-4V-xbC">
                                 <rect key="frame" x="20" y="597" width="374" height="56"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="F7C-tW-YYV"/>
@@ -226,26 +228,26 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8RP-c1-eJO">
+                            <textField opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8RP-c1-eJO">
                                 <rect key="frame" x="20" y="351" width="374" height="41"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="31"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" keyboardAppearance="alert" returnKeyType="next" textContentType="username"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TZZ-sA-T4J">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="TZZ-sA-T4J">
                                 <rect key="frame" x="20" y="451" width="374" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="45" id="2de-Ws-lkm"/>
                                 </constraints>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="31"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" keyboardAppearance="alert" returnKeyType="continue" textContentType="email"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ceV-PM-zgS">
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ceV-PM-zgS">
                                 <rect key="frame" x="20" y="557" width="374" height="41"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="31"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" keyboardAppearance="alert" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eKF-ip-wx0">
                                 <rect key="frame" x="125" y="755" width="164" height="38"/>
@@ -398,6 +400,6 @@
         <image name="eventLogo.png" width="71" height="53"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Spy-hL-T7n"/>
+        <segue reference="Fkc-yl-1he"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -12,6 +12,10 @@ import CoreData
 
 class DatabaseConnectUtil: NSObject {
     
+    /*
+     * Provide APIs to handle kinds of problems need connecting to database
+     */
+    
     //MARK: connect to core data
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var coredataContext: NSManagedObjectContext?
@@ -67,7 +71,29 @@ class DatabaseConnectUtil: NSObject {
         return sqlConnected
     }
     
-    //Sync core data with mysql
+    // Create new user
+    func createNewUser(_ username: String!, _ email: String!, _ password: String!) -> (Bool, userID: String?){
+        
+        var boolCreated = false
+        var userID = "Sorry, register failed! Please try again."
+        
+        
+        return (boolCreated, userID)
+    }
+    
+    // Validate user and authorize user
+    func validateUser(_ identity: String!, _ password: String!) -> (Bool, errorIdentity: String?) {
+        
+        var boolValidate = false
+        var errorIdentity = "Wrong credential! Please check your user identity and password!"
+        
+        
+        
+        
+        return (boolValidate, errorIdentity)
+    }
+    
+    // Sync core data with mysql
     func sync() {
         for table in tables {
             let check = checkUpdateStatus(table: table.value)
@@ -246,9 +272,6 @@ class DatabaseConnectUtil: NSObject {
     
     // first time download local core data
     func initLocalData() {
-//        coredataContext = appDelegate.persistentContainer.viewContext
-//        let coredataContext = appDelegate.persistentContainer.viewContext
-
         for table in tables {
             let query = OHMySQLQueryRequestFactory.select(table.value.lowercased(), condition: nil)
             if let response = try? context.executeQueryRequestAndFetchResult(query) {

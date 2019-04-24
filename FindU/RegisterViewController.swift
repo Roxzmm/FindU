@@ -13,15 +13,31 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var registerTitle: UILabel!
     @IBOutlet weak var userNameInput: UITextField!
-    @IBOutlet weak var EmailInput: UITextField!
+    @IBOutlet weak var emailInput: UITextField!
     @IBOutlet weak var passwordInput: UITextField!
     
-    @IBAction func CreateBtn(_ sender: Any) {
+    let databaseUtil = DatabaseConnectUtil()
+    
+    @IBAction func create(_ sender: Any) {
         
+        // Store new user info and upload to mysql
+        let username = userNameInput.text!
+        let email = emailInput.text!
+        let password = passwordInput.text!
         
-        performSegue(withIdentifier: "RegisterBackToMenu", sender: self)
-        
-        
+        let response = databaseUtil.createNewUser(username, email, password)
+        if response.0 == true {
+            // do sth to tell the user that he created successfully
+            // to do: UI
+
+            // back to main menu after confirm the success message
+//        performSegue(withIdentifier: "RegisterBackToMenu", sender: self)
+
+        }else {
+            // to do: tell the user "register failed"
+            // back to main menu or recreate
+            // need a new back navigator
+        }
         
     }
     
@@ -32,7 +48,7 @@ class RegisterViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-         self.view.backgroundColor = UIColorFromHex(rgbValue:1029623,alpha: 1)
+        self.view.backgroundColor = UIColorFromHex(rgbValue:1029623,alpha: 1)
         
         var logoCenter = self.logo.center
         logoCenter.x -= 200

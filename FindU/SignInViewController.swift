@@ -16,19 +16,52 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var UserIDText: UITextField!
     @IBOutlet weak var PasswordLabel: UILabel!
     @IBOutlet weak var PasswordText: UITextField!
+    @IBOutlet weak var registerBtn: UIButton!
+    @IBOutlet weak var signinBtn: UIButton!
     
-    @IBAction func registerBtn(_ sender: Any) {
+    let databaseUtil = DatabaseConnectUtil()
+    
+    @IBAction func register(_ sender: Any) {
         
          performSegue(withIdentifier: "ToRegister", sender: self)
         
-        
     }
     
     
-    @IBAction func SignInAction(_ sender: Any) {
+    @IBAction func signIn(_ sender: Any) {
+  
+        // Uncomment it to switch back to main view after sign in
+//         performSegue(withIdentifier: "SignInBacktoMenu", sender: self)
         
-         performSegue(withIdentifier: "SignInBacktoMenu", sender: self)
+        let identityInfo = UserIDText.text!
+        let passwordInfo = PasswordText.text!
+        
+        let signStatus = sign(identityInfo, passwordInfo)
+        if  signStatus.0 == true {
+            // used to test sign in
+            SignIntitle.isHidden = true
+            UserIDText.isHidden = true
+            UserIDlabel.text = "Congratulation! You have signed in successfully!"
+            PasswordText.isHidden = true
+            PasswordLabel.isHidden = true
+            registerBtn.isHidden = true
+            signinBtn.isHidden = true
+
+        }
     }
+    
+    func sign(_ identity: String, _ password: String) -> (Bool, errorIdentity: String){
+        
+        var boolSign = false
+        var errorIdentity = "Wrong credential! Please check your user identity and password!"
+        
+        let signStatus = databaseUtil.validateUser(identity, password)
+        boolSign = signStatus.0
+        
+        
+        return (boolSign, errorIdentity)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
