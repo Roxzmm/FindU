@@ -27,6 +27,8 @@ class RegisterViewController: UIViewController {
         
         let response = databaseUtil.createNewUser(username, email, password)
         if response.0 == true {
+            
+             performSegue(withIdentifier: "detailregister", sender: self)
             // do sth to tell the user that he created successfully
             // to do: UI
 
@@ -34,6 +36,7 @@ class RegisterViewController: UIViewController {
 //        performSegue(withIdentifier: "RegisterBackToMenu", sender: self)
 
         }else {
+            performSegue(withIdentifier: "detailregister", sender: self)
             // to do: tell the user "register failed"
             // back to main menu or recreate
             // need a new back navigator

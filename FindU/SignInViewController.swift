@@ -17,15 +17,18 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var PasswordLabel: UILabel!
     @IBOutlet weak var PasswordText: UITextField!
     @IBOutlet weak var registerBtn: UIButton!
-    @IBOutlet weak var signinBtn: UIButton!
+   
+    @IBOutlet weak var signInBtn: UIButton!
     
     let databaseUtil = DatabaseConnectUtil()
     
-    @IBAction func register(_ sender: Any) {
+    
+//         performSegue(withIdentifier: "ToRegister", sender: self)
         
-         performSegue(withIdentifier: "ToRegister", sender: self)
-        
+    @IBAction func signInBtn(_ sender: Any) {
+        performSegue(withIdentifier: "ToRegister", sender: self)
     }
+    
     
     
     @IBAction func signIn(_ sender: Any) {
@@ -45,7 +48,7 @@ class SignInViewController: UIViewController {
             PasswordText.isHidden = true
             PasswordLabel.isHidden = true
             registerBtn.isHidden = true
-            signinBtn.isHidden = true
+            signInBtn.isHidden = true
 
         }
     }
