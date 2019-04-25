@@ -260,7 +260,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="CreateBtn:" destination="8Qd-2D-h0G" eventType="touchUpInside" id="NTn-AP-w58"/>
                                     <segue destination="3ct-pl-G3B" kind="show" identifier="detailregister" id="nCS-DA-3oU"/>
                                 </connections>
                             </button>
@@ -326,19 +325,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dpz-6w-Bqw">
-                                <rect key="frame" x="135" y="681" width="145" height="63"/>
+                                <rect key="frame" x="135" y="680" width="145" height="63"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Back to menu">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="21"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="backToMenu:" destination="3ct-pl-G3B" eventType="touchUpInside" id="ymW-v8-FU4"/>
                                     <segue destination="BYZ-38-t0r" kind="show" identifier="BackTomenu" id="a8Y-wp-d9f"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Register Successfully!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nvw-z7-do2">
-                                <rect key="frame" x="90" y="299" width="235" height="86"/>
+                                <rect key="frame" x="90" y="296" width="235" height="86"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <nil key="textColor"/>
@@ -557,6 +562,6 @@
         <image name="eventLogo.png" width="71" height="53"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Fkc-yl-1he"/>
+        <segue reference="a8Y-wp-d9f"/>
     </inferredMetricsTieBreakers>
 </document>
