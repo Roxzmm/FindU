@@ -8,10 +8,11 @@
 
 import UIKit
 
-class registerSuccessfullyorFailedViewController: UIViewController {
+class RegisterSuccessfullyorFailedViewController: UIViewController {
 
     @IBOutlet weak var detailAboutRegister: UILabel!
     
+    var userID: String = ""
     
     @IBAction func backToMenu(_ sender: Any) {
          performSegue(withIdentifier: "BackTomenu", sender: self)
@@ -26,6 +27,8 @@ class registerSuccessfullyorFailedViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         self.view.backgroundColor = UIColorFromHex(rgbValue:1029623,alpha: 1)
     
+        //TO DO: display userID
+        
     }
     /*
     // MARK: - Navigation

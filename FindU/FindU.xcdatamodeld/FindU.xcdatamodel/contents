@@ -18,7 +18,7 @@
         <attribute name="date" optional="YES" attributeType="Date" minDateTimeInterval="-31622400" maxDateTimeInterval="3092601600" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="eventID" optional="YES" attributeType="String" maxValueString="4" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" minValueString="1" maxValueString="20" syncable="YES"/>
-        <attribute name="numOfParticipant" optional="YES" attributeType="Integer 32" minValueString="0" maxValueString="1000" defaultValueString="1" usesScalarValueType="NO" syncable="YES"/>
+        <attribute name="numOfParticipant" optional="YES" attributeType="Integer 32" minValueString="0" maxValueString="999" defaultValueString="1" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="place" optional="YES" attributeType="String" maxValueString="30" syncable="YES"/>
         <relationship name="beFavorite" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="wishlist" inverseEntity="User" syncable="YES"/>
         <relationship name="comment" optional="YES" toMany="YES" minCount="1" deletionRule="Nullify" ordered="YES" destinationEntity="Comment" inverseName="toEvent" inverseEntity="Comment" syncable="YES"/>

@@ -17,6 +17,7 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var passwordInput: UITextField!
     
     let databaseUtil = DatabaseConnectUtil()
+    var response: (Bool, String) = (false, "")
     
     @IBAction func create(_ sender: Any) {
         
@@ -25,7 +26,7 @@ class RegisterViewController: UIViewController {
         let email = emailInput.text!
         let password = passwordInput.text!
         
-        let response = databaseUtil.createNewUser(username, email, password)
+        response = databaseUtil.createNewUser(username, email, password)
         if response.0 == true {
             
              performSegue(withIdentifier: "detailregister", sender: self)
@@ -79,14 +80,19 @@ class RegisterViewController: UIViewController {
         })
     }
 
-    /*
+
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        
+        // pass userId to register successfully view
+        if let vc = segue.destination as? RegisterSuccessfullyorFailedViewController {
+            vc.userID = response.1
+        }
     }
-    */
+    
 
 }

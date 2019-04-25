@@ -73,7 +73,7 @@ class DatabaseConnectUtil: NSObject {
     }
     
     // Create new user
-    func createNewUser(_ username: String!, _ email: String!, _ password: String!) -> (Bool, userID: String?){
+    func createNewUser(_ username: String!, _ email: String!, _ password: String!) -> (Bool, userID: String){
         
         var boolCreated = false
         var userID = "Sorry, register failed! Please try again."
