@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3344DABC2270B305009DC3DC /* EntityExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3344DABB2270B305009DC3DC /* EntityExtension.swift */; };
 		3EDAF10A226F72C400BC3032 /* InputHandlerUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDAF109226F72C400BC3032 /* InputHandlerUtil.swift */; };
 		3EDAF10F226FC61B00BC3032 /* UserExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDAF10E226FC61B00BC3032 /* UserExtension.swift */; };
 		3EE539B9226CD53F00181BBB /* DatabaseConnectUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE539B8226CD53F00181BBB /* DatabaseConnectUtil.swift */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		217CBDFA25351DB5AC91EC4F /* Pods-FindU.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindU.release.xcconfig"; path = "Target Support Files/Pods-FindU/Pods-FindU.release.xcconfig"; sourceTree = "<group>"; };
+		3344DABB2270B305009DC3DC /* EntityExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityExtension.swift; sourceTree = "<group>"; };
 		3E229D23226BA41300F87E17 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		3E229D24226BA41300F87E17 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		3EDAF109226F72C400BC3032 /* InputHandlerUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputHandlerUtil.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 			isa = PBXGroup;
 			children = (
 				3EDAF10E226FC61B00BC3032 /* UserExtension.swift */,
+				3344DABB2270B305009DC3DC /* EntityExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -397,6 +400,7 @@
 				6158ED07224A694B00818A1C /* FindU.xcdatamodeld in Sources */,
 				3EE539B9226CD53F00181BBB /* DatabaseConnectUtil.swift in Sources */,
 				6158ECFF224A694B00818A1C /* AppDelegate.swift in Sources */,
+				3344DABC2270B305009DC3DC /* EntityExtension.swift in Sources */,
 				3EDAF10F226FC61B00BC3032 /* UserExtension.swift in Sources */,
 				6159343D224BF8B600E5E7FB /* EventViewController.swift in Sources */,
 			);
