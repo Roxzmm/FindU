@@ -11,7 +11,8 @@
 		3EDAF10F226FC61B00BC3032 /* UserExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDAF10E226FC61B00BC3032 /* UserExtension.swift */; };
 		3EE539B9226CD53F00181BBB /* DatabaseConnectUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE539B8226CD53F00181BBB /* DatabaseConnectUtil.swift */; };
 		3EFE2D5B226CE0B600F93243 /* FindUTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFE2D5A226CE0B600F93243 /* FindUTests.swift */; };
-		6145D3C42270ABEC00FE413D /* addFunc.png in Resources */ = {isa = PBXBuildFile; fileRef = 6145D3C32270ABEC00FE413D /* addFunc.png */; };
+		6145D3C62271F58B00FE413D /* registerSuccessfullyorFailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6145D3C52271F58B00FE413D /* registerSuccessfullyorFailedViewController.swift */; };
+		6145D3C82271FD9500FE413D /* addFunc.png in Resources */ = {isa = PBXBuildFile; fileRef = 6145D3C72271FD9500FE413D /* addFunc.png */; };
 		61559BD7224D0998008F77AF /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61559BD6224D0998008F77AF /* RegisterViewController.swift */; };
 		61559BD9224D1115008F77AF /* register.png in Resources */ = {isa = PBXBuildFile; fileRef = 61559BD8224D1115008F77AF /* register.png */; };
 		6158ECFF224A694B00818A1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6158ECFE224A694B00818A1C /* AppDelegate.swift */; };
@@ -55,7 +56,8 @@
 		3EFE2D5A226CE0B600F93243 /* FindUTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindUTests.swift; sourceTree = "<group>"; };
 		3EFE2D5C226CE0B600F93243 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5CF9F5E0E75C730968884829 /* Pods_FindUTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindUTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6145D3C32270ABEC00FE413D /* addFunc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = addFunc.png; path = ../../../../addFunc.png; sourceTree = "<group>"; };
+		6145D3C52271F58B00FE413D /* registerSuccessfullyorFailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = registerSuccessfullyorFailedViewController.swift; sourceTree = "<group>"; };
+		6145D3C72271FD9500FE413D /* addFunc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addFunc.png; sourceTree = "<group>"; };
 		61559BD6224D0998008F77AF /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		61559BD8224D1115008F77AF /* register.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = register.png; sourceTree = "<group>"; };
 		6158ECFB224A694B00818A1C /* FindU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindU.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -160,6 +162,7 @@
 				6159343C224BF8B600E5E7FB /* EventViewController.swift */,
 				6159343A224BF89A00E5E7FB /* SearchFacilityViewController.swift */,
 				61559BD6224D0998008F77AF /* RegisterViewController.swift */,
+				6145D3C52271F58B00FE413D /* registerSuccessfullyorFailedViewController.swift */,
 				6158ED02224A694B00818A1C /* Main.storyboard */,
 				6158ED08224A695000818A1C /* Assets.xcassets */,
 				6158ED0A224A695000818A1C /* LaunchScreen.storyboard */,
@@ -167,8 +170,8 @@
 				6158ED05224A694B00818A1C /* FindU.xcdatamodeld */,
 				6158ED17224A76B300818A1C /* logo.png */,
 				61593430224BE5D300E5E7FB /* searchfacility.png */,
+				6145D3C72271FD9500FE413D /* addFunc.png */,
 				61593432224BE5D900E5E7FB /* event.png */,
-				6145D3C32270ABEC00FE413D /* addFunc.png */,
 				61593434224BE5DE00E5E7FB /* me.png */,
 				6158ED1B224A8A3F00818A1C /* welcometitle.png */,
 				61593438224BF6EB00E5E7FB /* SignIn.png */,
@@ -290,7 +293,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6158ED1C224A8A3F00818A1C /* welcometitle.png in Resources */,
-				6145D3C42270ABEC00FE413D /* addFunc.png in Resources */,
+				6145D3C82271FD9500FE413D /* addFunc.png in Resources */,
 				6158ED18224A76B300818A1C /* logo.png in Resources */,
 				61559BD9224D1115008F77AF /* register.png in Resources */,
 				6158ED0C224A695000818A1C /* LaunchScreen.storyboard in Resources */,
@@ -389,6 +392,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6145D3C62271F58B00FE413D /* registerSuccessfullyorFailedViewController.swift in Sources */,
 				61593437224BF43400E5E7FB /* SignInViewController.swift in Sources */,
 				3EDAF10A226F72C400BC3032 /* InputHandlerUtil.swift in Sources */,
 				6158ED01224A694B00818A1C /* ViewController.swift in Sources */,

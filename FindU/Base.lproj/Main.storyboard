@@ -118,11 +118,10 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="SignInAction:" destination="ymf-SF-ltw" eventType="touchUpInside" id="f05-v4-R7Y"/>
                                     <segue destination="BYZ-38-t0r" kind="show" identifier="SignInBacktoMenu" id="Fkc-yl-1he"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bVV-Wh-Gym">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bVV-Wh-Gym" userLabel="register">
                                 <rect key="frame" x="325" y="515" width="57" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="ktj-4w-fl8"/>
@@ -131,8 +130,8 @@
                                     <color key="titleColor" red="1" green="0.213819661663463" blue="0.18111607599846213" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="registerBtn:" destination="ymf-SF-ltw" eventType="touchUpInside" id="sLk-bD-Gbm"/>
-                                    <segue destination="8Qd-2D-h0G" kind="show" identifier="ToRegister" id="5qH-fe-6Wv"/>
+                                    <action selector="signInBtn:" destination="ymf-SF-ltw" eventType="touchUpInside" id="0K2-yw-ltV"/>
+                                    <segue destination="8Qd-2D-h0G" kind="show" identifier="ToRegister" id="lbT-jT-IP8"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -172,8 +171,7 @@
                         <outlet property="UserIDText" destination="7hz-Dw-hoe" id="Lqi-o1-kBb"/>
                         <outlet property="UserIDlabel" destination="rsv-9j-85T" id="bf5-P0-mkj"/>
                         <outlet property="logo" destination="Dmt-xc-hwH" id="mD3-rQ-mem"/>
-                        <outlet property="registerBtn" destination="bVV-Wh-Gym" id="LDM-9t-cY1"/>
-                        <outlet property="signinBtn" destination="Wy3-Dz-WkE" id="Wsg-BJ-FEO"/>
+                        <outlet property="signInBtn" destination="bVV-Wh-Gym" id="hl0-v4-Veh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FbV-iP-PwZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -263,7 +261,7 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="CreateBtn:" destination="8Qd-2D-h0G" eventType="touchUpInside" id="NTn-AP-w58"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="RegisterBackToMenu" id="Spy-hL-T7n"/>
+                                    <segue destination="3ct-pl-G3B" kind="show" identifier="detailregister" id="nCS-DA-3oU"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Register" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ff3-tP-E5R">
@@ -318,6 +316,45 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kvl-Qt-z4M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="950.72463768115949" y="739.95535714285711"/>
+        </scene>
+        <!--Register Successfullyor Failed View Controller-->
+        <scene sceneID="hNc-O3-0Ic">
+            <objects>
+                <viewController id="3ct-pl-G3B" customClass="registerSuccessfullyorFailedViewController" customModule="FindU" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Mmh-bF-1SZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dpz-6w-Bqw">
+                                <rect key="frame" x="135" y="681" width="145" height="63"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Back to menu">
+                                    <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                </state>
+                                <connections>
+                                    <action selector="backToMenu:" destination="3ct-pl-G3B" eventType="touchUpInside" id="ymW-v8-FU4"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="BackTomenu" id="a8Y-wp-d9f"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Register Successfully!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nvw-z7-do2">
+                                <rect key="frame" x="90" y="299" width="235" height="86"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="MID-qx-84a"/>
+                    </view>
+                    <connections>
+                        <outlet property="detailAboutRegister" destination="nvw-z7-do2" id="asO-KQ-ykq"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SUz-bX-qOr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1723.1884057971015" y="747.99107142857144"/>
         </scene>
         <!--Event View Controller-->
         <scene sceneID="EPK-Rs-td2">
