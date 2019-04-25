@@ -33,7 +33,7 @@ class ViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-//            self.view.backgroundColor = UIColorFromHex(rgbValue:1029623,alpha: 1)
+            self.view.backgroundColor = UIColorFromHex(rgbValue:1029623,alpha: 1)
             
             var logoCenter = self.logo.center
             logoCenter.x -= 200
