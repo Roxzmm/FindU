@@ -13,6 +13,7 @@
 		3EFE2D5B226CE0B600F93243 /* FindUTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFE2D5A226CE0B600F93243 /* FindUTests.swift */; };
 		6145D3C62271F58B00FE413D /* registerSuccessfullyorFailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6145D3C52271F58B00FE413D /* registerSuccessfullyorFailedViewController.swift */; };
 		6145D3C82271FD9500FE413D /* addFunc.png in Resources */ = {isa = PBXBuildFile; fileRef = 6145D3C72271FD9500FE413D /* addFunc.png */; };
+		6145D3CA2272062500FE413D /* EventLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6145D3C92272062500FE413D /* EventLogo.png */; };
 		61559BD7224D0998008F77AF /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61559BD6224D0998008F77AF /* RegisterViewController.swift */; };
 		61559BD9224D1115008F77AF /* register.png in Resources */ = {isa = PBXBuildFile; fileRef = 61559BD8224D1115008F77AF /* register.png */; };
 		6158ECFF224A694B00818A1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6158ECFE224A694B00818A1C /* AppDelegate.swift */; };
@@ -58,6 +59,7 @@
 		5CF9F5E0E75C730968884829 /* Pods_FindUTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindUTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6145D3C52271F58B00FE413D /* registerSuccessfullyorFailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = registerSuccessfullyorFailedViewController.swift; sourceTree = "<group>"; };
 		6145D3C72271FD9500FE413D /* addFunc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addFunc.png; sourceTree = "<group>"; };
+		6145D3C92272062500FE413D /* EventLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EventLogo.png; sourceTree = "<group>"; };
 		61559BD6224D0998008F77AF /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		61559BD8224D1115008F77AF /* register.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = register.png; sourceTree = "<group>"; };
 		6158ECFB224A694B00818A1C /* FindU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindU.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -171,6 +173,7 @@
 				6158ED17224A76B300818A1C /* logo.png */,
 				61593430224BE5D300E5E7FB /* searchfacility.png */,
 				6145D3C72271FD9500FE413D /* addFunc.png */,
+				6145D3C92272062500FE413D /* EventLogo.png */,
 				61593432224BE5D900E5E7FB /* event.png */,
 				61593434224BE5DE00E5E7FB /* me.png */,
 				6158ED1B224A8A3F00818A1C /* welcometitle.png */,
@@ -303,6 +306,7 @@
 				6158ED04224A694B00818A1C /* Main.storyboard in Resources */,
 				61593433224BE5D900E5E7FB /* event.png in Resources */,
 				61593439224BF6EC00E5E7FB /* SignIn.png in Resources */,
+				6145D3CA2272062500FE413D /* EventLogo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

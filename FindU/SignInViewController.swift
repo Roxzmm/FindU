@@ -17,7 +17,8 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var PasswordLabel: UILabel!
     @IBOutlet weak var PasswordText: UITextField!
     @IBOutlet weak var registerBtn: UIButton!
-   
+    @IBOutlet weak var SignInView: UIView!
+    
     @IBOutlet weak var signInBtn: UIButton!
     
     let databaseUtil = DatabaseConnectUtil()
@@ -73,7 +74,7 @@ class SignInViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         
-         self.view.backgroundColor = UIColorFromHex(rgbValue:1029623,alpha: 1)
+         self.SignInView.backgroundColor = UIColorFromHex(rgbValue:1029623,alpha: 1)
         
         
         var logoCenter = self.logo.center
