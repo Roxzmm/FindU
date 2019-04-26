@@ -26,6 +26,7 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
     var locationManager = CLLocationManager()
     
     var markers: [Marker] = []
+    let mysqldatabaseUtil = DatabaseConnectUtil()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,8 +41,8 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
          * attributes of marker: markerID, builgdingName, location  (all are string)
          * location's example output: 53°24'5"N, 2°57'50"W
          */
-        let mysqldatabaseUtil = DatabaseConnectUtil()
-        markers = mysqldatabaseUtil.fetchMarkers()
+
+        
 //        Arraybylocation()
         
         
@@ -64,9 +65,144 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
         let region = MKCoordinateRegion(center: location, span: span)
         self.map.setRegion(region, animated: true)
         
-        //            Arraybylocation()
+                  Arraybylocation()
     }
     
+    
+    func Arraybylocation(){
+        markers = mysqldatabaseUtil.fetchMarkers()
+        for i in 0...markers.count-1{
+            let location = markers[i].location
+            let location1 = location!.replacingOccurrences(of: "°", with: ".")
+            let location2 = location1.replacingOccurrences(of: "\'", with: "")
+            let location3 = location2.replacingOccurrences(of: "\"N", with: "")
+            let location4 = location3.replacingOccurrences(of: "\"W", with: "")
+            let location5 = location4.replacingOccurrences(of: " ", with: "")
+            let location6 : [String] = location5.components(separatedBy: ",")
+            
+            print(location)
+            print(location6)
+            
+//            let lat = location5[0]
+//            let latitude = Double(lat)
+//            let lon = location5[1]
+//            let longitude = Double(lon)
+//
+//            //                let a = latitude!
+//            //                let b
+//            let coordinate = CLLocationCoordinate2D(latitude: latitude!, longitude: -longitude!)
+//            let annotation = MKPointAnnotation()
+//            annotation.coordinate = coordinate
+//            annotation.title = markers[i].buildingName //显示什么？
+//            self.map.addAnnotation(annotation)
+            
+            
+//                            let a = latitude!
+//                            let b
+//            let coordinate = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
+//            let annotation = MKPointAnnotation()
+//            annotation.coordinate = coordinate
+//            annotation.title = markers[i].location //显示什么？
+//            self.map.addAnnotation(annotation)
+//
+//        }
+//
+//
+//        var locationlist : [String] = []
+//        //            var locationNoteList: [String] = []
+//        var distance : [Double] = []
+//        var locationAndDistance: [String : Double] = [String : Double]()
+//        var finalLocationlist : [String] = []
+//
+//        //         var locationlist : [String] = []
+//        var lat : [Double] = []
+//        var long : [Double] = []
+//
+//
+//
+//        var howManyArtWorksInLocation : [Int] = []
+//        var startlocation = markers[0].location!
+//        //            var startlocationNote = markers[0].locationNotes!
+//        let startlocationLat = (Double)(markers[0].lat!)!
+//        let startlocationLong = (Double)(markers[0].long!)!
+//        //         var distance : [Double] = []
+//        var a = 0
+//        var b = 0
+//
+//        locationlist.append(startlocation)
+//        //            locationNoteList.append(startlocationNote)
+//        lat.append(startlocationLat)
+//        long.append(startlocationLong)
+//        for aArt in markers{
+//
+//            if aArt.location! == startlocation{
+//                b = b+1
+//            }
+//            else{
+//                howManyArtWorksInLocation.append(b)
+//                b = 1
+//                startlocation = aArt.location!
+//                locationlist.append(aArt.location!)
+//                lat.append((Double)(aArt.lat!)!)
+//                long.append((Double)(aArt.long!)!)
+//
+//
+//            }
+//            a = a+1
+//        }
+//        howManyArtWorksInLocation.append(b)
+//
+//        for i in 0...locationlist.count-1{
+//
+//            let artLcLocation = CLLocation(latitude:CLLocationDegrees(lat[i]), longitude: CLLocationDegrees(long[i]))
+//            //            print(userLoc!)
+//
+//            let artToUser = artLcLocation.distance(from: userLoc)
+//            distance.append(artToUser)
+//        }
+//
+//
+//        for i in 0...distance.count-1{
+//            //            print("\(locationlist[i]) : \(distance[i])")
+//            locationAndDistance[locationlist[i]] = distance[i]
+//        }
+//
+//
+//        let result4 = locationAndDistance.sorted { (str1, str2) -> Bool in
+//            return str1.1 < str2.1
+//        }
+//
+//        for key in 0...result4.count-1{
+//            finalLocationlist.append(result4[key].key)
+//        }
+//        self.locationBydistance = finalLocationlist
+//
+//        for i in 0..<finalLocationlist.count{
+//            var eachLocation: [ArtworkInformation] = []
+//            for aArt in self.markers{
+//                if aArt.location! == finalLocationlist[i]  {
+//                    eachLocation.append(aArt)
+//                }
+//            }
+//            self.sectionByLocation[finalLocationlist[i]] = eachLocation
+        }
+        //        for i in 0...finalLocationlist.count-1{
+        //            print(finalLocationlist[i])
+        //        }
+        //        print(result4)
+        //        for a in locationlist{
+        //            distance = userLoc.distance(from: a)
+        //                    }
+        
+    }
+    
+    private func mapView(mapView:MKMapView, didSelectAnnotationView view:MKAnnotationView){
+        
+        print("didSelectAnnotationView")
+        
+    }
+    
+}
 //    func setpicture(){
 //        EventBarItem.image = UIImage(contentsOfFile: "eventLogo")
 //        EventBarItem.selectedImage =  UIImage(contentsOfFile: "eventLogo")?.withRenderingMode(.alwaysOriginal)
@@ -624,5 +760,5 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
 //        }
 //
 //    }
-
-}
+//
+//}
