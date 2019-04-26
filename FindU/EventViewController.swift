@@ -29,6 +29,29 @@ class EventViewController: UIViewController {
         
         self.addFunc.image = UIImage(named: "addFunc.png")
         
+        let goEvent = UITapGestureRecognizer(target: self, action: #selector(wayToEventDetail(tapGestureRecognizer:)))
+        Event1.isUserInteractionEnabled = true
+        Event1.addGestureRecognizer(goEvent)
+        
+        Event2.isUserInteractionEnabled = true
+        Event2.addGestureRecognizer(goEvent)
+        
+        let addEvent = UITapGestureRecognizer(target: self, action: #selector(wayToAddEvent(tapGestureRecognizer:)))
+        addFunc.isUserInteractionEnabled = true
+        addFunc.addGestureRecognizer(addEvent)
+        
+    }
+    
+    @objc func wayToEventDetail(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        performSegue(withIdentifier: "EventTodetail", sender: self)
+        
+    }
+    
+    @objc func wayToAddEvent(tapGestureRecognizer: UITapGestureRecognizer)
+    {
+        performSegue(withIdentifier: "ToCreateEvent", sender: self)
+        
     }
     
 
