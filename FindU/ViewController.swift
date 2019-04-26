@@ -20,23 +20,29 @@ class ViewController: UIViewController {
     @IBOutlet weak var me: UIImageView!
     
     // sync database
-    var syncCount = 0
+    var loadCount = 0
+//    var boolSigned = false
+    let mysqlConnect = DatabaseConnectUtil()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // sync database
-//        if syncCount == 0 {
-            let mysqlConnect = DatabaseConnectUtil()
-            mysqlConnect.sync()
-//            syncCount += 1
-//        }
-        
-        // Try to retrieve local user data and sign in automatically
-        if let localUser = mysqlConnect.retrieveLocalUser() as? User {
-            mysqlConnect.validateUser(localUser.email, localUser.password)
-        }
 
+        mysqlConnect.configureMySQL()
+
+        if loadCount == 0 {
+//            let mysqlConnect = DatabaseConnectUtil()
+
+            // Try to retrieve local user data and sign in automatically
+            if let localUser = mysqlConnect.retrieveLocalUser() {
+                mysqlConnect.signIn("userEmail", localUser.email, localUser.password, true)
+            }
+            
+            mysqlConnect.sync()
+            if mysqlConnect.checkUpdateStatus(table: "User").0 == false && mysqlConnect.boolSigned == true{
+                mysqlConnect.updateUserInfo()
+            }
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -132,8 +138,19 @@ class ViewController: UIViewController {
     
     @objc func wayToMe(tapGestureRecognizer: UITapGestureRecognizer)
     {
-        performSegue(withIdentifier: "ToMe", sender: self)
-        
+        if mysqlConnect.boolSigned == false {
+            performSegue(withIdentifier: "ToMe", sender: self)
+        }else {
+            //TO DO: finish UI: User Information Management
+            
+            // Just for testing, delete this after finishing UI
+            let alertController = UIAlertController(title: "Sorry", message:
+                "You have signed in, but now we don't have UI for userInfo management.", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Done", style: .default))
+            
+            self.present(alertController, animated: true, completion: nil)
+        }
+            
     }
 
 

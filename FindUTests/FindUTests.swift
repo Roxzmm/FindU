@@ -11,19 +11,26 @@ import XCTest
 
 class FindUTests: XCTestCase {
     
+//    //test check userID or email in inputhandler
+//    func testCheckIdentityType() {
+//        let inputHandler = InputHandlerUtil()
+//
+//        XCTAssert(inputHandler.checkIdentityType("asd@das.com") == "userEmail")
+//    }
+    
      let tables = ["Building": "Building", "User": "User", "Comment": "Comment", "Event": "Event", "Marker": "Marker", "Facility": "Facility"]
     
-    func testDatabaseConnectUtilSync() {
-        let mysqlConnect = DatabaseConnectUtil()
-        
-        XCTAssertNoThrow(mysqlConnect.sync())
-    }
-    
-//    func testCheckUpdateStatus() {
+//    func testDatabaseConnectUtilSync() {
 //        let mysqlConnect = DatabaseConnectUtil()
 //
-//        XCTAssertNotNil(mysqlConnect.checkUpdateStatus(table: "User"))
+//        XCTAssertNoThrow(mysqlConnect.sync())
 //    }
+    
+    func testCheckUpdateStatus() {
+        let mysqlConnect = DatabaseConnectUtil()
+
+        XCTAssertNotNil(mysqlConnect.checkUpdateStatus(table: "User"))
+    }
     
 //    func testDatabaseConnectUtil() {
 //        let mysqlConnect = DatabaseConnectUtil()

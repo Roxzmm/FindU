@@ -108,3 +108,10 @@
 1. (to do:) In Register view, we need to make the requirements for username, password clear and visvible for users
 2. try on register view and signin view (function seems work well but lacks explicit result UIView)
 3. (to do: for finishing InputHandlerUtil.swift) need a clear description of attributes' formats
+
+---
+
+#### \# 2019/4/25
+
+1. finsh sign in and register. 
+2. (To do): consider http request to reconstruct connection

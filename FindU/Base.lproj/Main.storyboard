@@ -214,7 +214,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="signIn:" destination="ymf-SF-ltw" eventType="touchUpInside" id="gEZ-1a-jYP"/>
+                                            <action selector="signIn:" destination="ymf-SF-ltw" eventType="touchUpInside" id="ZQu-ax-YHX"/>
                                             <action selector="signInBtn:" destination="ymf-SF-ltw" eventType="touchUpInside" id="jVJ-rT-Ttm"/>
                                             <segue destination="BYZ-38-t0r" kind="show" identifier="SignInBacktoMenu" id="Fkc-yl-1he"/>
                                         </connections>
@@ -232,10 +232,10 @@
                     </view>
                     <connections>
                         <outlet property="PasswordLabel" destination="t0W-0C-xac" id="Yhq-a4-IvZ"/>
-                        <outlet property="PasswordText" destination="zQS-7i-krJ" id="RiZ-0G-sEd"/>
+                        <outlet property="PasswordText" destination="7hz-Dw-hoe" id="jV5-Ei-712"/>
                         <outlet property="SignInView" destination="Fgy-nq-lVQ" id="vmH-hb-2Y9"/>
                         <outlet property="SignIntitle" destination="UXZ-Lc-vMY" id="0Sd-Uk-9ku"/>
-                        <outlet property="UserIDText" destination="7hz-Dw-hoe" id="Lqi-o1-kBb"/>
+                        <outlet property="UserIDText" destination="zQS-7i-krJ" id="9sX-Lp-RoW"/>
                         <outlet property="UserIDlabel" destination="rsv-9j-85T" id="bf5-P0-mkj"/>
                         <outlet property="logo" destination="Dmt-xc-hwH" id="mD3-rQ-mem"/>
                         <outlet property="registerBtn" destination="bVV-Wh-Gym" id="QHC-nb-7ik"/>
@@ -836,6 +836,6 @@
         <image name="eventLogo.png" width="71" height="53"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Fkc-yl-1he"/>
+        <segue reference="Sfj-Rd-sqR"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -22,8 +22,8 @@ class RegisterSuccessfullyorFailedViewController: UIViewController {
         
     }
     override func viewDidLoad() {
-        helloLabel.text = "Hello " + userName
-        userIDLabel.text = "your userID is " + userID
+        helloLabel.text = "Hello \(userName)"
+        userIDLabel.text = "your userID is \(userID)"
         
         super.viewDidLoad()
 

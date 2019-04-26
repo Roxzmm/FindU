@@ -23,13 +23,12 @@ class DatabaseConnectUtil: NSObject {
     //MARK: connect to mysql
     // Initialize coordinator and context
     var coordinator = OHMySQLStoreCoordinator()
-    
     let context = OHMySQLQueryContext()
-    let dbUser = "userDatabase"
+    let db = "userDatabase"
     
     // declare used tables and entities
-    let tables = ["Building": "Building", "User": "User", "Comment": "Comment", "Event": "Event", "Marker": "Marker", "Facility": "Facility"]
-//    let entities = ["Building": Building(), "User": User(), "Comment": Comment(), "Event": Event(), "Marker": Marker(), "Facility": Facility(), "LastUpdateTime": LastUpdateTime()]
+    let tables = ["Building": "Building", "Comment": "Comment", "Event": "Event", "Marker": "Marker", "Facility": "Facility"]
+    let entities = ["Building": Building(), "User": User(), "Comment": Comment(), "Event": Event(), "Marker": Marker(), "Facility": Facility(), "LastUpdateTime": LastUpdateTime()]
 //    var entity: EntityExtension
 
 //    let buildingTable = "building"
@@ -40,23 +39,43 @@ class DatabaseConnectUtil: NSObject {
 //    let facilityTable = "facility"
     
     // MySQL Server
-    let SQLUserName = "LL"
-    let SQLPassword = "group20LL"
+    let SQLAdmName = "LL"
+    let SQLAdmPassword = "group20LL"
+    
+    let SQLRegisteredName = "registered"
+    let SQLRegisteredPassword = "group20"
+    
+    let SQLVisitorName = "visitor"
+    let SQLVisitorPassword = "group20"
     
     let SQLServerName = "findu.cowp9uradhbe.us-east-2.rds.amazonaws.com"
     let SQLServerPort: UInt = 3306
+    
+    var boolSigned = false
     
     // to do: need to improve access control
     override init() {
         super.init()
         
         coredataContext = appDelegate.persistentContainer.viewContext
-        self.configureMySQL(dbName: dbUser)
     }
     
     // Configure and connect to mysql
-    func configureMySQL(dbName: String) -> Bool {
-        let user = OHMySQLUser(userName: SQLUserName, password: SQLPassword, serverName: SQLServerName, dbName: dbName, port: SQLServerPort, socket: nil)
+    func configureMySQL() -> Bool {
+        var SQLUserName = SQLVisitorName
+        var SQLPassword = SQLVisitorPassword
+        
+        // access control
+        if boolSigned == true{
+            SQLUserName = SQLRegisteredName
+            SQLPassword = SQLRegisteredPassword
+        }
+        
+        // delete it after testing
+        SQLUserName = SQLAdmName
+        SQLPassword = SQLAdmPassword
+        
+        let user = OHMySQLUser(userName: SQLUserName, password: SQLPassword, serverName: SQLServerName, dbName: db, port: SQLServerPort, socket: nil)
         coordinator = OHMySQLStoreCoordinator(user: user!)
         coordinator.encoding = .UTF8MB4
         
@@ -81,27 +100,84 @@ class DatabaseConnectUtil: NSObject {
         var boolCreated = false
         var userID = "Sorry, register failed! Please try again."
         
-        
         return (boolCreated, userID)
     }
     
     // Validate user and authorize user
-    func validateUser(_ identity: String!, _ password: String!) -> (Bool, identity: String?) {
+    func signIn(_ identityType: String = "userEmail", _ identityInfo: String!, _ password: String!, _ auto: Bool = true) -> (Bool, identity: String?) {
         
         var boolValidate = false
-        var identity = "Wrong credential! Please check your user identity and password!"
+        var identity = "Wrong credential! Please check your userID or email and password!"
         
+        let userinfo = identityInfo as String
+        let tempCondition = identityType + " = " + "\"" + userinfo + "\""
+        let query = OHMySQLQueryRequestFactory.select("user", condition: tempCondition)
+        if let response = try? context.executeQueryRequestAndFetchResult(query) {
+            
+            if let userPassword = response[0]["password"] as? String {
+                let username = response[0]["userName"] as! String
+                
+                if userPassword == password {
+                    boolValidate = true
+                    identity = "Welcome \(username)."
+                    
+                    // set state = signed globally
+                    self.boolSigned = true
+                    
+                    if auto == false {
+                        let newRecord = NSEntityDescription.insertNewObject(forEntityName: "User", into: coredataContext!) as! User
+                        newRecord.name = username
+                        newRecord.userID = response[0]["userNo"] as? String
+                        newRecord.email = response[0]["userEmail"] as? String
+                        newRecord.credit = response[0]["userScore"] as? String
+                        newRecord.password = userPassword
+                        
+                        do {
+                            try coredataContext?.save()
+                        } catch {
+                            let nserror = error as NSError
+                            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                        }
+                    }
+                }else {
+                    identity = "Wrong credential! Please check your password!"
+                }
+            }
+        }else {
+            identity = "Sorry! Sign in fails."
+        }
         
         return (boolValidate, identity)
     }
     
-    // Sync core data with mysql
+    // Sign out and delete user data
+    func signOut() {
+        if let localUser = retrieveLocalUser() {
+            coredataContext?.delete(localUser)
+            
+            // set state = sign out globally
+            boolSigned = false
+            
+            do {
+                try coredataContext?.save()
+                print("Local user data deleted.")
+
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+        }
+    }
+    
+    // Sync core data with mysql (download data from mysql)
     func sync() {
         for table in tables {
             let check = checkUpdateStatus(table: table.value)
             if check.0 == false {
                 if updateTable(table: table.value) == true {
-                    updateTimeStamp(table: table.value, responseTime: check.1)
+                    if updateTimeStamp(table: table.value, responseTime: check.1) == true {
+                        print("Sync successfully.")
+                    }
                 }
             }
         }
@@ -115,7 +191,7 @@ class DatabaseConnectUtil: NSObject {
         //query last update time of specific table
         let query = OHMySQLQueryRequestFactory.select("information_schema.tables", condition: "TABLE_SCHEMA = \"userDatabase\" and TABLE_NAME = \"" + table.lowercased() + "\"", orderBy: ["UPDATE_TIME"], ascending: false)
         if let response = try? context.executeQueryRequestAndFetchResult(query) {
-            print(response)
+//            print(response)
 
             let dateFormatter = DateFormatter()
             dateFormatter.timeZone = TimeZone(abbreviation: "GMT+0:00")
@@ -321,8 +397,8 @@ class DatabaseConnectUtil: NSObject {
             let newRecord = NSEntityDescription.insertNewObject(forEntityName: "User", into: coredataContext!) as! User
             newRecord.name = (record["userName"] as! String)
             newRecord.userID = (record["userNo"] as! String)
-            newRecord.email = (record["email"] as! String)
-            newRecord.credit = (record["credit"] as! Int32)
+            newRecord.email = (record["userEmail"] as! String)
+            newRecord.credit = (record["userScore"] as! String)
             newRecord.password = (record["password"] as! String)
         }
     }
@@ -438,7 +514,116 @@ class DatabaseConnectUtil: NSObject {
         return localUser
     }
     
+//    func deleteObject(_ table:String, _ formatType: String,_ searchType: String,_ input:String) {
+//        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: table)
+//        let predicate = NSPredicate(format:formatType)
+//        fetchRequest.predicate=predicate
+//
+//        do{
+//            let list =  try coredataContext?.execute(fetchRequest) as! [NSManagedObject]
+//            for index in 0..<list.count  {
+//                if let obj = list[index] as?
+//                if obj.searchType==input {
+//
+//                    coredataContext?.deleteObject(obj)
+//                    do{
+//
+//                        try coradataContext?.save()
+//
+//                    }catch let error{
+//
+//                        print("context can't save!, Error:\(error)")
+//
+//                    }
+//                }
+//            }
+//        }catch{
+//            fatalError("find error")
+//        }
+//    }
+    
+    
+    func addFacility(_ newName:String,_ newFacilityID:String,_ newPosition:String,_ newFloor:String,_ newState:String) {
+        
+        let newRecord = NSEntityDescription.insertNewObject(forEntityName: "Facility", into: coredataContext!) as! Facility
+        newRecord.name = (newName)
+        newRecord.facilityID = (newFacilityID)
+        newRecord.position = (newPosition)
+        newRecord.floor = (newFloor)
+        newRecord.state = (newState)
+        
+    }
+    
+    func addFMarker(_ markNO:String,_ bulidingNO:String) {
+        
+        let newRecord = NSEntityDescription.insertNewObject(forEntityName: "Facility", into: coredataContext!) as! Marker
+        newRecord.markerID = (markNO)
+        newRecord.buildingName = (bulidingNO)
+    }
+    
+    func addUser(_ newName:String,_ newUserID:String,_ newEmail:String,_ newCredit:String,_ newPassword:String) {
+        
+        let newRecord = NSEntityDescription.insertNewObject(forEntityName: "User", into: coredataContext!) as! User
+        newRecord.name = (newName)
+        newRecord.userID = (newUserID)
+        newRecord.email = (newEmail)
+        newRecord.credit = (newCredit)
+        newRecord.password = (newPassword)
+        
+    }
+    
+    func addEvent(_ eventName:String,_ eventID:String) {
+        
+        let newRecord = NSEntityDescription.insertNewObject(forEntityName: "Event", into: coredataContext!) as! Event
+        newRecord.name = (eventName)
+        newRecord.eventID = (eventID)
+        
+    }
+    
+    func addComment(_ content:String,_ commentID:String) {
+        
+        let newRecord = NSEntityDescription.insertNewObject(forEntityName: "Comment", into: coredataContext!) as! Comment
+        newRecord.content = (content)
+        newRecord.commentID = (commentID)
+        
+    }
+    
+    
+    func addBuilding(_ newName:String,_ newBuildingID:String,_ newPosition:String) {
+        
+        let newRecord = NSEntityDescription.insertNewObject(forEntityName: "Building", into: coredataContext!) as! Building
+        newRecord.name = (newName)
+        newRecord.buldingID = (newBuildingID)
+        newRecord.position = (newPosition)
+        
+    }
+    
     func deleteEevent(_ sender: Any) {
         
+    }
+    
+    func updateUserInfo() {
+        if let localUser = retrieveLocalUser() {
+            
+            let query = OHMySQLQueryRequestFactory.select("User", condition: "userNo = \(String(describing: localUser.userID))")
+            if let response = try? context.executeQueryRequestAndFetchResult(query) {
+                
+                if response.count == 1 {
+                    let record = response[0]
+                    localUser.setValue(record["userNo"], forKey: "userID")
+                    localUser.setValue(record["userName"], forKey: "name")
+                    localUser.setValue(record["userEmail"], forKey: "email")
+                    localUser.setValue(record["password"], forKey: "password")
+                    localUser.setValue(record["userScore"], forKey: "credit")
+                }
+                
+                do {
+                    try coredataContext?.save()
+                } catch {
+                    let nserror = error as NSError
+                    fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                }
+            }
+        }
     }
 }

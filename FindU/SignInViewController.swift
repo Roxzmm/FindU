@@ -28,33 +28,31 @@ class SignInViewController: UIViewController {
     
     @IBAction func signIn(_ sender: Any) {
   
-        // Uncomment it to switch back to main view after sign in
+        let inputHandler = InputHandlerUtil()
         
         let identityInfo = UserIDText.text!
         let passwordInfo = PasswordText.text!
         
-        let signStatus = sign(identityInfo, passwordInfo)
-        if  signStatus.0 == true {
-            // used to test sign in
-            let alertController = UIAlertController(title: "Congratulation!", message:
-                "Welcome, " + signStatus.identity + ".", preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "Continue", style: .default))
+        if identityInfo.count > 0 && passwordInfo.count > 0 {
+            let identityType = inputHandler.checkIdentityType(identityInfo)
             
-            self.present(alertController, animated: true, completion: nil)
-            performSegue(withIdentifier: "SignInBacktoMenu", sender: self)
-
+            let signStatus = databaseUtil.signIn(identityType, identityInfo, passwordInfo, false)
+            if  signStatus.0 == true {
+                let alertController = UIAlertController(title: "Congratulation!", message:
+                    signStatus.identity, preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "Continue", style: .default))
+                
+                self.present(alertController, animated: true, completion: nil)
+                performSegue(withIdentifier: "SignInBacktoMenu", sender: self)
+                
+            }else {
+                let alertController = UIAlertController(title: "Sorry!", message:
+                    signStatus.identity, preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "Understand", style: .default))
+                
+                self.present(alertController, animated: true, completion: nil)
+            }
         }
-    }
-    
-    func sign(_ identity: String, _ password: String) -> (Bool, identity: String){
-        
-        var boolSign = false
-        let errorIdentity = "Wrong credential! Please check your user identity and password!"
-        
-        let signStatus = databaseUtil.validateUser(identity, password)
-        boolSign = signStatus.0
-        
-        return (boolSign, errorIdentity)
     }
     
     override func viewDidLoad() {
