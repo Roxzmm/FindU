@@ -557,9 +557,9 @@ class DatabaseConnectUtil: NSObject {
         do {
             fetchRequest.sortDescriptors = [NSSortDescriptor.init(key: "location", ascending: true)]
             markers = try coredataContext?.fetch(fetchRequest) as! [Marker]
-            //            for marker in markers{
-            //                print(marker.location!)
-            //            }
+                        for marker in markers{
+                            print(marker.location!)
+                        }
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }

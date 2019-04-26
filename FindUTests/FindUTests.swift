@@ -12,6 +12,11 @@ import XCTest
 class FindUTests: XCTestCase {
     
     let inputHandler = InputHandlerUtil()
+    let mysqlConnect = DatabaseConnectUtil()
+    
+    func testFetchMarker() {
+        XCTAssertNotNil(mysqlConnect.fetchMarkers())
+    }
 
 //    func testConvertLocation() {
 //        XCTAssertNotNil(inputHandler.convertLocation("53°24'11\"N, 2°58'2\"W"))
