@@ -195,6 +195,7 @@
                                             <color key="titleColor" red="1" green="0.213819661663463" blue="0.18111607599846213" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
+                                            <action selector="register:" destination="ymf-SF-ltw" eventType="touchUpInside" id="4lX-ly-k2f"/>
                                             <action selector="signInBtn:" destination="ymf-SF-ltw" eventType="touchUpInside" id="0K2-yw-ltV"/>
                                             <segue destination="8Qd-2D-h0G" kind="show" identifier="ToRegister" id="lbT-jT-IP8"/>
                                         </connections>
@@ -213,6 +214,8 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
+                                            <action selector="signIn:" destination="ymf-SF-ltw" eventType="touchUpInside" id="gEZ-1a-jYP"/>
+                                            <action selector="signInBtn:" destination="ymf-SF-ltw" eventType="touchUpInside" id="jVJ-rT-Ttm"/>
                                             <segue destination="BYZ-38-t0r" kind="show" identifier="SignInBacktoMenu" id="Fkc-yl-1he"/>
                                         </connections>
                                     </button>
@@ -235,12 +238,13 @@
                         <outlet property="UserIDText" destination="7hz-Dw-hoe" id="Lqi-o1-kBb"/>
                         <outlet property="UserIDlabel" destination="rsv-9j-85T" id="bf5-P0-mkj"/>
                         <outlet property="logo" destination="Dmt-xc-hwH" id="mD3-rQ-mem"/>
-                        <outlet property="signInBtn" destination="bVV-Wh-Gym" id="hl0-v4-Veh"/>
+                        <outlet property="registerBtn" destination="bVV-Wh-Gym" id="QHC-nb-7ik"/>
+                        <outlet property="signInBtn" destination="Wy3-Dz-WkE" id="qvX-7c-t1G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FbV-iP-PwZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="47" y="1014"/>
+            <point key="canvasLocation" x="45.600000000000001" y="1013.7931034482759"/>
         </scene>
         <!--Register View Controller-->
         <scene sceneID="Me9-gq-dei">
@@ -324,7 +328,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="3ct-pl-G3B" kind="show" identifier="detailregister" id="nCS-DA-3oU"/>
+                                    <action selector="create:" destination="8Qd-2D-h0G" eventType="touchUpInside" id="bhX-Bq-glS"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Register" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ff3-tP-E5R">
@@ -339,7 +343,7 @@
                         <viewLayoutGuide key="safeArea" id="y6s-gJ-RFN"/>
                     </view>
                     <connections>
-                        <outlet property="EmailInput" destination="TZZ-sA-T4J" id="k6J-sX-gH6"/>
+                        <outlet property="emailInput" destination="TZZ-sA-T4J" id="d5u-gz-0hz"/>
                         <outlet property="logo" destination="bdU-7e-ZEs" id="Z1h-Np-hgu"/>
                         <outlet property="passwordInput" destination="ceV-PM-zgS" id="MOl-zM-7Ck"/>
                         <outlet property="registerTitle" destination="Ff3-tP-E5R" id="83o-L1-JXp"/>
@@ -353,21 +357,13 @@
         <!--Register Successfullyor Failed View Controller-->
         <scene sceneID="hNc-O3-0Ic">
             <objects>
-                <viewController id="3ct-pl-G3B" customClass="registerSuccessfullyorFailedViewController" customModule="FindU" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="3ct-pl-G3B" customClass="RegisterSuccessfullyorFailedViewController" customModule="FindU" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Mmh-bF-1SZ">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Register Successfully!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nvw-z7-do2">
-                                <rect key="frame" x="70" y="268" width="235" height="86"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dpz-6w-Bqw">
-                                <rect key="frame" x="115" y="665" width="145" height="63"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dpz-6w-Bqw">
+                                <rect key="frame" x="115" y="635" width="145" height="36"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Back to menu">
@@ -383,17 +379,66 @@
                                     <segue destination="BYZ-38-t0r" kind="show" identifier="BackTomenu" id="a8Y-wp-d9f"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Register Successfully!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nvw-z7-do2">
+                                <rect key="frame" x="16" y="186" width="343" height="28"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hello username," textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" highlighted="YES" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FZr-aE-3l4">
+                                <rect key="frame" x="16" y="257.33333333333331" width="343" height="27.666666666666686"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="your userID is ***." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JOn-mm-brf">
+                                <rect key="frame" x="16" y="295" width="343" height="26"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GeB-0Y-oxH">
+                                <rect key="frame" x="16" y="371" width="343" height="71"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Please remember this ID, you could only use userID or email to sign in.">
+                                        <attributes>
+                                            <font key="NSFont" size="19" name="FiraMonoForPowerline-Medium"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="FZr-aE-3l4" firstAttribute="leading" secondItem="MID-qx-84a" secondAttribute="leading" constant="16" id="Et7-2G-4qG"/>
+                            <constraint firstItem="MID-qx-84a" firstAttribute="trailing" secondItem="nvw-z7-do2" secondAttribute="trailing" constant="16" id="JUs-HY-K7i"/>
+                            <constraint firstItem="nvw-z7-do2" firstAttribute="leading" secondItem="MID-qx-84a" secondAttribute="leading" constant="16" id="OJe-D5-Z7f"/>
+                            <constraint firstItem="JOn-mm-brf" firstAttribute="leading" secondItem="MID-qx-84a" secondAttribute="leading" constant="16" id="OR5-6f-38y"/>
+                            <constraint firstItem="MID-qx-84a" firstAttribute="trailing" secondItem="FZr-aE-3l4" secondAttribute="trailing" constant="16" id="PsJ-Wx-rcf"/>
+                            <constraint firstItem="nvw-z7-do2" firstAttribute="top" secondItem="MID-qx-84a" secondAttribute="top" constant="142" id="Yhc-Bf-Efn"/>
+                            <constraint firstItem="Dpz-6w-Bqw" firstAttribute="top" secondItem="FZr-aE-3l4" secondAttribute="bottom" constant="350" id="dBJ-Jr-mpR"/>
+                            <constraint firstItem="Dpz-6w-Bqw" firstAttribute="top" secondItem="JOn-mm-brf" secondAttribute="bottom" constant="314" id="eT3-T2-8wt"/>
+                            <constraint firstItem="MID-qx-84a" firstAttribute="trailing" secondItem="Dpz-6w-Bqw" secondAttribute="trailing" constant="115" id="gJB-Mn-IlJ"/>
+                            <constraint firstItem="FZr-aE-3l4" firstAttribute="top" secondItem="nvw-z7-do2" secondAttribute="bottom" constant="43.329999999999998" id="iJA-tN-aME"/>
+                            <constraint firstItem="JOn-mm-brf" firstAttribute="top" secondItem="FZr-aE-3l4" secondAttribute="bottom" constant="10" id="jY4-jA-lwO"/>
+                            <constraint firstItem="MID-qx-84a" firstAttribute="bottom" secondItem="Dpz-6w-Bqw" secondAttribute="bottom" constant="107" id="kiE-Sy-05N"/>
+                            <constraint firstItem="MID-qx-84a" firstAttribute="trailing" secondItem="JOn-mm-brf" secondAttribute="trailing" constant="16" id="r14-Po-EBP"/>
+                            <constraint firstItem="Dpz-6w-Bqw" firstAttribute="leading" secondItem="MID-qx-84a" secondAttribute="leading" constant="115" id="yKD-jw-dBC"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="MID-qx-84a"/>
                     </view>
                     <connections>
                         <outlet property="detailAboutRegister" destination="nvw-z7-do2" id="asO-KQ-ykq"/>
+                        <outlet property="helloLabel" destination="FZr-aE-3l4" id="xqL-b9-v8i"/>
+                        <outlet property="userIDLabel" destination="JOn-mm-brf" id="NFe-Vc-gBh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SUz-bX-qOr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1706" y="1014"/>
+            <point key="canvasLocation" x="1704.8" y="1013.7931034482759"/>
         </scene>
         <!--Event View Controller-->
         <scene sceneID="EPK-Rs-td2">

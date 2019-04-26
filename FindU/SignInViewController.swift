@@ -18,24 +18,17 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var PasswordText: UITextField!
     @IBOutlet weak var registerBtn: UIButton!
     @IBOutlet weak var SignInView: UIView!
-    
     @IBOutlet weak var signInBtn: UIButton!
     
     let databaseUtil = DatabaseConnectUtil()
     
-    
-//         performSegue(withIdentifier: "ToRegister", sender: self)
-        
-    @IBAction func signInBtn(_ sender: Any) {
+    @IBAction func register(_ sender: Any) {
         performSegue(withIdentifier: "ToRegister", sender: self)
     }
-    
-    
     
     @IBAction func signIn(_ sender: Any) {
   
         // Uncomment it to switch back to main view after sign in
-//         performSegue(withIdentifier: "SignInBacktoMenu", sender: self)
         
         let identityInfo = UserIDText.text!
         let passwordInfo = PasswordText.text!
@@ -43,25 +36,23 @@ class SignInViewController: UIViewController {
         let signStatus = sign(identityInfo, passwordInfo)
         if  signStatus.0 == true {
             // used to test sign in
-            SignIntitle.isHidden = true
-            UserIDText.isHidden = true
-            UserIDlabel.text = "Congratulation! You have signed in successfully!"
-            PasswordText.isHidden = true
-            PasswordLabel.isHidden = true
-            registerBtn.isHidden = true
-            signInBtn.isHidden = true
+            let alertController = UIAlertController(title: "Congratulation!", message:
+                "Welcome, " + signStatus.identity + ".", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Continue", style: .default))
+            
+            self.present(alertController, animated: true, completion: nil)
+            performSegue(withIdentifier: "SignInBacktoMenu", sender: self)
 
         }
     }
     
-    func sign(_ identity: String, _ password: String) -> (Bool, errorIdentity: String){
+    func sign(_ identity: String, _ password: String) -> (Bool, identity: String){
         
         var boolSign = false
         let errorIdentity = "Wrong credential! Please check your user identity and password!"
         
         let signStatus = databaseUtil.validateUser(identity, password)
         boolSign = signStatus.0
-        
         
         return (boolSign, errorIdentity)
     }

@@ -20,15 +20,21 @@ class ViewController: UIViewController {
     @IBOutlet weak var me: UIImageView!
     
     // sync database
-//    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-//    var context: NSManagedObjectContext?
-   
+    var syncCount = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // updateLocaldata
-        let mysqlConnect = DatabaseConnectUtil()
-        mysqlConnect.sync()
+        // sync database
+//        if syncCount == 0 {
+            let mysqlConnect = DatabaseConnectUtil()
+            mysqlConnect.sync()
+//            syncCount += 1
+//        }
+        
+        // Try to retrieve local user data and sign in automatically
+        let localUser = mysqlConnect.retrieveData("User") as? User
+
     }
     
     override func viewWillAppear(_ animated: Bool) {

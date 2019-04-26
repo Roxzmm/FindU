@@ -31,18 +31,18 @@ class RegisterViewController: UIViewController {
             
              performSegue(withIdentifier: "detailregister", sender: self)
             // do sth to tell the user that he created successfully
-            // to do: UI
-
-            // back to main menu after confirm the success message
-//        performSegue(withIdentifier: "RegisterBackToMenu", sender: self)
 
         }else {
-            performSegue(withIdentifier: "detailregister", sender: self)
-            // to do: tell the user "register failed"
             // back to main menu or recreate
             // need a new back navigator
+            let alertController = UIAlertController(title: "Sorry", message:
+                response.1, preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Done", style: .default))
+            
+            self.present(alertController, animated: true, completion: nil)
+            emailInput.text = ""
+            passwordInput.text = ""
         }
-        
     }
     
     override func viewDidLoad() {
@@ -87,11 +87,13 @@ class RegisterViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
-        
+
         // pass userId to register successfully view
-        if let vc = segue.destination as? RegisterSuccessfullyorFailedViewController {
+        if let vc = segue.destination as? RegisterSuccessfullyorFailedViewController{
             vc.userID = response.1
+            vc.userName = userNameInput.text ?? ""
         }
+
     }
     
 

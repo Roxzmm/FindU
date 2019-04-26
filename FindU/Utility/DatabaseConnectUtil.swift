@@ -75,6 +75,9 @@ class DatabaseConnectUtil: NSObject {
     // Create new user
     func createNewUser(_ username: String!, _ email: String!, _ password: String!) -> (Bool, userID: String){
         
+        // case 0: create fails
+        // case 1: create successes
+        // case 2: already exist such account(email has been used)
         var boolCreated = false
         var userID = "Sorry, register failed! Please try again."
         
@@ -83,15 +86,13 @@ class DatabaseConnectUtil: NSObject {
     }
     
     // Validate user and authorize user
-    func validateUser(_ identity: String!, _ password: String!) -> (Bool, errorIdentity: String?) {
+    func validateUser(_ identity: String!, _ password: String!) -> (Bool, identity: String?) {
         
         var boolValidate = false
-        var errorIdentity = "Wrong credential! Please check your user identity and password!"
+        var identity = "Wrong credential! Please check your user identity and password!"
         
         
-        
-        
-        return (boolValidate, errorIdentity)
+        return (boolValidate, identity)
     }
     
     // Sync core data with mysql
@@ -421,6 +422,38 @@ class DatabaseConnectUtil: NSObject {
         
     }
     
+    func retrieveLocalUser() -> User? {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        
+        var localUser: User?
+        do{
+            let result = try coredataContext?.fetch(fetchRequest)
+            
+            
+            
+            if (result?.count)! > 0 {
+                
+                
+                // store the new update record
+                do {
+                    try coredataContext?.save()
+                    print("lastUpdateTime initializes successfully!")
+                } catch {
+                    let nserror = error as NSError
+                    fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                }
+            }else {
+                for data in result as! [NSManagedObject] {
+                    if let templastUpdateTime = data.value(forKey: tableName.lowercased()) as? Date {
+                        lastUpdateTime = templastUpdateTime
+                    }
+                }
+            }
+        } catch {
+            print("fetch failed")
+        }
+        return lastUpdateTime
+    }
     
     func deleteEevent(_ sender: Any) {
         

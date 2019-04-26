@@ -11,14 +11,20 @@ import UIKit
 class RegisterSuccessfullyorFailedViewController: UIViewController {
 
     @IBOutlet weak var detailAboutRegister: UILabel!
+    @IBOutlet weak var helloLabel: UILabel!
+    @IBOutlet weak var userIDLabel: UILabel!
     
     var userID: String = ""
+    var userName: String = ""
     
     @IBAction func backToMenu(_ sender: Any) {
          performSegue(withIdentifier: "BackTomenu", sender: self)
         
     }
     override func viewDidLoad() {
+        helloLabel.text = "Hello " + userName
+        userIDLabel.text = "your userID is " + userID
+        
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
