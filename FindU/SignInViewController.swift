@@ -22,8 +22,35 @@ class SignInViewController: UIViewController {
     
     let databaseUtil = DatabaseConnectUtil()
     
-    @IBAction func register(_ sender: Any) {
-        performSegue(withIdentifier: "ToRegister", sender: self)
+//    @IBAction func register(_ sender: Any) {
+////        performSegue(withIdentifier: "ToRegister", sender: self)
+//    }
+    
+    func signIn() -> Bool{
+        var boolSigned = false
+        
+        let inputHandler = InputHandlerUtil()
+        
+        let identityInfo = UserIDText.text!
+        let passwordInfo = PasswordText.text!
+        
+        if identityInfo.count > 0 && passwordInfo.count > 0 {
+            let identityType = inputHandler.checkIdentityType(identityInfo)
+            
+            let signStatus = databaseUtil.signIn(identityType, identityInfo, passwordInfo, false)
+            if  signStatus.0 == true {
+//                performSegue(withIdentifier: "SignInBacktoMenu", sender: self)
+                boolSigned = true
+                
+            }else {
+                let alertController = UIAlertController(title: "Sorry!", message:
+                    signStatus.identity, preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "Understand", style: .default))
+                
+                self.present(alertController, animated: true, completion: nil)
+            }
+        }
+        return boolSigned
     }
     
     @IBAction func signIn(_ sender: Any) {
@@ -43,7 +70,7 @@ class SignInViewController: UIViewController {
                 alertController.addAction(UIAlertAction(title: "Continue", style: .default))
                 
                 self.present(alertController, animated: true, completion: nil)
-                performSegue(withIdentifier: "SignInBacktoMenu", sender: self)
+//                performSegue(withIdentifier: "SignInBacktoMenu", sender: self)
                 
             }else {
                 let alertController = UIAlertController(title: "Sorry!", message:
@@ -96,14 +123,24 @@ class SignInViewController: UIViewController {
     }
     
 
-    /*
+    
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "SignInBacktoMenu" {
+            return signIn()
+        } else {
+            return false
+        }
     }
-    */
+     
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        // Get the new view controller using segue.destination.
+//        // Pass the selected object to the new view controller.
+//
+//        // pass userId to register successfully view
+//
+//    }
+    
 
 }

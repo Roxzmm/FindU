@@ -91,6 +91,17 @@ class DatabaseConnectUtil: NSObject {
         return sqlConnected
     }
     
+    func checkConnection() ->Bool{
+        var boolConnected = false
+        
+        if coordinator.isConnected == true {
+            boolConnected = true
+        }else {
+            boolConnected = configureMySQL()
+        }
+        return boolConnected
+    }
+    
     // Create new user
     func createNewUser(_ username: String!, _ email: String!, _ password: String!) -> (Bool, userID: String){
         
@@ -100,7 +111,28 @@ class DatabaseConnectUtil: NSObject {
         var boolCreated = false
         var userID = "Sorry, register failed! Please try again."
         
-        
+        let tempCondition = "userEmail = " + "\"" + email + "\""
+
+        if checkConnection() == true {
+            let query = OHMySQLQueryRequestFactory.select("user", condition: tempCondition)
+            if try! context.executeQueryRequestAndFetchResult(query).count != 0 {
+                userID = "Sorry, this email has already been used."
+                
+            }else {
+                let anoQuery = OHMySQLQueryRequestFactory.select("user", condition: nil)
+                if let response = try? context.executeQueryRequestAndFetchResult(anoQuery) {
+                    let userCount = response.count
+                    
+                    let id = userCount + 1
+                    userID = String(id)
+                    
+                    let query = OHMySQLQueryRequestFactory.insert("user", set: ["userName": username!, "userEmail": email!, "password": password!, "userNo": userID, "userScore": String(80)])
+                    do {
+                        try? context.execute(query)
+                        boolCreated = true
+                    }
+                }
+            }}
         
         return (boolCreated, userID)
     }
@@ -113,40 +145,44 @@ class DatabaseConnectUtil: NSObject {
         
         let userinfo = identityInfo as String
         let tempCondition = identityType + " = " + "\"" + userinfo + "\""
-        let query = OHMySQLQueryRequestFactory.select("user", condition: tempCondition)
-        if let response = try? context.executeQueryRequestAndFetchResult(query) {
-            
-            if let userPassword = response[0]["password"] as? String {
-                let username = response[0]["userName"] as! String
-                
-                if userPassword == password {
-                    boolValidate = true
-                    identity = "Welcome \(username)."
-                    
-                    // set state = signed globally
-                    self.boolSigned = true
-                    
-                    if auto == false {
-                        let newRecord = NSEntityDescription.insertNewObject(forEntityName: "User", into: coredataContext!) as! User
-                        newRecord.name = username
-                        newRecord.userID = response[0]["userNo"] as? String
-                        newRecord.email = response[0]["userEmail"] as? String
-                        newRecord.credit = response[0]["userScore"] as? String
-                        newRecord.password = userPassword
+        
+        if checkConnection() == true {
+            let query = OHMySQLQueryRequestFactory.select("user", condition: tempCondition)
+            if let response = try? context.executeQueryRequestAndFetchResult(query) {
+                if response.count != 0 {
+                    if let userPassword = response[0]["password"] as? String {
+                        let username = response[0]["userName"] as! String
                         
-                        do {
-                            try coredataContext?.save()
-                        } catch {
-                            let nserror = error as NSError
-                            fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                        if userPassword == password {
+                            boolValidate = true
+                            identity = "Welcome \(username)."
+                            
+                            // set state = signed globally
+                            self.boolSigned = true
+                            
+                            if auto == false {
+                                let newRecord = NSEntityDescription.insertNewObject(forEntityName: "User", into: coredataContext!) as! User
+                                newRecord.name = username
+                                newRecord.userID = response[0]["userNo"] as? String
+                                newRecord.email = response[0]["userEmail"] as? String
+                                newRecord.credit = response[0]["userScore"] as? String
+                                newRecord.password = userPassword
+                                
+                                do {
+                                    try coredataContext?.save()
+                                } catch {
+                                    let nserror = error as NSError
+                                    fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                                }
+                            }
+                        }else {
+                            identity = "Wrong credential! Please check your password!"
                         }
                     }
-                }else {
-                    identity = "Wrong credential! Please check your password!"
                 }
+            }else {
+                identity = "Sorry! Sign in fails."
             }
-        }else {
-            identity = "Sorry! Sign in fails."
         }
         
         return (boolValidate, identity)

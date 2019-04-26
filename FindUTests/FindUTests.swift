@@ -11,12 +11,48 @@ import XCTest
 
 class FindUTests: XCTestCase {
     
-//    //test check userID or email in inputhandler
-//    func testCheckIdentityType() {
-//        let inputHandler = InputHandlerUtil()
-//
-//        XCTAssert(inputHandler.checkIdentityType("asd@das.com") == "userEmail")
-//    }
+    let inputHandler = InputHandlerUtil()
+    
+    func testCheckPasswordlessthanSix() {
+        XCTAssertFalse(inputHandler.checkPassword("njk"))
+    }
+    
+    func testCheckPasswordlargerThanFifteen() {
+        XCTAssertFalse(inputHandler.checkPassword("njksdwfer34efe2e"))
+    }
+    
+    func testCheckPasswordNoUpperCase() {
+        XCTAssertFalse(inputHandler.checkPassword("njsdwd32k"))
+    }
+    
+    func testCheckPasswordNoNumber() {
+        XCTAssertFalse(inputHandler.checkPassword("njksdwWdef"))
+    }
+    
+    func testCheckPasswordtrue() {
+        XCTAssert(inputHandler.checkPassword("Xingrenzhi00"))
+    }
+    
+    func testCheckUserName() {
+        XCTAssert(inputHandler.checkUserName("SADAS"))
+    }
+    
+    func testCheckUserNameBeyond10Chars() {
+        XCTAssertFalse(inputHandler.checkUserName("SADASsdwadasdwa"))
+    }
+    
+    func testCheckEmail() {
+        XCTAssert(inputHandler.checkEmail("asd@asd.com"))
+    }
+
+    func testCheckEmailFalse() {
+        XCTAssertFalse(inputHandler.checkEmail("asd@asd"))
+    }
+    
+    //test check userID or email in inputhandler
+    func testCheckIdentityType() {
+        XCTAssert(inputHandler.checkIdentityType("asd@das.com") == "userEmail")
+    }
     
      let tables = ["Building": "Building", "User": "User", "Comment": "Comment", "Event": "Event", "Marker": "Marker", "Facility": "Facility"]
     
@@ -26,11 +62,11 @@ class FindUTests: XCTestCase {
 //        XCTAssertNoThrow(mysqlConnect.sync())
 //    }
     
-    func testCheckUpdateStatus() {
-        let mysqlConnect = DatabaseConnectUtil()
-
-        XCTAssertNotNil(mysqlConnect.checkUpdateStatus(table: "User"))
-    }
+//    func testCheckUpdateStatus() {
+//        let mysqlConnect = DatabaseConnectUtil()
+//
+//        XCTAssertNotNil(mysqlConnect.checkUpdateStatus(table: "User"))
+//    }
     
 //    func testDatabaseConnectUtil() {
 //        let mysqlConnect = DatabaseConnectUtil()

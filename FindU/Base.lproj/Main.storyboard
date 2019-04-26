@@ -179,14 +179,14 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="31"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" keyboardAppearance="alert" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zQS-7i-krJ">
+                                    <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zQS-7i-krJ">
                                         <rect key="frame" x="8" y="209" width="359" height="41"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="31"/>
-                                        <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet" keyboardAppearance="alert" returnKeyType="next"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bVV-Wh-Gym" userLabel="register">
                                         <rect key="frame" x="310" y="348" width="57" height="30"/>
@@ -195,8 +195,6 @@
                                             <color key="titleColor" red="1" green="0.213819661663463" blue="0.18111607599846213" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="register:" destination="ymf-SF-ltw" eventType="touchUpInside" id="4lX-ly-k2f"/>
-                                            <action selector="signInBtn:" destination="ymf-SF-ltw" eventType="touchUpInside" id="0K2-yw-ltV"/>
                                             <segue destination="8Qd-2D-h0G" kind="show" identifier="ToRegister" id="lbT-jT-IP8"/>
                                         </connections>
                                     </button>
@@ -214,8 +212,6 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="signIn:" destination="ymf-SF-ltw" eventType="touchUpInside" id="ZQu-ax-YHX"/>
-                                            <action selector="signInBtn:" destination="ymf-SF-ltw" eventType="touchUpInside" id="jVJ-rT-Ttm"/>
                                             <segue destination="BYZ-38-t0r" kind="show" identifier="SignInBacktoMenu" id="Fkc-yl-1he"/>
                                         </connections>
                                     </button>
@@ -238,8 +234,8 @@
                         <outlet property="UserIDText" destination="zQS-7i-krJ" id="9sX-Lp-RoW"/>
                         <outlet property="UserIDlabel" destination="rsv-9j-85T" id="bf5-P0-mkj"/>
                         <outlet property="logo" destination="Dmt-xc-hwH" id="mD3-rQ-mem"/>
-                        <outlet property="registerBtn" destination="bVV-Wh-Gym" id="QHC-nb-7ik"/>
-                        <outlet property="signInBtn" destination="Wy3-Dz-WkE" id="qvX-7c-t1G"/>
+                        <outlet property="registerBtn" destination="bVV-Wh-Gym" id="LCC-HK-JrA"/>
+                        <outlet property="signInBtn" destination="Wy3-Dz-WkE" id="9P1-z5-NEq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FbV-iP-PwZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -286,12 +282,12 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please make sure it's at least 6 characters and not more than 15 characters including a number and a lowercase letter." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzp-4V-xbC">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Please make sure it's at least 6 characters and not more than 15 characters including a number and an uppercase letter." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzp-4V-xbC">
                                 <rect key="frame" x="16" y="572" width="343" height="50.333333333333371"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
                                 <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
+                                <color key="highlightedColor" red="1" green="0.14913141730000001" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" selected="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8RP-c1-eJO">
                                 <rect key="frame" x="16" y="311" width="343" height="41"/>
@@ -305,7 +301,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="31"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" keyboardAppearance="alert" returnKeyType="continue" textContentType="email"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" keyboardAppearance="alert" returnKeyType="next" textContentType="email"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="ceV-PM-zgS">
                                 <rect key="frame" x="16" y="523" width="343" height="41"/>
@@ -328,7 +324,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="create:" destination="8Qd-2D-h0G" eventType="touchUpInside" id="bhX-Bq-glS"/>
+                                    <segue destination="3ct-pl-G3B" kind="show" identifier="detailregister" id="A3A-Wo-wje"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Register" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ff3-tP-E5R">
@@ -346,13 +342,14 @@
                         <outlet property="emailInput" destination="TZZ-sA-T4J" id="d5u-gz-0hz"/>
                         <outlet property="logo" destination="bdU-7e-ZEs" id="Z1h-Np-hgu"/>
                         <outlet property="passwordInput" destination="ceV-PM-zgS" id="MOl-zM-7Ck"/>
+                        <outlet property="passwordNotice" destination="kzp-4V-xbC" id="c7K-Ws-L1M"/>
                         <outlet property="registerTitle" destination="Ff3-tP-E5R" id="83o-L1-JXp"/>
                         <outlet property="userNameInput" destination="8RP-c1-eJO" id="lJC-Lb-zwV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kvl-Qt-z4M" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="886" y="1014"/>
+            <point key="canvasLocation" x="885.60000000000002" y="1013.7931034482759"/>
         </scene>
         <!--Register Successfullyor Failed View Controller-->
         <scene sceneID="hNc-O3-0Ic">
@@ -375,7 +372,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="backToMenu:" destination="3ct-pl-G3B" eventType="touchUpInside" id="ymW-v8-FU4"/>
                                     <segue destination="BYZ-38-t0r" kind="show" identifier="BackTomenu" id="a8Y-wp-d9f"/>
                                 </connections>
                             </button>
@@ -836,6 +832,6 @@
         <image name="eventLogo.png" width="71" height="53"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Sfj-Rd-sqR"/>
+        <segue reference="Fkc-yl-1he"/>
     </inferredMetricsTieBreakers>
 </document>
