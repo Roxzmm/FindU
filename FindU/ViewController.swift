@@ -143,7 +143,7 @@ class ViewController: UIViewController {
             
         }else {
             //TO DO: finish UI: User Information Management
-            
+              performSegue(withIdentifier: "ToUserInformation", sender: self)
             // Just for testing, delete this after finishing UI
             let alertController = UIAlertController(title: "Sorry", message:
                 "You have signed in, but now we don't have UI for userInfo management.", preferredStyle: .alert)
