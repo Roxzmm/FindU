@@ -100,6 +100,8 @@ class DatabaseConnectUtil: NSObject {
         var boolCreated = false
         var userID = "Sorry, register failed! Please try again."
         
+        
+        
         return (boolCreated, userID)
     }
     
