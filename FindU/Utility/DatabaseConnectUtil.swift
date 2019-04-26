@@ -29,7 +29,7 @@ class DatabaseConnectUtil: NSObject {
     
     // declare used tables and entities
     let tables = ["Building": "Building", "User": "User", "Comment": "Comment", "Event": "Event", "Marker": "Marker", "Facility": "Facility"]
-//    let entities = ["Building": Building(), "User": User(), "Comment": Comment(), "Event": Event(), "Marker": Marker(), "Facility": Facility(), "LastUpdateTime": LastUpdateTime()]
+    let entities = ["Building": Building(), "User": User(), "Comment": Comment(), "Event": Event(), "Marker": Marker(), "Facility": Facility(), "LastUpdateTime": LastUpdateTime()]
 //    var entity: EntityExtension
 
 //    let buildingTable = "building"
@@ -42,6 +42,12 @@ class DatabaseConnectUtil: NSObject {
     // MySQL Server
     let SQLUserName = "LL"
     let SQLPassword = "group20LL"
+    
+    let SQLRegisterUserName = "registered"
+    let SQLRegisterPassword = "group20"
+    
+    let SQLVisitorUserName = "visitor"
+    let SQLVisitorPassword = "group20"
     
     let SQLServerName = "findu.cowp9uradhbe.us-east-2.rds.amazonaws.com"
     let SQLServerPort: UInt = 3306
@@ -365,41 +371,7 @@ class DatabaseConnectUtil: NSObject {
         }
     }
     
-//    func findBuilding(_ sender: Any) {
-//        //查询请求
-//        let request:NSFetchRequest = Building.fetchRequest()
-//        //这里可以加入查询的条件
-//
-//        do{
-//            let result =  try coredataContext?.fetch(request)
-//        }catch{
-//            fatalError("find error")
-//        }
-//    }
-//
-//    func findEvent(_ sender: Any) {
-//        //查询请求
-//        let request:NSFetchRequest = Event.fetchRequest()
-//        //这里可以加入查询的条件
-//
-//        do{
-//            let result =  try coredataContext?.fetch(request)
-//        }catch{
-//            fatalError("find error")
-//        }
-//    }
-//
-//    func findFacility(_ sender: Any) {
-//        //查询请求
-//        let request:NSFetchRequest = Facility.fetchRequest()
-//        //这里可以加入查询的条件
-//
-//        do{
-//            let result =  try coredataContext?.fetch(request)
-//        }catch{
-//            fatalError("find error")
-//        }
-//    }
+
     
     func findObject(_ table:String, _ attributeType: String, _ input:String) {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: table)
@@ -420,6 +392,92 @@ class DatabaseConnectUtil: NSObject {
         }
         
     }
+    
+    
+    
+    func deleteObject(_ table:String, _ formatType: String,_ searchType: String,_ input:String) {
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: table)
+        let predicate = NSPredicate(format:formatType)
+        fetchRequest.predicate=predicate
+        
+        do{
+            let list =  try coredataContext?.execute(fetchRequest)as! [NSManagedObject]
+            for obj in list [table] {
+                if obj.searchType==input {
+                    
+                    coredataContext?.deleteObject(obj)
+                    do{
+                        
+                        try coradataContext?.save()
+                        
+                    }catch let error{
+                        
+                        print("context can't save!, Error:\(error)")
+                        
+                    }
+                }
+            }
+        }catch{
+            fatalError("find error")
+        }
+    }
+    
+    
+    func addFacility(_ newName:String,_ newFacilityID:String,_ newPosition:String,_ newFloor:String,_ newState:String) {
+        
+            let newRecord = NSEntityDescription.insertNewObject(forEntityName: "Facility", into: coredataContext!) as! Facility
+            newRecord.name = (newName)
+            newRecord.facilityID = (newFacilityID)
+            newRecord.position = (newPosition)
+            newRecord.floor = (newFloor)
+            newRecord.state = (newState)
+        
+    }
+    
+    func addFMarker(_ markNO:String,_ bulidingNO:String) {
+        
+        let newRecord = NSEntityDescription.insertNewObject(forEntityName: "Facility", into: coredataContext!) as! Marker
+        newRecord.markerID = (markNO)
+        newRecord.buildingName = (bulidingNO)
+    }
+    
+    func addUser(_ newName:String,_ newUserID:String,_ newEmail:String,_ newCredit:Int32,_ newPassword:String) {
+        
+        let newRecord = NSEntityDescription.insertNewObject(forEntityName: "User", into: coredataContext!) as! User
+        newRecord.name = (newName)
+        newRecord.userID = (newUserID)
+        newRecord.email = (newEmail)
+        newRecord.credit = (newCredit)
+        newRecord.password = (newPassword)
+        
+    }
+    
+    func addEvent(_ eventName:String,_ eventID:String) {
+        
+            let newRecord = NSEntityDescription.insertNewObject(forEntityName: "Event", into: coredataContext!) as! Event
+            newRecord.name = (eventName)
+            newRecord.eventID = (eventID)
+
+    }
+    
+    func addComment(_ content:String,_ commentID:String) {
+
+            let newRecord = NSEntityDescription.insertNewObject(forEntityName: "Comment", into: coredataContext!) as! Comment
+            newRecord.content = (content)
+            newRecord.commentID = (commentID)
+        
+    }
+    
+    
+    func addBuilding(_ newName:String,_ newBuildingID:String,_ newPosition:String) {
+        
+            let newRecord = NSEntityDescription.insertNewObject(forEntityName: "Building", into: coredataContext!) as! Building
+            newRecord.name = (newName)
+            newRecord.buldingID = (newBuildingID)
+            newRecord.position = (newPosition)
+        
+    }
+    
     
     
     func deleteEevent(_ sender: Any) {
