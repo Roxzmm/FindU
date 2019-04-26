@@ -14,6 +14,7 @@ class FindUTests: XCTestCase {
     let inputHandler = InputHandlerUtil()
     let mysqlConnect = DatabaseConnectUtil()
     
+
     func testFetchMarker() {
         XCTAssertNotNil(mysqlConnect.fetchMarkers())
     }
@@ -21,6 +22,13 @@ class FindUTests: XCTestCase {
 //    func testConvertLocation() {
 //        XCTAssertNotNil(inputHandler.convertLocation("53°24'11\"N, 2°58'2\"W"))
 //    }
+
+//    func testLocation() {
+//        let view = SearchFacilityViewController()
+//
+//        XCTAssertNotNil(view.Arraybylocation())
+//    }
+
     
 //    func testCheckPasswordlessthanSix() {
 //        XCTAssertFalse(inputHandler.checkPassword("njk"))
