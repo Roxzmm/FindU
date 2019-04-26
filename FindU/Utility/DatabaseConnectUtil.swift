@@ -429,30 +429,13 @@ class DatabaseConnectUtil: NSObject {
         do{
             let result = try coredataContext?.fetch(fetchRequest)
             
-            
-            
             if (result?.count)! > 0 {
-                
-                
-                // store the new update record
-                do {
-                    try coredataContext?.save()
-                    print("lastUpdateTime initializes successfully!")
-                } catch {
-                    let nserror = error as NSError
-                    fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
-                }
-            }else {
-                for data in result as! [NSManagedObject] {
-                    if let templastUpdateTime = data.value(forKey: tableName.lowercased()) as? Date {
-                        lastUpdateTime = templastUpdateTime
-                    }
-                }
+                localUser = result?[0] as? User
             }
         } catch {
-            print("fetch failed")
+            print("No stored local user.")
         }
-        return lastUpdateTime
+        return localUser
     }
     
     func deleteEevent(_ sender: Any) {

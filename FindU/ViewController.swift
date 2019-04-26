@@ -33,7 +33,9 @@ class ViewController: UIViewController {
 //        }
         
         // Try to retrieve local user data and sign in automatically
-        let localUser = mysqlConnect.retrieveData("User") as? User
+        if let localUser = mysqlConnect.retrieveLocalUser() as? User {
+            mysqlConnect.validateUser(localUser.email, localUser.password)
+        }
 
     }
     
