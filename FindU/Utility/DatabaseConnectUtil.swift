@@ -27,7 +27,7 @@ class DatabaseConnectUtil: NSObject {
     let db = "userDatabase"
     
     // declare used tables and entities
-    let tables = ["Building": "Building", "Comment": "Comment", "Event": "Event", "Marker": "Marker", "Facility": "Facility"]
+    let tables = ["Building": "Building", "Comment": "Comment", "Event": "Event", "Facility": "Facility"]
     let entities = ["Building": Building(), "User": User(), "Comment": Comment(), "Event": Event(), "Marker": Marker(), "Facility": Facility(), "LastUpdateTime": LastUpdateTime()]
 //    var entity: EntityExtension
 
@@ -420,12 +420,23 @@ class DatabaseConnectUtil: NSObject {
     }
     
     func updateBuilding(response: Array<[String: Any?]>) {
+        var count = 1
 
         for record in response {
             let newRecord = NSEntityDescription.insertNewObject(forEntityName: "Building", into: coredataContext!) as! Building
             newRecord.name = (record["buildingName"] as! String)
             newRecord.buldingID = (record["buildingNo"] as! String)
             newRecord.position = (record["position"] as! String)
+            
+            // add a marker for each building
+            let newMarker = NSEntityDescription.insertNewObject(forEntityName: "Marker", into: coredataContext!) as! Marker
+            newMarker.buildingName = newRecord.name
+            newMarker.markerID = String(count)
+            newMarker.location = newRecord.position
+            count += 1
+            
+            newRecord.toMarker = newMarker
+            newMarker.toBuilding = newRecord
         }
         
     }
@@ -465,6 +476,7 @@ class DatabaseConnectUtil: NSObject {
             let newRecord = NSEntityDescription.insertNewObject(forEntityName: "Marker", into: coredataContext!) as! Marker
             newRecord.markerID = (record["markerNo"] as! String)
             newRecord.buildingName = (record["buildingName"] as! String)
+            newRecord.location = (record["location"] as! String)
         }
 
     }
@@ -534,6 +546,24 @@ class DatabaseConnectUtil: NSObject {
             fatalError("find error")
         }
         
+    }
+    
+    // func to fetch local markers
+    func fetchMarkers() -> [Marker]{
+        var markers: [Marker] = []
+        
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Marker")
+        
+        do {
+            fetchRequest.sortDescriptors = [NSSortDescriptor.init(key: "location", ascending: true)]
+            markers = try coredataContext?.fetch(fetchRequest)
+            //            for marker in markers{
+            //                print(marker.location!)
+            //            }
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        return markers
     }
     
     func retrieveLocalUser() -> User? {
