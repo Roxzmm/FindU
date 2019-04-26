@@ -140,6 +140,7 @@ class ViewController: UIViewController {
     {
         if mysqlConnect.boolSigned == false {
             performSegue(withIdentifier: "ToMe", sender: self)
+            
         }else {
             //TO DO: finish UI: User Information Management
             
