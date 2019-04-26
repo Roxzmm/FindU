@@ -556,7 +556,7 @@ class DatabaseConnectUtil: NSObject {
         
         do {
             fetchRequest.sortDescriptors = [NSSortDescriptor.init(key: "location", ascending: true)]
-            markers = try coredataContext?.fetch(fetchRequest)
+            markers = try coredataContext?.fetch(fetchRequest) as! [Marker]
             //            for marker in markers{
             //                print(marker.location!)
             //            }

@@ -12,47 +12,51 @@ import XCTest
 class FindUTests: XCTestCase {
     
     let inputHandler = InputHandlerUtil()
-    
-    func testCheckPasswordlessthanSix() {
-        XCTAssertFalse(inputHandler.checkPassword("njk"))
-    }
-    
-    func testCheckPasswordlargerThanFifteen() {
-        XCTAssertFalse(inputHandler.checkPassword("njksdwfer34efe2e"))
-    }
-    
-    func testCheckPasswordNoUpperCase() {
-        XCTAssertFalse(inputHandler.checkPassword("njsdwd32k"))
-    }
-    
-    func testCheckPasswordNoNumber() {
-        XCTAssertFalse(inputHandler.checkPassword("njksdwWdef"))
-    }
-    
-    func testCheckPasswordtrue() {
-        XCTAssert(inputHandler.checkPassword("Xingrenzhi00"))
-    }
-    
-    func testCheckUserName() {
-        XCTAssert(inputHandler.checkUserName("SADAS"))
-    }
-    
-    func testCheckUserNameBeyond10Chars() {
-        XCTAssertFalse(inputHandler.checkUserName("SADASsdwadasdwa"))
-    }
-    
-    func testCheckEmail() {
-        XCTAssert(inputHandler.checkEmail("asd@asd.com"))
-    }
 
-    func testCheckEmailFalse() {
-        XCTAssertFalse(inputHandler.checkEmail("asd@asd"))
-    }
+//    func testConvertLocation() {
+//        XCTAssertNotNil(inputHandler.convertLocation("53°24'11\"N, 2°58'2\"W"))
+//    }
     
-    //test check userID or email in inputhandler
-    func testCheckIdentityType() {
-        XCTAssert(inputHandler.checkIdentityType("asd@das.com") == "userEmail")
-    }
+//    func testCheckPasswordlessthanSix() {
+//        XCTAssertFalse(inputHandler.checkPassword("njk"))
+//    }
+//
+//    func testCheckPasswordlargerThanFifteen() {
+//        XCTAssertFalse(inputHandler.checkPassword("njksdwfer34efe2e"))
+//    }
+//
+//    func testCheckPasswordNoUpperCase() {
+//        XCTAssertFalse(inputHandler.checkPassword("njsdwd32k"))
+//    }
+//
+//    func testCheckPasswordNoNumber() {
+//        XCTAssertFalse(inputHandler.checkPassword("njksdwWdef"))
+//    }
+//
+//    func testCheckPasswordtrue() {
+//        XCTAssert(inputHandler.checkPassword("Xingrenzhi00"))
+//    }
+//
+//    func testCheckUserName() {
+//        XCTAssert(inputHandler.checkUserName("SADAS"))
+//    }
+//
+//    func testCheckUserNameBeyond10Chars() {
+//        XCTAssertFalse(inputHandler.checkUserName("SADASsdwadasdwa"))
+//    }
+//
+//    func testCheckEmail() {
+//        XCTAssert(inputHandler.checkEmail("asd@asd.com"))
+//    }
+//
+//    func testCheckEmailFalse() {
+//        XCTAssertFalse(inputHandler.checkEmail("asd@asd"))
+//    }
+//
+//    //test check userID or email in inputhandler
+//    func testCheckIdentityType() {
+//        XCTAssert(inputHandler.checkIdentityType("asd@das.com") == "userEmail")
+//    }
     
      let tables = ["Building": "Building", "User": "User", "Comment": "Comment", "Event": "Event", "Marker": "Marker", "Facility": "Facility"]
     

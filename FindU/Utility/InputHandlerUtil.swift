@@ -7,12 +7,26 @@
 //
 
 import UIKit
+import CoreLocation
 
 class InputHandlerUtil: NSObject {
     
     /*
      * Provide APIs to convert user's input to recognized object
      */
+    
+    // Convert location to longitude and latitude
+//    func convertLocation(_ location: String) ->CLLocation{
+//        var newLocation: CLLocation = CLLocation.init()
+//        
+//        let locations = location.components(separatedBy: ", ")
+//        var longitutde = locations[0]
+//        var latitude = locations[1]
+//        if
+//        
+//        print(newLocation)
+//        return newLocation
+//    }
     
     // recognize userId or userEmail
     func checkIdentityType(_ identityInfo: String) -> String{
