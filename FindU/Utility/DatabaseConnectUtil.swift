@@ -549,6 +549,24 @@ class DatabaseConnectUtil: NSObject {
     }
     
     // func to fetch local markers
+    func fetchBuildings() -> [Building]{
+        var buildings: [Building] = []
+        
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Building")
+        
+        do {
+            fetchRequest.sortDescriptors = [NSSortDescriptor.init(key: "buldingID", ascending: true)]
+            buildings = try coredataContext?.fetch(fetchRequest) as! [Building]
+//            for building in buildings {
+//                print(marker.location!)
+//            }
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        return buildings
+    }
+    
+    // func to fetch local markers
     func fetchMarkers() -> [Marker]{
         var markers: [Marker] = []
         
@@ -556,10 +574,10 @@ class DatabaseConnectUtil: NSObject {
         
         do {
             fetchRequest.sortDescriptors = [NSSortDescriptor.init(key: "location", ascending: true)]
-            markers = try coredataContext?.fetch(fetchRequest)
-            //            for marker in markers{
-            //                print(marker.location!)
-            //            }
+            markers = try coredataContext?.fetch(fetchRequest) as! [Marker]
+//                        for marker in markers{
+//                            print(marker.location!)
+//                        }
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
@@ -666,10 +684,6 @@ class DatabaseConnectUtil: NSObject {
         
     }
     
-    func deleteEevent(_ sender: Any) {
-        
-    }
-    
     func updateUserInfo() {
         if let localUser = retrieveLocalUser() {
             
@@ -691,6 +705,211 @@ class DatabaseConnectUtil: NSObject {
                     let nserror = error as NSError
                     fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
                 }
+            }
+        }
+    }
+    
+    func deleteEevent(_ condition:String) {
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Evnet")
+        fetchRequest.predicate = NSPredicate(format: condition)
+        
+        do{
+            let eventList = try coredataContext?.fetch(fetchRequest)
+            for index in 0..<eventList!.count{
+                let event = eventList?[index] as! Event
+                coredataContext?.delete(event)
+                try coredataContext?.save()
+            }
+        }catch let error{
+            print("context can't save!, Error:\(error)")
+        }
+    }
+    
+    
+    func deleteUser(_ condition:String) {
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
+        fetchRequest.predicate = NSPredicate(format: condition)
+        
+        do{
+            let userList = try coredataContext?.fetch(fetchRequest)
+            for index in 0..<userList!.count{
+                let user = userList?[index] as! User
+                coredataContext?.delete(user)
+                try coredataContext?.save()
+            }
+        }catch let error{
+            print("context can't save!, Error:\(error)")
+        }
+    }
+    
+    func deleteMarker(_ condition:String) {
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Marker")
+        fetchRequest.predicate = NSPredicate(format: condition)
+        
+        do{
+            let markerList = try coredataContext?.fetch(fetchRequest)
+            for index in 0..<markerList!.count{
+                let marker = markerList?[index] as! Marker
+                coredataContext?.delete(marker)
+                try coredataContext?.save()
+            }
+        }catch let error{
+            print("context can't save!, Error:\(error)")
+        }
+    }
+    
+    func deleteComment(_ condition:String) {
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Comment")
+        fetchRequest.predicate = NSPredicate(format: condition)
+        
+        do{
+            let commentList = try coredataContext?.fetch(fetchRequest)
+            for index in 0..<commentList!.count {
+                let comment = commentList?[index] as! Comment
+                coredataContext?.delete(comment)
+                try coredataContext?.save()
+            }
+        }catch let error{
+            print("context can't save!, Error:\(error)")
+        }
+    }
+    
+    func deleteFacility(_ condition:String) {
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Facility")
+        fetchRequest.predicate = NSPredicate(format: condition)
+        
+        do{
+            let facilityList = try coredataContext?.fetch(fetchRequest)
+            for index in 0..<facilityList!.count{
+                let facility = facilityList?[index] as! Facility
+                coredataContext?.delete(facility)
+                try coredataContext?.save()
+            }
+        }catch let error{
+            print("context can't save!, Error:\(error)")
+        }
+    }
+    
+    
+    func updateEvent(_ condition:String,_ newName:String) {
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Event")
+        fetchRequest.predicate = NSPredicate(format: condition)
+        
+        do{
+            let eventList = try coredataContext?.fetch(fetchRequest)
+            for index in 0..<eventList!.count{
+                let event = eventList?[index] as! Event
+                event.name = newName
+                try coredataContext?.save()
+            }
+        }catch let error{
+            print("context can't save!, Error:\(error)")
+        }
+    }
+    
+    func updateComment(_ condition:String,_ newContent:String) {
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Comment")
+        fetchRequest.predicate = NSPredicate(format: condition)
+        
+        do{
+            let commentList = try coredataContext?.fetch(fetchRequest)
+            for index in 0..<commentList!.count {
+                let comment = commentList?[index] as! Comment
+                comment.content = newContent
+                try coredataContext?.save()
+            }
+        }catch let error{
+            print("context can't save!, Error:\(error)")
+        }
+    }
+    
+    func updateMarker(_ condition:String,_ newBuildingNO:String) {
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Marker")
+        fetchRequest.predicate = NSPredicate(format: condition)
+        
+        do{
+            let markerList = try coredataContext?.fetch(fetchRequest)
+            for index in 0..<markerList!.count{
+                let marker = markerList?[index] as! Marker
+                marker.buildingName = newBuildingNO
+                try coredataContext?.save()
+            }
+        }catch let error{
+            print("context can't save!, Error:\(error)")
+        }
+    }
+    
+    func updateFacility(_ condition:String,_ newName:String,_ newPosition:String,_ newFloor:String,_ newState:String) {
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Facility")
+        fetchRequest.predicate = NSPredicate(format: condition)
+        do{
+            let facilityList = try coredataContext?.fetch(fetchRequest)
+            for index in 0..<facilityList!.count{
+                let facility = facilityList?[index] as! Facility
+                facility.name = newName
+                facility.position = newPosition
+                facility.floor = newFloor
+                facility.state = newState
+                try coredataContext?.save()
+            }
+        }catch let error{
+            print("context can't save!, Error:\(error)")
+        }
+    }
+
+    
+    
+    //MARK: func to upload data to mysql (be careful)!!!
+    
+    func deleteMySQLRecord(_ table: String, _ condition: String?) {
+        if checkConnection() == true {
+            let query = OHMySQLQueryRequestFactory.delete(table, condition: condition)
+            try? context.execute(query)
+        }
+    }
+    
+    func addRecordToMySQL(_ table: String, _ attribute: [String: Any?]) {
+        if checkConnection() == true {
+            let query = OHMySQLQueryRequestFactory.insert(table, set: attribute as [String : Any])
+            try? context.execute(query)
+        }
+    }
+    
+    // for saving database
+    // comment this function after using
+    func updateMySQLBuilding() {
+        deleteMySQLRecord("building", nil)
+        let inputHandler = InputHandlerUtil()
+        
+        let buildings = fetchBuildings()
+        if checkConnection() == true {
+            for building in buildings{
+                let id = (building.buldingID! as String?)!
+                let name = (building.name as String?)!
+                //            var position = ""
+                //            if marker.location?.count != 0 {
+                //                position = (marker.location as String?)!
+                //            }
+                let position = (building.position as String?)!
+                var temp = ""
+                if position.count != 0 {
+                    temp = inputHandler.convertLocation(position)
+                }
+                let attribute = ["buildingNo": id, "position": temp, "buildingName": name]
+                print(attribute)
+                
+                let query = OHMySQLQueryRequestFactory.insert("building", set: attribute)
+                try? context.execute(query)
+                
             }
         }
     }

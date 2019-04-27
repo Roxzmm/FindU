@@ -8,13 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		3344DABC2270B305009DC3DC /* EntityExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3344DABB2270B305009DC3DC /* EntityExtension.swift */; };
+		3E49771F2273CF05006A15AB /* MeLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E49771E2273CF05006A15AB /* MeLogo.png */; };
+		3E4977212273CF15006A15AB /* searchLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 3E4977202273CF14006A15AB /* searchLogo.png */; };
+		3E4977232273CF1A006A15AB /* EventDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4977222273CF1A006A15AB /* EventDetailViewController.swift */; };
+		3E4977252273CF1D006A15AB /* JoinInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3E4977242273CF1D006A15AB /* JoinInViewController.swift */; };
 		3EDAF10A226F72C400BC3032 /* InputHandlerUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDAF109226F72C400BC3032 /* InputHandlerUtil.swift */; };
 		3EDAF10F226FC61B00BC3032 /* UserExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDAF10E226FC61B00BC3032 /* UserExtension.swift */; };
 		3EE539B9226CD53F00181BBB /* DatabaseConnectUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE539B8226CD53F00181BBB /* DatabaseConnectUtil.swift */; };
 		3EFE2D5B226CE0B600F93243 /* FindUTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFE2D5A226CE0B600F93243 /* FindUTests.swift */; };
 		6145D3C62271F58B00FE413D /* RegisterSuccessfullyorFailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6145D3C52271F58B00FE413D /* RegisterSuccessfullyorFailedViewController.swift */; };
 		6145D3C82271FD9500FE413D /* addFunc.png in Resources */ = {isa = PBXBuildFile; fileRef = 6145D3C72271FD9500FE413D /* addFunc.png */; };
-		6145D3CA2272062500FE413D /* EventLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6145D3C92272062500FE413D /* EventLogo.png */; };
 		61559BD7224D0998008F77AF /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61559BD6224D0998008F77AF /* RegisterViewController.swift */; };
 		61559BD9224D1115008F77AF /* register.png in Resources */ = {isa = PBXBuildFile; fileRef = 61559BD8224D1115008F77AF /* register.png */; };
 		6158ECFF224A694B00818A1C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6158ECFE224A694B00818A1C /* AppDelegate.swift */; };
@@ -32,6 +35,7 @@
 		61593439224BF6EC00E5E7FB /* SignIn.png in Resources */ = {isa = PBXBuildFile; fileRef = 61593438224BF6EB00E5E7FB /* SignIn.png */; };
 		6159343B224BF89A00E5E7FB /* SearchFacilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6159343A224BF89A00E5E7FB /* SearchFacilityViewController.swift */; };
 		6159343D224BF8B600E5E7FB /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6159343C224BF8B600E5E7FB /* EventViewController.swift */; };
+		6167A8C6227360DB0079C3D1 /* eventLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6167A8C3227360DA0079C3D1 /* eventLogo.png */; };
 		8A92D916567A59F194B6C4F7 /* Pods_FindUTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF9F5E0E75C730968884829 /* Pods_FindUTests.framework */; };
 		D322200EF00030DAE952B95C /* Pods_FindU.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8BB5EB63A5B98B383C86652 /* Pods_FindU.framework */; };
 /* End PBXBuildFile section */
@@ -51,6 +55,10 @@
 		3344DABB2270B305009DC3DC /* EntityExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityExtension.swift; sourceTree = "<group>"; };
 		3E229D23226BA41300F87E17 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Main.strings"; sourceTree = "<group>"; };
 		3E229D24226BA41300F87E17 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		3E49771E2273CF05006A15AB /* MeLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MeLogo.png; sourceTree = "<group>"; };
+		3E4977202273CF14006A15AB /* searchLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = searchLogo.png; sourceTree = "<group>"; };
+		3E4977222273CF1A006A15AB /* EventDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventDetailViewController.swift; sourceTree = "<group>"; };
+		3E4977242273CF1D006A15AB /* JoinInViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinInViewController.swift; sourceTree = "<group>"; };
 		3EDAF109226F72C400BC3032 /* InputHandlerUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputHandlerUtil.swift; sourceTree = "<group>"; };
 		3EDAF10C226F79D000BC3032 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		3EDAF10E226FC61B00BC3032 /* UserExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserExtension.swift; sourceTree = "<group>"; };
@@ -61,7 +69,6 @@
 		5CF9F5E0E75C730968884829 /* Pods_FindUTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindUTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6145D3C52271F58B00FE413D /* RegisterSuccessfullyorFailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterSuccessfullyorFailedViewController.swift; sourceTree = "<group>"; };
 		6145D3C72271FD9500FE413D /* addFunc.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = addFunc.png; sourceTree = "<group>"; };
-		6145D3C92272062500FE413D /* EventLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = EventLogo.png; sourceTree = "<group>"; };
 		61559BD6224D0998008F77AF /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		61559BD8224D1115008F77AF /* register.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = register.png; sourceTree = "<group>"; };
 		6158ECFB224A694B00818A1C /* FindU.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FindU.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +88,7 @@
 		61593438224BF6EB00E5E7FB /* SignIn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SignIn.png; sourceTree = "<group>"; };
 		6159343A224BF89A00E5E7FB /* SearchFacilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFacilityViewController.swift; sourceTree = "<group>"; };
 		6159343C224BF8B600E5E7FB /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
+		6167A8C3227360DA0079C3D1 /* eventLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eventLogo.png; sourceTree = "<group>"; };
 		61EE6FE3226AE3D7003F0A76 /* AshtonBuilding.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = AshtonBuilding.gpx; path = ../../COMP228/sWift/Comp228Assignment2/AshtonBuilding.gpx; sourceTree = "<group>"; };
 		7AEED146AB83C7E403BE2613 /* Pods-FindU.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindU.debug.xcconfig"; path = "Target Support Files/Pods-FindU/Pods-FindU.debug.xcconfig"; sourceTree = "<group>"; };
 		A2870D54A91C4185AA0096B7 /* Pods-FindUTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindUTests.debug.xcconfig"; path = "Target Support Files/Pods-FindUTests/Pods-FindUTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -163,11 +171,13 @@
 				3EE539B7226CD4FA00181BBB /* Utility */,
 				6158ECFE224A694B00818A1C /* AppDelegate.swift */,
 				6158ED00224A694B00818A1C /* ViewController.swift */,
-				61593436224BF43400E5E7FB /* SignInViewController.swift */,
-				6159343C224BF8B600E5E7FB /* EventViewController.swift */,
 				6159343A224BF89A00E5E7FB /* SearchFacilityViewController.swift */,
+				61593436224BF43400E5E7FB /* SignInViewController.swift */,
 				61559BD6224D0998008F77AF /* RegisterViewController.swift */,
 				6145D3C52271F58B00FE413D /* RegisterSuccessfullyorFailedViewController.swift */,
+				6159343C224BF8B600E5E7FB /* EventViewController.swift */,
+				3E4977222273CF1A006A15AB /* EventDetailViewController.swift */,
+				3E4977242273CF1D006A15AB /* JoinInViewController.swift */,
 				6158ED02224A694B00818A1C /* Main.storyboard */,
 				6158ED08224A695000818A1C /* Assets.xcassets */,
 				6158ED0A224A695000818A1C /* LaunchScreen.storyboard */,
@@ -175,8 +185,10 @@
 				6158ED05224A694B00818A1C /* FindU.xcdatamodeld */,
 				6158ED17224A76B300818A1C /* logo.png */,
 				61593430224BE5D300E5E7FB /* searchfacility.png */,
+				3E49771E2273CF05006A15AB /* MeLogo.png */,
+				6167A8C3227360DA0079C3D1 /* eventLogo.png */,
+				3E4977202273CF14006A15AB /* searchLogo.png */,
 				6145D3C72271FD9500FE413D /* addFunc.png */,
-				6145D3C92272062500FE413D /* EventLogo.png */,
 				61593432224BE5D900E5E7FB /* event.png */,
 				61593434224BE5DE00E5E7FB /* me.png */,
 				6158ED1B224A8A3F00818A1C /* welcometitle.png */,
@@ -298,8 +310,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3E4977212273CF15006A15AB /* searchLogo.png in Resources */,
 				6158ED1C224A8A3F00818A1C /* welcometitle.png in Resources */,
 				6145D3C82271FD9500FE413D /* addFunc.png in Resources */,
+				6167A8C6227360DB0079C3D1 /* eventLogo.png in Resources */,
+				3E49771F2273CF05006A15AB /* MeLogo.png in Resources */,
 				6158ED18224A76B300818A1C /* logo.png in Resources */,
 				61559BD9224D1115008F77AF /* register.png in Resources */,
 				6158ED0C224A695000818A1C /* LaunchScreen.storyboard in Resources */,
@@ -309,7 +324,6 @@
 				6158ED04224A694B00818A1C /* Main.storyboard in Resources */,
 				61593433224BE5D900E5E7FB /* event.png in Resources */,
 				61593439224BF6EC00E5E7FB /* SignIn.png in Resources */,
-				6145D3CA2272062500FE413D /* EventLogo.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -402,7 +416,9 @@
 				6145D3C62271F58B00FE413D /* RegisterSuccessfullyorFailedViewController.swift in Sources */,
 				61593437224BF43400E5E7FB /* SignInViewController.swift in Sources */,
 				3EDAF10A226F72C400BC3032 /* InputHandlerUtil.swift in Sources */,
+				3E4977232273CF1A006A15AB /* EventDetailViewController.swift in Sources */,
 				6158ED01224A694B00818A1C /* ViewController.swift in Sources */,
+				3E4977252273CF1D006A15AB /* JoinInViewController.swift in Sources */,
 				61559BD7224D0998008F77AF /* RegisterViewController.swift in Sources */,
 				6159343B224BF89A00E5E7FB /* SearchFacilityViewController.swift in Sources */,
 				6158ED07224A694B00818A1C /* FindU.xcdatamodeld in Sources */,
