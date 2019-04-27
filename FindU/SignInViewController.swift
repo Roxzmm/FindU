@@ -128,7 +128,9 @@ class SignInViewController: UIViewController {
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "SignInBacktoMenu" {
             return signIn()
-        } else {
+        }else if identifier == "ToRegister" {
+            return true
+        }else {
             return false
         }
     }
