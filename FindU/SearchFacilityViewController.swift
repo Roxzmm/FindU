@@ -10,27 +10,50 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate {
-    @IBOutlet weak var inputStartPosition: UITextField!
+class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate,UISearchBarDelegate,UITableViewDataSource,UITableViewDelegate {
     
     @IBOutlet weak var map: MKMapView!
-    @IBOutlet weak var InputFacility: UITextField!
-   
+    
+    @IBOutlet weak var StartPositionSB: UISearchBar!
+    @IBOutlet weak var StartPositionTableView: UITableView!
+    
+    @IBOutlet weak var FacilityTableView: UITableView!
+    @IBOutlet weak var FacilitySB: UISearchBar!
+//
     @IBAction func SearchBtn(_ sender: Any) {
         
     }
     
-    @IBOutlet weak var bottomBar: UITabBar!
-    @IBOutlet weak var EventBarItem: UITabBarItem!
+//    @IBOutlet weak var bottomBar: UITabBar!
+    
     
     var locationManager = CLLocationManager()
     
     var markers: [Marker] = []
     let mysqldatabaseUtil = DatabaseConnectUtil()
+    var result = [String]()
+    var startPosition = [String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Search")
+
+//        StartPositionTableView.isHidden = true
+        FacilityTableView.isHidden = true
+        markers = mysqldatabaseUtil.fetchMarkers()
+        
+      
+        for BuildName in self.markers{
+            self.result.append(BuildName.buildingName!)
+        }
+        self.startPosition = self.result
+       //还需要facility的所有名字
+ 
+        self.StartPositionSB.delegate = self
+        self.StartPositionTableView.delegate = self
+        self.StartPositionTableView.dataSource = self
+        self.StartPositionTableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+//        self.FacilitySB.delegate = self as? UISearchBarDelegate
+        
         locationManager.delegate = self as CLLocationManagerDelegate
         locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         locationManager.requestWhenInUseAuthorization()
@@ -49,6 +72,72 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
 //        setpicture()
 
         // Do any additional setup after loading the view.
+    }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return self.startPosition.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let identify: String = "cell"
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: identify, for: indexPath) as UITableViewCell
+        cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
+        cell.textLabel?.text = self.startPosition[indexPath.row]
+        
+        return cell
+    }
+    
+    private func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+        StartPositionTableView.isHidden = false
+        print("[ViewController searchBar] searchText: \(searchText)")
+
+        // 没有搜索内容时显示全部内容
+        if searchText == "" {
+            for i in 2...markers.count-1{
+                self.startPosition[i] = self.markers[i].buildingName!
+            }
+        } else {
+
+            // 匹配用户输入的前缀，不区分大小写
+            self.startPosition = []
+
+            for arr in self.result {
+
+//                let string = "hello Swift"
+//                if string.contains("Swift") {
+//                    print("exists")
+//                }
+
+                if arr.contains(searchText){
+                    self.startPosition.append(arr)
+                }
+                self.StartPositionTableView.reloadData()
+            }
+        }
+
+
+    }
+
+    // 搜索触发事件，点击虚拟键盘上的search按钮时触发此方法
+    private func searchBarSearchButtonClicked(searchBar: UISearchBar) {
+
+        searchBar.resignFirstResponder()
+    }
+
+    // 书签按钮触发事件
+    private func searchBarBookmarkButtonClicked(searchBar: UISearchBar) {
+
+        print("搜索历史")
+    }
+
+    // 取消按钮触发事件
+
+    private func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        // 搜索内容置空
+        StartPositionTableView.isHidden = true
+        searchBar.text = ""
+        self.startPosition = self.result
+        self.StartPositionTableView.reloadData()
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -204,7 +293,10 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
         
     }
     
+    
 }
+
+
 //    func setpicture(){
 //        EventBarItem.image = UIImage(contentsOfFile: "eventLogo")
 //        EventBarItem.selectedImage =  UIImage(contentsOfFile: "eventLogo")?.withRenderingMode(.alwaysOriginal)
