@@ -16,11 +16,18 @@ class EventViewController: UIViewController {
     
     @IBOutlet weak var Event2: UIImageView!
     
+    let mysqlConnect = DatabaseConnectUtil()
+    
+    var events: [Event] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("Event")
 
         // Do any additional setup after loading the view.
+        print("Event view")
+        
+        events = mysqlConnect.fetchEvents()
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -28,8 +35,9 @@ class EventViewController: UIViewController {
         self.view.backgroundColor = UIColorFromHex(rgbValue:1029623,alpha: 1)
         
         self.addFunc.image = UIImage(named: "addFunc.png")
-        
         let goEvent = UITapGestureRecognizer(target: self, action: #selector(wayToEventDetail(tapGestureRecognizer:)))
+        
+        Event1.image = UIImage(named: "logo.png")
         Event1.isUserInteractionEnabled = true
         Event1.addGestureRecognizer(goEvent)
         

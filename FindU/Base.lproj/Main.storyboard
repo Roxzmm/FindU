@@ -69,6 +69,7 @@
                         <segue destination="wsj-UH-f9o" kind="show" identifier="Tosearchfacility" id="MUd-hT-GPI"/>
                         <segue destination="Jfv-aP-nQk" kind="show" identifier="Toevent" id="96X-LW-ExQ"/>
                         <segue destination="ymf-SF-ltw" kind="show" identifier="ToMe" id="zPR-D5-stN"/>
+                        <segue destination="Ipc-Py-HTW" kind="show" identifier="ToUserInformation" id="pfJ-Pc-CgI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -127,9 +128,9 @@
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <items>
-                                            <tabBarItem systemItem="search" id="l8O-Yz-jHH"/>
+                                            <tabBarItem title="search" selectedImage="searchLogo.png" id="l8O-Yz-jHH"/>
                                             <tabBarItem title="Event" selectedImage="eventLogo.png" id="AYz-LK-LRW"/>
-                                            <tabBarItem title="Me" id="Dn3-Uq-41D"/>
+                                            <tabBarItem title="Me" selectedImage="MeLogo.png" id="Dn3-Uq-41D"/>
                                         </items>
                                     </tabBar>
                                 </subviews>
@@ -481,7 +482,7 @@
                         <outlet property="Event1" destination="LZa-d3-FmB" id="Bt0-mJ-7zC"/>
                         <outlet property="Event2" destination="Yqi-gW-PrP" id="IJk-id-gAH"/>
                         <outlet property="addFunc" destination="r2e-YB-tPE" id="DCj-p3-WYA"/>
-                        <segue destination="gIn-kN-cz7" kind="show" id="tWh-2Q-y4b"/>
+                        <segue destination="gIn-kN-cz7" kind="show" identifier="EventTodetail" id="tWh-2Q-y4b"/>
                         <segue destination="mJX-GS-fEJ" kind="show" identifier="ToCreateEvent" id="qv5-l6-Eqp"/>
                     </connections>
                 </viewController>
@@ -690,7 +691,8 @@
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <state key="normal" title="Join in"/>
                                                 <connections>
-                                                    <segue destination="M9j-ZN-BcS" kind="show" identifier="ToCongrautation" id="Wq1-OZ-yaR"/>
+                                                    <action selector="JoinInBtn:" destination="gIn-kN-cz7" eventType="touchUpInside" id="6jM-w2-6Av"/>
+                                                    <segue destination="M9j-ZN-BcS" kind="show" identifier="ToJoinIn" id="Wq1-OZ-yaR"/>
                                                 </connections>
                                             </button>
                                             <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q0K-gU-qMq">
@@ -713,6 +715,15 @@
                         <viewLayoutGuide key="safeArea" id="1Us-7a-bMh"/>
                     </view>
                     <size key="freeformSize" width="375" height="1000"/>
+                    <connections>
+                        <outlet property="EventDescription" destination="iGH-5H-2Mb" id="amC-Eh-bYI"/>
+                        <outlet property="EventName" destination="JKy-Ni-etm" id="Fp1-7y-Ypk"/>
+                        <outlet property="EventPoster" destination="80L-NA-s5y" id="Z48-pY-hEG"/>
+                        <outlet property="UserComment1" destination="5y4-0k-5e1" id="osO-ac-32n"/>
+                        <outlet property="UserName1" destination="ouu-rz-Ndj" id="PmZ-zm-4Zw"/>
+                        <outlet property="UserPhoto1" destination="cAH-07-zOz" id="3ON-qR-XCh"/>
+                        <outlet property="organizer" destination="nf5-mg-5Lz" id="z34-WK-tfF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3g8-Uh-lx1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -737,10 +748,10 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.61109141629999997" green="0.16965794980000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Congratulations" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X2r-t0-kpb">
-                                <rect key="frame" x="58" y="333" width="259" height="137"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Congratulations" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X2r-t0-kpb">
+                                <rect key="frame" x="58" y="333" width="259" height="87"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -758,14 +769,24 @@
                                     <tabBarItem title="Me" id="FLg-cp-aFW"/>
                                 </items>
                             </tabBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Enjoy yourself!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fql-0t-Kd2">
+                                <rect key="frame" x="96" y="413" width="182" height="53"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="L8t-rV-vFE"/>
                     </view>
+                    <connections>
+                        <outlet property="successMessage" destination="X2r-t0-kpb" id="zjA-Ry-Uv3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cEN-EH-qgt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2596" y="-583"/>
+            <point key="canvasLocation" x="2596" y="-583.00492610837443"/>
         </scene>
         <!--Search Facility View Controller-->
         <scene sceneID="NSp-5H-kGe">
@@ -854,7 +875,9 @@
         </scene>
     </scenes>
     <resources>
+        <image name="MeLogo.png" width="76" height="68"/>
         <image name="eventLogo.png" width="98" height="68"/>
+        <image name="searchLogo.png" width="92" height="73"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Fkc-yl-1he"/>

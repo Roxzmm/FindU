@@ -23,11 +23,13 @@ class EventDetailViewController: UIViewController {
     @IBOutlet weak var UserName1: UILabel!
     @IBOutlet weak var UserComment1: UILabel!
     
-   
-    @IBAction func JoinInBtn(_ sender: Any) {
-         performSegue(withIdentifier: "ToJoinIn", sender: self)
-        
-    }
+    var event: Event? = nil
+    
+//    @IBAction func JoinInBtn(_ sender: Any) {
+//         performSegue(withIdentifier: "ToJoinIn", sender: self)
+//
+//    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -35,14 +37,19 @@ class EventDetailViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
 
+    // MARK: - Navigation
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        
+        // pass userId to register successfully view
+        if let vc = segue.destination as? JoinInViewController{
+            vc.event = event
+        }
+        
     }
-    */
 
 }

@@ -10,10 +10,20 @@ import UIKit
 
 class JoinInViewController: UIViewController {
 
+    @IBOutlet weak var successMessage: UILabel!
+    
+    let mysqlConnect = DatabaseConnectUtil()
+    var event: Event? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        //show success message
+        let localUser = mysqlConnect.retrieveLocalUser()
+        let username = localUser?.name!
+        successMessage.text = "Congratulations! \(String(describing: username))"
     }
     
 

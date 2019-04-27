@@ -30,20 +30,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         //设置ViewController在工具栏的图标
-       Event.tabBarItem.image=UIImage(named: "eventLogo.png")
+        Event.tabBarItem.image=UIImage(named: "eventLogo.png")
         Search.tabBarItem.image=UIImage(named: "searchLogo.png")
         SignIn.tabBarItem.image=UIImage(named: "MeLogo.png")
-      
+        
         
         //设置ViewController在工具栏的名称
-       SignIn.tabBarItem.title="Me"
+        SignIn.tabBarItem.title="Me"
         Search.tabBarItem.title="Search"
         Event.tabBarItem.title="Event"
         
         
         //将以上的ViewController天剑到UITabBarController中
         let tabBar=UITabBarController()
-        tabBar.viewControllers=[Search, Event,SignIn]
+        tabBar.viewControllers=[Search, Event, SignIn]
         //将window的跟视图设置为tabBar
         self.window?.rootViewController=tabBar
         self.window?.backgroundColor=UIColor.white

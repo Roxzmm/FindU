@@ -42,7 +42,7 @@ class ViewController: UIViewController {
                 mysqlConnect.updateUserInfo()
             }
 
-            loadCount += 1
+            self.loadCount += 1
         }
         
     }

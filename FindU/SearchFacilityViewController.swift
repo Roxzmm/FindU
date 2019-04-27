@@ -10,7 +10,7 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate {
+class SearchFacilityViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
     @IBOutlet weak var inputStartPosition: UITextField!
     
     @IBOutlet weak var map: MKMapView!
@@ -72,16 +72,17 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
     func Arraybylocation(){
         markers = mysqldatabaseUtil.fetchMarkers()
         for i in 2...markers.count-1{
-            let location = markers[i].location
-//            let location1 = location!.replacingOccurrences(of: "°", with: ".")
-//            let location2 = location1.replacingOccurrences(of: "\'", with: "")
-//            let location3 = location2.replacingOccurrences(of: "\"N", with: "")
-//            let location4 = location3.replacingOccurrences(of: "\"W", with: "")
-//            let location5 = location4.replacingOccurrences(of: " ", with: "")
-//            let location6 : [String] = location5.components(separatedBy: ", ")
             
-//            print(location)
-//            print(location6)
+            let location = markers[i].location
+            //            let location1 = location!.replacingOccurrences(of: "°", with: ".")
+            //            let location2 = location1.replacingOccurrences(of: "\'", with: "")
+            //            let location3 = location2.replacingOccurrences(of: "\"N", with: "")
+            //            let location4 = location3.replacingOccurrences(of: "\"W", with: "")
+            //            let location5 = location4.replacingOccurrences(of: " ", with: "")
+            //            let location6 : [String] = location5.components(separatedBy: ", ")
+            
+            //            print(location)
+            //            print(location6)
             if location?.count != 0{
                 let location5 = location!.components(separatedBy: ", ")
                 

@@ -27,7 +27,7 @@ class DatabaseConnectUtil: NSObject {
     let db = "userDatabase"
     
     // declare used tables and entities
-    let tables = ["Building": "Building", "Comment": "Comment", "Event": "Event", "Facility": "Facility"]
+    let tables = ["Building": "Building", "Marker": "Marker", "Comment": "Comment", "Event": "Event", "Facility": "Facility"]
     let entities = ["Building": Building(), "User": User(), "Comment": Comment(), "Event": Event(), "Marker": Marker(), "Facility": Facility(), "LastUpdateTime": LastUpdateTime()]
 //    var entity: EntityExtension
 
@@ -584,6 +584,25 @@ class DatabaseConnectUtil: NSObject {
         return markers
     }
     
+    // func to fetch local markers
+    func fetchEvents(_ condition: String = "date", _ ascending: Bool = false) -> [Event]{
+        var events: [Event] = []
+        
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Event")
+     
+        do {
+            fetchRequest.sortDescriptors = [NSSortDescriptor.init(key: condition, ascending: ascending)]
+            events = try coredataContext?.fetch(fetchRequest) as! [Event]
+            //                        for marker in markers{
+            //                            print(marker.location!)
+            //                        }
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+ 
+        return events
+    }
+    
     func retrieveLocalUser() -> User? {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
         
@@ -687,7 +706,8 @@ class DatabaseConnectUtil: NSObject {
     func updateUserInfo() {
         if let localUser = retrieveLocalUser() {
             
-            let query = OHMySQLQueryRequestFactory.select("User", condition: "userNo = \(String(describing: localUser.userID))")
+            let id = localUser.userID!
+            let query = OHMySQLQueryRequestFactory.select("user", condition: "userNo = \(id)")
             if let response = try? context.executeQueryRequestAndFetchResult(query) {
                 
                 if response.count == 1 {
