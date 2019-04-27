@@ -25,6 +25,9 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
     
     var locationManager = CLLocationManager()
     
+    var markers: [Marker] = []
+    let mysqldatabaseUtil = DatabaseConnectUtil()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Search")
@@ -32,6 +35,16 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
         locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        
+        /*
+         * fetch markers
+         * attributes of marker: markerID, builgdingName, location  (all are string)
+         * location's example output: 53°24'5"N, 2°57'50"W
+         */
+
+        
+//        Arraybylocation()
+        
         
 //        setpicture()
 
@@ -52,12 +65,257 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
         let region = MKCoordinateRegion(center: location, span: span)
         self.map.setRegion(region, animated: true)
         
-        //            Arraybylocation()
+                  Arraybylocation()
     }
+    
+    
+    func Arraybylocation(){
+        markers = mysqldatabaseUtil.fetchMarkers()
+        for i in 2...markers.count-1{
+            let location = markers[i].location
+//            let location1 = location!.replacingOccurrences(of: "°", with: ".")
+//            let location2 = location1.replacingOccurrences(of: "\'", with: "")
+//            let location3 = location2.replacingOccurrences(of: "\"N", with: "")
+//            let location4 = location3.replacingOccurrences(of: "\"W", with: "")
+//            let location5 = location4.replacingOccurrences(of: " ", with: "")
+//            let location6 : [String] = location5.components(separatedBy: ", ")
+            
+//            print(location)
+//            print(location6)
+            if location?.count != 0{
+                let location5 = location!.components(separatedBy: ", ")
+                
+                let lat = location5[0]
+                let latitude = Double(lat)
+                let lon = location5[1]
+                let longitude = Double(lon)
+                
+                //                let a = latitude!
+                //                let b
+                let coordinate = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = coordinate
+                annotation.title = markers[i].buildingName //显示什么？
+                self.map.addAnnotation(annotation)
+            }
+            
+//                            let a = latitude!
+//                            let b = longitude!
+//            let coordinate = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
+//            let annotation = MKPointAnnotation()
+//            annotation.coordinate = coordinate
+//            annotation.title = markers[i].location //显示什么？
+//            self.map.addAnnotation(annotation)
+
+        }
+
+
+//        var locationlist : [String] = []
+//        //            var locationNoteList: [String] = []
+//        var distance : [Double] = []
+//        var locationAndDistance: [String : Double] = [String : Double]()
+//        var finalLocationlist : [String] = []
+//
+//        //         var locationlist : [String] = []
+//        var lat : [Double] = []
+//        var long : [Double] = []
+
+
+
+//        var howManyArtWorksInLocation : [Int] = []
+//        var startlocation = markers[0].location!
+//        //            var startlocationNote = markers[0].locationNotes!
+//        let startlocationLat = (Double)(markers[0].lat!)!
+//        let startlocationLong = (Double)(markers[0].long!)!
+//        //         var distance : [Double] = []
+//        var a = 0
+//        var b = 0
+//
+//        locationlist.append(startlocation)
+//        //            locationNoteList.append(startlocationNote)
+//        lat.append(startlocationLat)
+//        long.append(startlocationLong)
+//        for aArt in markers{
+//
+//            if aArt.location! == startlocation{
+//                b = b+1
+//            }
+//            else{
+//                howManyArtWorksInLocation.append(b)
+//                b = 1
+//                startlocation = aArt.location!
+//                locationlist.append(aArt.location!)
+//                lat.append((Double)(aArt.lat!)!)
+//                long.append((Double)(aArt.long!)!)
+//
+//
+//            }
+//            a = a+1
+//        }
+//        howManyArtWorksInLocation.append(b)
+//
+//        for i in 0...locationlist.count-1{
+//
+//            let artLcLocation = CLLocation(latitude:CLLocationDegrees(lat[i]), longitude: CLLocationDegrees(long[i]))
+//            //            print(userLoc!)
+//
+//            let artToUser = artLcLocation.distance(from: userLoc)
+//            distance.append(artToUser)
+//        }
+//
+//
+//        for i in 0...distance.count-1{
+//            //            print("\(locationlist[i]) : \(distance[i])")
+//            locationAndDistance[locationlist[i]] = distance[i]
+//        }
+//
+//
+//        let result4 = locationAndDistance.sorted { (str1, str2) -> Bool in
+//            return str1.1 < str2.1
+//        }
+//
+//        for key in 0...result4.count-1{
+//            finalLocationlist.append(result4[key].key)
+//        }
+//        self.locationBydistance = finalLocationlist
+//
+//        for i in 0..<finalLocationlist.count{
+//            var eachLocation: [ArtworkInformation] = []
+//            for aArt in self.markers{
+//                if aArt.location! == finalLocationlist[i]  {
+//                    eachLocation.append(aArt)
+//                }
+//            }
+//            self.sectionByLocation[finalLocationlist[i]] = eachLocation
+//        }
+//        for i in 0...finalLocationlist.count-1{
+//            print(finalLocationlist[i])
+//        }
+//        print(result4)
+//        for a in locationlist{
+//            distance = userLoc.distance(from: a)
+//        }
+//
+    }
+    
+    private func mapView(mapView:MKMapView, didSelectAnnotationView view:MKAnnotationView){
+        
+        print("didSelectAnnotationView")
+        
+    }
+    
+}
 //    func setpicture(){
 //        EventBarItem.image = UIImage(contentsOfFile: "eventLogo")
 //        EventBarItem.selectedImage =  UIImage(contentsOfFile: "eventLogo")?.withRenderingMode(.alwaysOriginal)
     
+//    func Arraybylocation(){
+//
+//        for i in 0...markers.count-1{
+//            let lat = markers[i].lat
+//            let latitude = Double(lat!)
+//            let lon = markers[i].long
+//            let longitude = Double(lon!)
+//
+//            //                let a = latitude!
+//            //                let b
+//            let coordinate = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
+//            let annotation = MKPointAnnotation()
+//            annotation.coordinate = coordinate
+//            annotation.title = markers[i].location //显示什么？
+//            self.map.addAnnotation(annotation)
+//
+//        }
+//
+//
+//        var locationlist : [String] = []
+//        //            var locationNoteList: [String] = []
+//        var distance : [Double] = []
+//        var locationAndDistance: [String : Double] = [String : Double]()
+//        var finalLocationlist : [String] = []
+//
+//        //         var locationlist : [String] = []
+//        var lat : [Double] = []
+//        var long : [Double] = []
+//
+//
+//
+//        var howManyArtWorksInLocation : [Int] = []
+//        var startlocation = markers[0].location!
+//        //            var startlocationNote = markers[0].locationNotes!
+//        let startlocationLat = (Double)(markers[0].lat!)!
+//        let startlocationLong = (Double)(markers[0].long!)!
+//        //         var distance : [Double] = []
+//        var a = 0
+//        var b = 0
+//
+//        locationlist.append(startlocation)
+//        //            locationNoteList.append(startlocationNote)
+//        lat.append(startlocationLat)
+//        long.append(startlocationLong)
+//        for aArt in markers{
+//
+//            if aArt.location! == startlocation{
+//                b = b+1
+//            }
+//            else{
+//                howManyArtWorksInLocation.append(b)
+//                b = 1
+//                startlocation = aArt.location!
+//                locationlist.append(aArt.location!)
+//                lat.append((Double)(aArt.lat!)!)
+//                long.append((Double)(aArt.long!)!)
+//
+//
+//            }
+//            a = a+1
+//        }
+//        howManyArtWorksInLocation.append(b)
+//
+//        for i in 0...locationlist.count-1{
+//
+//            let artLcLocation = CLLocation(latitude:CLLocationDegrees(lat[i]), longitude: CLLocationDegrees(long[i]))
+//            //            print(userLoc!)
+//
+//            let artToUser = artLcLocation.distance(from: userLoc)
+//            distance.append(artToUser)
+//        }
+//
+//
+//        for i in 0...distance.count-1{
+//            //            print("\(locationlist[i]) : \(distance[i])")
+//            locationAndDistance[locationlist[i]] = distance[i]
+//        }
+//
+//
+//        let result4 = locationAndDistance.sorted { (str1, str2) -> Bool in
+//            return str1.1 < str2.1
+//        }
+//
+//        for key in 0...result4.count-1{
+//            finalLocationlist.append(result4[key].key)
+//        }
+//        self.locationBydistance = finalLocationlist
+//
+//        for i in 0..<finalLocationlist.count{
+//            var eachLocation: [ArtworkInformation] = []
+//            for aArt in self.markers{
+//                if aArt.location! == finalLocationlist[i]  {
+//                    eachLocation.append(aArt)
+//                }
+//            }
+//            self.sectionByLocation[finalLocationlist[i]] = eachLocation
+//        }
+//        //        for i in 0...finalLocationlist.count-1{
+//        //            print(finalLocationlist[i])
+//        //        }
+//        //        print(result4)
+//        //        for a in locationlist{
+//        //            distance = userLoc.distance(from: a)
+//        //                    }
+//
+//    }
+
     
 
 // mapView
@@ -88,7 +346,7 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
 //
 //
 //
-//        var artInformation1: [ArtworkInformation] = []
+//        var markers: [ArtworkInformation] = []
 //        var sectionByLocation : [String : [ArtworkInformation]] = [:]
 //
 //
@@ -251,8 +509,8 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
 //                        let decoder = JSONDecoder()
 //                        let artList = try decoder.decode(artInformation.self, from: jsonData)
 //
-//                        //                    if self.artInformation1.count != artList.artInfor2.count{
-//                        for OInfor in self.artInformation1{
+//                        //                    if self.markers.count != artList.artInfor2.count{
+//                        for OInfor in self.markers{
 //                            for aInfor in artList.campus_artworks {
 //                                if OInfor.id == aInfor.id{
 //                                    DispatchQueue.main.async {
@@ -265,12 +523,12 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
 //                                else{
 //
 //                                    var count = 0
-//                                    for TInfor in self.artInformation1{
+//                                    for TInfor in self.markers{
 //                                        if TInfor.id != aInfor.id{
 //                                            count = count + 1
 //                                        }
 //                                    }
-//                                    if count == self.artInformation1.count{
+//                                    if count == self.markers.count{
 //                                        DispatchQueue.main.async {
 //                                            self.save(id: aInfor.id,title:aInfor.title,artist: aInfor.artist,yearOfWork: aInfor.yearOfWork,information: aInfor.information,lat: aInfor.lat,long: aInfor.long,location: aInfor.location,locationNotes: aInfor.locationNotes,fileName: aInfor.fileName,lastmodified:aInfor.lastModified,enabled:aInfor.enabled)
 //                                            print("add:\(OInfor.id!)")
@@ -381,8 +639,8 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
 //            do {
 //                let a = fetchRequest
 //                a.sortDescriptors = [NSSortDescriptor.init(key: "location", ascending: true)]
-//                artInformation1 = try managedContext.fetch(a) as! [ArtworkInformation]
-//                //            for a in artInformation1{
+//                markers = try managedContext.fetch(a) as! [ArtworkInformation]
+//                //            for a in markers{
 //                //                print(a.location!)
 //                //            }
 //            } catch let error as NSError {
@@ -392,10 +650,10 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
 //
 //        func Arraybylocation(){
 //
-//            for i in 0...artInformation1.count-1{
-//                let lat = artInformation1[i].lat
+//            for i in 0...markers.count-1{
+//                let lat = markers[i].lat
 //                let latitude = Double(lat!)
-//                let lon = artInformation1[i].long
+//                let lon = markers[i].long
 //                let longitude = Double(lon!)
 //
 //                //                let a = latitude!
@@ -403,7 +661,7 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
 //                let coordinate = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
 //                let annotation = MKPointAnnotation()
 //                annotation.coordinate = coordinate
-//                annotation.title = artInformation1[i].location //显示什么？
+//                annotation.title = markers[i].location //显示什么？
 //                self.map.addAnnotation(annotation)
 //
 //            }
@@ -422,10 +680,10 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
 //
 //
 //            var howManyArtWorksInLocation : [Int] = []
-//            var startlocation = artInformation1[0].location!
-//            //            var startlocationNote = artInformation1[0].locationNotes!
-//            let startlocationLat = (Double)(artInformation1[0].lat!)!
-//            let startlocationLong = (Double)(artInformation1[0].long!)!
+//            var startlocation = markers[0].location!
+//            //            var startlocationNote = markers[0].locationNotes!
+//            let startlocationLat = (Double)(markers[0].lat!)!
+//            let startlocationLong = (Double)(markers[0].long!)!
 //            //         var distance : [Double] = []
 //            var a = 0
 //            var b = 0
@@ -434,7 +692,7 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
 //            //            locationNoteList.append(startlocationNote)
 //            lat.append(startlocationLat)
 //            long.append(startlocationLong)
-//            for aArt in artInformation1{
+//            for aArt in markers{
 //
 //                if aArt.location! == startlocation{
 //                    b = b+1
@@ -480,7 +738,7 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
 //
 //            for i in 0..<finalLocationlist.count{
 //                var eachLocation: [ArtworkInformation] = []
-//                for aArt in self.artInformation1{
+//                for aArt in self.markers{
 //                    if aArt.location! == finalLocationlist[i]  {
 //                        eachLocation.append(aArt)
 //                    }
@@ -504,5 +762,5 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
 //        }
 //
 //    }
-
-}
+//
+//}

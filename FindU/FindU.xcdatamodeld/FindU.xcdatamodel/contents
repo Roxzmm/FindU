@@ -44,8 +44,9 @@
         <attribute name="user" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
     </entity>
     <entity name="Marker" representedClassName="Marker" syncable="YES" codeGenerationType="class">
-        <attribute name="buildingName" optional="YES" attributeType="String" maxValueString="100" syncable="YES"/>
-        <attribute name="markerID" optional="YES" attributeType="String" minValueString="3" maxValueString="10" syncable="YES"/>
+        <attribute name="buildingName" optional="YES" attributeType="String" minValueString="1" syncable="YES"/>
+        <attribute name="location" optional="YES" attributeType="String" maxValueString="30" syncable="YES"/>
+        <attribute name="markerID" optional="YES" attributeType="String" minValueString="1" maxValueString="10" syncable="YES"/>
         <relationship name="toBuilding" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Building" inverseName="toMarker" inverseEntity="Building" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
@@ -66,7 +67,7 @@
         <element name="Event" positionX="-34.11328125" positionY="-160.6328125" width="128" height="180"/>
         <element name="Facility" positionX="240.359375" positionY="417.0703125" width="128" height="165"/>
         <element name="LastUpdateTime" positionX="117" positionY="-18" width="128" height="135"/>
-        <element name="Marker" positionX="212.73046875" positionY="-185.2890625" width="128" height="90"/>
+        <element name="Marker" positionX="212.73046875" positionY="-185.2890625" width="128" height="105"/>
         <element name="User" positionX="109.9453125" positionY="130.640625" width="128" height="195"/>
     </elements>
 </model>
