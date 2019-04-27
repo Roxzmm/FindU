@@ -71,7 +71,7 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
     
     func Arraybylocation(){
         markers = mysqldatabaseUtil.fetchMarkers()
-        for i in 0...markers.count-1{
+        for i in 2...markers.count-1{
             let location = markers[i].location
 //            let location1 = location!.replacingOccurrences(of: "°", with: ".")
 //            let location2 = location1.replacingOccurrences(of: "\'", with: "")
@@ -92,7 +92,7 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
                 
                 //                let a = latitude!
                 //                let b
-                let coordinate = CLLocationCoordinate2D(latitude: latitude!, longitude: -longitude!)
+                let coordinate = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
                 let annotation = MKPointAnnotation()
                 annotation.coordinate = coordinate
                 annotation.title = markers[i].buildingName //显示什么？
@@ -110,15 +110,15 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
         }
 
 
-        var locationlist : [String] = []
-        //            var locationNoteList: [String] = []
-        var distance : [Double] = []
-        var locationAndDistance: [String : Double] = [String : Double]()
-        var finalLocationlist : [String] = []
-
-        //         var locationlist : [String] = []
-        var lat : [Double] = []
-        var long : [Double] = []
+//        var locationlist : [String] = []
+//        //            var locationNoteList: [String] = []
+//        var distance : [Double] = []
+//        var locationAndDistance: [String : Double] = [String : Double]()
+//        var finalLocationlist : [String] = []
+//
+//        //         var locationlist : [String] = []
+//        var lat : [Double] = []
+//        var long : [Double] = []
 
 
 
