@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "3E229D18226B73E100F87E17"
+               BlueprintIdentifier = "3EFE2D57226CE0B600F93243"
                BuildableName = "FindUTests.xctest"
                BlueprintName = "FindUTests"
                ReferencedContainer = "container:FindU.xcodeproj">
@@ -74,7 +74,7 @@
       <AdditionalOptions>
       </AdditionalOptions>
       <LocationScenarioReference
-         identifier = "../../../../COMP228/sWift/Comp228Assignment2/AshtonBuilding.gpx"
+         identifier = "../../../COMP228/sWift/Comp228Assignment2/AshtonBuilding.gpx"
          referenceType = "0">
       </LocationScenarioReference>
    </LaunchAction>

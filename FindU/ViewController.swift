@@ -26,7 +26,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         mysqlConnect.configureMySQL()
 
         if loadCount == 0 {
@@ -38,9 +38,11 @@ class ViewController: UIViewController {
             }
             
             mysqlConnect.sync()
-            if mysqlConnect.checkUpdateStatus(table: "User").0 == false && mysqlConnect.boolSigned == true{
+            if mysqlConnect.checkUpdateStatus(table: "user").0 == false && mysqlConnect.boolSigned == true{
                 mysqlConnect.updateUserInfo()
             }
+            
+            loadCount += 1
         }
         
     }

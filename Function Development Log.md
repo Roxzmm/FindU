@@ -115,3 +115,10 @@
 
 1. finsh sign in and register. 
 2. (To do): consider http request to reconstruct connection
+
+---
+
+### \# 2019/4/26
+
+1. fix register and sign in
+2. provide fetch for map
