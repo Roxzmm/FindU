@@ -17,6 +17,8 @@
 		3EDAF10F226FC61B00BC3032 /* UserExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EDAF10E226FC61B00BC3032 /* UserExtension.swift */; };
 		3EE539B9226CD53F00181BBB /* DatabaseConnectUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EE539B8226CD53F00181BBB /* DatabaseConnectUtil.swift */; };
 		3EFE2D5B226CE0B600F93243 /* FindUTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFE2D5A226CE0B600F93243 /* FindUTests.swift */; };
+		610081D02274DE8600D4C1DD /* CreatEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610081CF2274DE8600D4C1DD /* CreatEventViewController.swift */; };
+		610081D22274E00300D4C1DD /* UserInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610081D12274E00300D4C1DD /* UserInformationViewController.swift */; };
 		6145D3C62271F58B00FE413D /* RegisterSuccessfullyorFailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6145D3C52271F58B00FE413D /* RegisterSuccessfullyorFailedViewController.swift */; };
 		61559BD7224D0998008F77AF /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61559BD6224D0998008F77AF /* RegisterViewController.swift */; };
 		61559BD9224D1115008F77AF /* register.png in Resources */ = {isa = PBXBuildFile; fileRef = 61559BD8224D1115008F77AF /* register.png */; };
@@ -68,6 +70,8 @@
 		3EFE2D5A226CE0B600F93243 /* FindUTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FindUTests.swift; sourceTree = "<group>"; };
 		3EFE2D5C226CE0B600F93243 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5CF9F5E0E75C730968884829 /* Pods_FindUTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindUTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		610081CF2274DE8600D4C1DD /* CreatEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatEventViewController.swift; sourceTree = "<group>"; };
+		610081D12274E00300D4C1DD /* UserInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationViewController.swift; sourceTree = "<group>"; };
 		6145D3C52271F58B00FE413D /* RegisterSuccessfullyorFailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterSuccessfullyorFailedViewController.swift; sourceTree = "<group>"; };
 		61559BD6224D0998008F77AF /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		61559BD8224D1115008F77AF /* register.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = register.png; sourceTree = "<group>"; };
@@ -176,7 +180,9 @@
 				61559BD6224D0998008F77AF /* RegisterViewController.swift */,
 				6145D3C52271F58B00FE413D /* RegisterSuccessfullyorFailedViewController.swift */,
 				6159343C224BF8B600E5E7FB /* EventViewController.swift */,
+				610081D12274E00300D4C1DD /* UserInformationViewController.swift */,
 				3E4977222273CF1A006A15AB /* EventDetailViewController.swift */,
+				610081CF2274DE8600D4C1DD /* CreatEventViewController.swift */,
 				3E4977242273CF1D006A15AB /* JoinInViewController.swift */,
 				6158ED02224A694B00818A1C /* Main.storyboard */,
 				6158ED08224A695000818A1C /* Assets.xcassets */,
@@ -415,10 +421,12 @@
 			files = (
 				6145D3C62271F58B00FE413D /* RegisterSuccessfullyorFailedViewController.swift in Sources */,
 				61593437224BF43400E5E7FB /* SignInViewController.swift in Sources */,
+				610081D22274E00300D4C1DD /* UserInformationViewController.swift in Sources */,
 				3EDAF10A226F72C400BC3032 /* InputHandlerUtil.swift in Sources */,
 				3E4977232273CF1A006A15AB /* EventDetailViewController.swift in Sources */,
 				6158ED01224A694B00818A1C /* ViewController.swift in Sources */,
 				3E4977252273CF1D006A15AB /* JoinInViewController.swift in Sources */,
+				610081D02274DE8600D4C1DD /* CreatEventViewController.swift in Sources */,
 				61559BD7224D0998008F77AF /* RegisterViewController.swift in Sources */,
 				6159343B224BF89A00E5E7FB /* SearchFacilityViewController.swift in Sources */,
 				6158ED07224A694B00818A1C /* FindU.xcdatamodeld in Sources */,
