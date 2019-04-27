@@ -16,17 +16,29 @@ class InputHandlerUtil: NSObject {
      */
     
     // Convert location to longitude and latitude
-//    func convertLocation(_ location: String) ->CLLocation{
-//        var newLocation: CLLocation = CLLocation.init()
-//        
-//        let locations = location.components(separatedBy: ", ")
-//        var longitutde = locations[0]
-//        var latitude = locations[1]
-//        if
-//        
-//        print(newLocation)
-//        return newLocation
-//    }
+    func convertLocation(_ location: String) -> String{
+        var newLocation = ""
+        
+        var positions = location.components(separatedBy: ", ")
+        for index in 0..<positions.count {
+            while positions[index].contains("°") {
+                positions[index] = positions[index].replacingOccurrences(of: "°", with: ".")
+            }
+            while positions[index].contains("\'") {
+                positions[index] = positions[index].replacingOccurrences(of: "\'", with: "")
+            }
+            while positions[index].contains("\"") {
+                positions[index] = positions[index].replacingOccurrences(of: "\"", with: "")
+            }
+            if positions[index].last == "S" || positions[index].last == "W" {
+                positions[index] = "-" + positions[index]
+            }
+            positions[index].removeLast(1)
+        }
+        newLocation = positions[0] + ", " + positions[1]
+        
+        return newLocation
+    }
     
     // recognize userId or userEmail
     func checkIdentityType(_ identityInfo: String) -> String{

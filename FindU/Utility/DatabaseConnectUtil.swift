@@ -549,6 +549,24 @@ class DatabaseConnectUtil: NSObject {
     }
     
     // func to fetch local markers
+    func fetchBuildings() -> [Building]{
+        var buildings: [Building] = []
+        
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Building")
+        
+        do {
+            fetchRequest.sortDescriptors = [NSSortDescriptor.init(key: "buldingID", ascending: true)]
+            buildings = try coredataContext?.fetch(fetchRequest) as! [Building]
+//            for building in buildings {
+//                print(marker.location!)
+//            }
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        return buildings
+    }
+    
+    // func to fetch local markers
     func fetchMarkers() -> [Marker]{
         var markers: [Marker] = []
         
@@ -557,9 +575,9 @@ class DatabaseConnectUtil: NSObject {
         do {
             fetchRequest.sortDescriptors = [NSSortDescriptor.init(key: "location", ascending: true)]
             markers = try coredataContext?.fetch(fetchRequest) as! [Marker]
-                        for marker in markers{
-                            print(marker.location!)
-                        }
+//                        for marker in markers{
+//                            print(marker.location!)
+//                        }
         } catch let error as NSError {
             print("Could not fetch. \(error), \(error.userInfo)")
         }
@@ -691,6 +709,52 @@ class DatabaseConnectUtil: NSObject {
                     let nserror = error as NSError
                     fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
                 }
+            }
+        }
+    }
+    
+    //MARK: func to upload data to mysql (be careful)!!!
+    
+    func deleteMySQLRecord(_ table: String, _ condition: String?) {
+        if checkConnection() == true {
+            let query = OHMySQLQueryRequestFactory.delete(table, condition: condition)
+            try? context.execute(query)
+        }
+    }
+    
+    func addRecordToMySQL(_ table: String, _ attribute: [String: Any?]) {
+        if checkConnection() == true {
+            let query = OHMySQLQueryRequestFactory.insert(table, set: attribute as [String : Any])
+            try? context.execute(query)
+        }
+    }
+    
+    // for saving database
+    // comment this function after using
+    func updateMySQLBuilding() {
+        deleteMySQLRecord("building", nil)
+        let inputHandler = InputHandlerUtil()
+        
+        let buildings = fetchBuildings()
+        if checkConnection() == true {
+            for building in buildings{
+                let id = (building.buldingID! as String?)!
+                let name = (building.name as String?)!
+                //            var position = ""
+                //            if marker.location?.count != 0 {
+                //                position = (marker.location as String?)!
+                //            }
+                let position = (building.position as String?)!
+                var temp = ""
+                if position.count != 0 {
+                    temp = inputHandler.convertLocation(position)
+                }
+                let attribute = ["buildingNo": id, "position": temp, "buildingName": name]
+                print(attribute)
+                
+                let query = OHMySQLQueryRequestFactory.insert("building", set: attribute)
+                try? context.execute(query)
+                
             }
         }
     }

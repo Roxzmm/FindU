@@ -73,53 +73,55 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
         markers = mysqldatabaseUtil.fetchMarkers()
         for i in 0...markers.count-1{
             let location = markers[i].location
-            let location1 = location!.replacingOccurrences(of: "°", with: ".")
-            let location2 = location1.replacingOccurrences(of: "\'", with: "")
-            let location3 = location2.replacingOccurrences(of: "\"N", with: "")
-            let location4 = location3.replacingOccurrences(of: "\"W", with: "")
-            let location5 = location4.replacingOccurrences(of: " ", with: "")
-            let location6 : [String] = location5.components(separatedBy: ",")
+//            let location1 = location!.replacingOccurrences(of: "°", with: ".")
+//            let location2 = location1.replacingOccurrences(of: "\'", with: "")
+//            let location3 = location2.replacingOccurrences(of: "\"N", with: "")
+//            let location4 = location3.replacingOccurrences(of: "\"W", with: "")
+//            let location5 = location4.replacingOccurrences(of: " ", with: "")
+//            let location6 : [String] = location5.components(separatedBy: ", ")
             
-            print(location)
-            print(location6)
-            
-//            let lat = location5[0]
-//            let latitude = Double(lat)
-//            let lon = location5[1]
-//            let longitude = Double(lon)
-//
-//            //                let a = latitude!
-//            //                let b
-//            let coordinate = CLLocationCoordinate2D(latitude: latitude!, longitude: -longitude!)
-//            let annotation = MKPointAnnotation()
-//            annotation.coordinate = coordinate
-//            annotation.title = markers[i].buildingName //显示什么？
-//            self.map.addAnnotation(annotation)
-            
+//            print(location)
+//            print(location6)
+            if location?.count != 0{
+                let location5 = location!.components(separatedBy: ", ")
+                
+                let lat = location5[0]
+                let latitude = Double(lat)
+                let lon = location5[1]
+                let longitude = Double(lon)
+                
+                //                let a = latitude!
+                //                let b
+                let coordinate = CLLocationCoordinate2D(latitude: latitude!, longitude: -longitude!)
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = coordinate
+                annotation.title = markers[i].buildingName //显示什么？
+                self.map.addAnnotation(annotation)
+            }
             
 //                            let a = latitude!
-//                            let b
+//                            let b = longitude!
 //            let coordinate = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
 //            let annotation = MKPointAnnotation()
 //            annotation.coordinate = coordinate
 //            annotation.title = markers[i].location //显示什么？
 //            self.map.addAnnotation(annotation)
-//
-//        }
-//
-//
-//        var locationlist : [String] = []
-//        //            var locationNoteList: [String] = []
-//        var distance : [Double] = []
-//        var locationAndDistance: [String : Double] = [String : Double]()
-//        var finalLocationlist : [String] = []
-//
-//        //         var locationlist : [String] = []
-//        var lat : [Double] = []
-//        var long : [Double] = []
-//
-//
-//
+
+        }
+
+
+        var locationlist : [String] = []
+        //            var locationNoteList: [String] = []
+        var distance : [Double] = []
+        var locationAndDistance: [String : Double] = [String : Double]()
+        var finalLocationlist : [String] = []
+
+        //         var locationlist : [String] = []
+        var lat : [Double] = []
+        var long : [Double] = []
+
+
+
 //        var howManyArtWorksInLocation : [Int] = []
 //        var startlocation = markers[0].location!
 //        //            var startlocationNote = markers[0].locationNotes!
@@ -185,15 +187,15 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
 //                }
 //            }
 //            self.sectionByLocation[finalLocationlist[i]] = eachLocation
-        }
-        //        for i in 0...finalLocationlist.count-1{
-        //            print(finalLocationlist[i])
-        //        }
-        //        print(result4)
-        //        for a in locationlist{
-        //            distance = userLoc.distance(from: a)
-        //                    }
-        
+//        }
+//        for i in 0...finalLocationlist.count-1{
+//            print(finalLocationlist[i])
+//        }
+//        print(result4)
+//        for a in locationlist{
+//            distance = userLoc.distance(from: a)
+//        }
+//
     }
     
     private func mapView(mapView:MKMapView, didSelectAnnotationView view:MKAnnotationView){
