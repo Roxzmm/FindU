@@ -18,24 +18,36 @@ class InputHandlerUtil: NSObject {
     // Convert location to longitude and latitude
     func convertLocation(_ location: String) -> String{
         var newLocation = ""
+        var tempDouble: Double
         
         var positions = location.components(separatedBy: ", ")
+        var degree: Double
+        var minute: Double
+        var second: Double
+        
         for index in 0..<positions.count {
-            while positions[index].contains("°") {
-                positions[index] = positions[index].replacingOccurrences(of: "°", with: ".")
-            }
-            while positions[index].contains("\'") {
-                positions[index] = positions[index].replacingOccurrences(of: "\'", with: "")
-            }
-            while positions[index].contains("\"") {
-                positions[index] = positions[index].replacingOccurrences(of: "\"", with: "")
-            }
-            if positions[index].last == "S" || positions[index].last == "W" {
+            let tempdegree = positions[index].components(separatedBy: "°")
+            degree = (Double(tempdegree.first!))!
+            
+            let tempminute = tempdegree.last!.components(separatedBy: "\'")
+            minute = (Double(tempminute.first!))!
+            
+            let tempsecond = tempminute.last!.components(separatedBy: "\"")
+            second = (Double(tempsecond.first!))!
+            
+            minute = minute / 60.0
+//            print("minute/60: \(minute)")
+            second = second / 3600.0
+//            print("second/3600: \(second)")
+            tempDouble = degree + minute + second
+            positions[index] = String(tempDouble)
+
+            if tempsecond.last == "S" || tempsecond.last == "W" {
                 positions[index] = "-" + positions[index]
             }
-            positions[index].removeLast(1)
         }
-        newLocation = positions[0] + ", " + positions[1]
+        newLocation = positions.first! + ", " + positions.last!
+//        print(newLocation)
         
         return newLocation
     }

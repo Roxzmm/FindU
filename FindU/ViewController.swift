@@ -36,12 +36,12 @@ class ViewController: UIViewController {
             if let localUser = mysqlConnect.retrieveLocalUser() {
                 mysqlConnect.signIn("userEmail", localUser.email, localUser.password, true)
             }
-            
+
             mysqlConnect.sync()
             if mysqlConnect.checkUpdateStatus(table: "user").0 == false && mysqlConnect.boolSigned == true{
                 mysqlConnect.updateUserInfo()
             }
-            
+
             loadCount += 1
         }
         
@@ -147,11 +147,6 @@ class ViewController: UIViewController {
             //TO DO: finish UI: User Information Management
               performSegue(withIdentifier: "ToUserInformation", sender: self)
             // Just for testing, delete this after finishing UI
-            let alertController = UIAlertController(title: "Sorry", message:
-                "You have signed in, but now we don't have UI for userInfo management.", preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "Done", style: .default))
-            
-            self.present(alertController, animated: true, completion: nil)
         }
             
     }

@@ -886,31 +886,52 @@ class DatabaseConnectUtil: NSObject {
     
     // for saving database
     // comment this function after using
-    func updateMySQLBuilding() {
-        deleteMySQLRecord("building", nil)
-        let inputHandler = InputHandlerUtil()
-        
-        let buildings = fetchBuildings()
-        if checkConnection() == true {
-            for building in buildings{
-                let id = (building.buldingID! as String?)!
-                let name = (building.name as String?)!
-                //            var position = ""
-                //            if marker.location?.count != 0 {
-                //                position = (marker.location as String?)!
-                //            }
-                let position = (building.position as String?)!
-                var temp = ""
-                if position.count != 0 {
-                    temp = inputHandler.convertLocation(position)
-                }
-                let attribute = ["buildingNo": id, "position": temp, "buildingName": name]
-                print(attribute)
-                
-                let query = OHMySQLQueryRequestFactory.insert("building", set: attribute)
-                try? context.execute(query)
-                
-            }
-        }
-    }
+//    func updateMySQLBuilding() {
+//        deleteMySQLRecord("building", nil)
+//        deleteMySQLRecord("marker", nil)
+//        let inputHandler = InputHandlerUtil()
+//
+//        let buildings = fetchBuildings()
+//        let markers = fetchMarkers()
+//        if checkConnection() == true {
+//            for building in buildings{
+//                let id = (building.buldingID! as String?)!
+//                let name = (building.name as String?)!
+//                //            var position = ""
+//                //            if marker.location?.count != 0 {
+//                //                position = (marker.location as String?)!
+//                //            }
+//                let position = (building.position as String?)!
+//                var temp = ""
+//                if position.count != 0 {
+//                    temp = inputHandler.convertLocation(position)
+//                }
+//                let attribute = ["buildingNo": id, "position": temp, "buildingName": name]
+//                print(attribute)
+//
+//                let query = OHMySQLQueryRequestFactory.insert("building", set: attribute)
+//                try? context.execute(query)
+//
+//            }
+//
+//            for marker in markers{
+//                let id = (marker.markerID! as String?)!
+//                let name = (marker.buildingName as String?)!
+//                //            var position = ""
+//                //            if marker.location?.count != 0 {
+//                //                position = (marker.location as String?)!
+//                //            }
+//                let position = (marker.location as String?)!
+//                var temp = ""
+//                if position.count != 0 {
+//                    temp = inputHandler.convertLocation(position)
+//                }
+//                let attribute = ["markerNo": id, "location": temp, "buildingName": name]
+//                print(attribute)
+//
+//                let query = OHMySQLQueryRequestFactory.insert("marker", set: attribute)
+//                try? context.execute(query)
+//            }
+//        }
+//    }
 }

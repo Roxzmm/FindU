@@ -24,7 +24,7 @@ class FindUTests: XCTestCase {
 //    }
 
 //    func testConvertLocation() {
-//        XCTAssertNotNil(inputHandler.convertLocation("53°24'11\"N, 2°58'2\"W"))
+//        XCTAssertNotNil(inputHandler.convertLocation("53°24'10\"N, 2°57'58\"W"))
 //    }
 
 //    func testLocation() {
