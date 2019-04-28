@@ -14,6 +14,10 @@ class FindUTests: XCTestCase {
     let inputHandler = InputHandlerUtil()
     let mysqlConnect = DatabaseConnectUtil()
     
+//    func testSaveImage() {
+//        XCTAssert(mysqlConnect.uploadImage(UIImage(named: "event.png")!, filename: "event.png"))
+//    }
+    
     // never uncomment this test
 //    func testuploadDataToMysql() {
 //        XCTAssertNotNil(mysqlConnect.updateMySQLBuilding())

@@ -885,8 +885,6 @@ class DatabaseConnectUtil: NSObject {
             print("context can't save!, Error:\(error)")
         }
     }
-
-    
     
     //MARK: func to upload data to mysql (be careful)!!!
     
