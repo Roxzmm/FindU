@@ -13,6 +13,12 @@ class FindUTests: XCTestCase {
     
     let inputHandler = InputHandlerUtil()
     let mysqlConnect = DatabaseConnectUtil()
+    let imageHelper = AppImageHelper()
+    
+    func testImageHelper() {
+        XCTAssertNotNil(imageHelper.compressImageSize(image: "logo.png"))
+    }
+    
     
 //    func testSaveImage() {
 //        XCTAssert(mysqlConnect.uploadImage(UIImage(named: "event.png")!, filename: "event.png"))
