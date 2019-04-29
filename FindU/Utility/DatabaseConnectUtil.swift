@@ -226,27 +226,29 @@ class DatabaseConnectUtil: NSObject {
         var isUpdated = true
         var responseDate: Date?
         
-        //query last update time of specific table
-        let query = OHMySQLQueryRequestFactory.select("information_schema.tables", condition: "TABLE_SCHEMA = \"userDatabase\" and TABLE_NAME = \"" + table.lowercased() + "\"", orderBy: ["UPDATE_TIME"], ascending: false)
-        if let response = try? context.executeQueryRequestAndFetchResult(query) {
-//            print(response)
-
-            let dateFormatter = DateFormatter()
-            dateFormatter.timeZone = TimeZone(abbreviation: "GMT+0:00")
-            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-            
-
-            if let stringDate = response[0]["UPDATE_TIME"] as? String {
-                responseDate = dateFormatter.date(from: stringDate)
-            }else {
-                responseDate = Date.distantPast
-            }
-            print(responseDate!)
-            let retrieveDate = retrieveLastUpdateTime(tableName: table)
-            print(retrieveDate)
-            
-            if responseDate != retrieveDate {
-                isUpdated = false
+        if checkConnection() == true {
+            //query last update time of specific table
+            let query = OHMySQLQueryRequestFactory.select("information_schema.tables", condition: "TABLE_SCHEMA = \"userDatabase\" and TABLE_NAME = \"" + table.lowercased() + "\"", orderBy: ["UPDATE_TIME"], ascending: false)
+            if let response = try? context.executeQueryRequestAndFetchResult(query) {
+                //            print(response)
+                
+                let dateFormatter = DateFormatter()
+                dateFormatter.timeZone = TimeZone(abbreviation: "GMT+0:00")
+                dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+                
+                
+                if let stringDate = response[0]["UPDATE_TIME"] as? String {
+                    responseDate = dateFormatter.date(from: stringDate)
+                }else {
+                    responseDate = Date.distantPast
+                }
+                print(responseDate!)
+                let retrieveDate = retrieveLastUpdateTime(tableName: table)
+                print(retrieveDate)
+                
+                if responseDate != retrieveDate {
+                    isUpdated = false
+                }
             }
         }
 
@@ -536,7 +538,7 @@ class DatabaseConnectUtil: NSObject {
             for data in result as! [NSManagedObject] {
 //                entity = EntityExtension(attributeType)
 
-                var attributeResult = data.value(forKey: attributeType) as? String
+                let attributeResult = data.value(forKey: attributeType) as? String
                 if attributeResult == input {
                     records.append(data)
                 }
@@ -584,7 +586,25 @@ class DatabaseConnectUtil: NSObject {
         return markers
     }
     
-    // func to fetch local markers
+    // func to fetch local facilities
+    func fetchFacilities() -> [Facility]{
+        var facilities: [Facility] = []
+        
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Facility")
+        
+        do {
+            fetchRequest.sortDescriptors = [NSSortDescriptor.init(key: "facilityNo", ascending: true)]
+            facilities = try coredataContext?.fetch(fetchRequest) as! [Facility]
+            //                        for marker in markers{
+            //                            print(marker.location!)
+            //                        }
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        return facilities
+    }
+    
+    // func to fetch local events
     func fetchEvents(_ condition: String = "date", _ ascending: Bool = false) -> [Event]{
         var events: [Event] = []
         
@@ -703,6 +723,7 @@ class DatabaseConnectUtil: NSObject {
         
     }
     
+    // update user info from mysql
     func updateUserInfo() {
         if let localUser = retrieveLocalUser() {
             
@@ -717,6 +738,11 @@ class DatabaseConnectUtil: NSObject {
                     localUser.setValue(record["userEmail"], forKey: "email")
                     localUser.setValue(record["password"], forKey: "password")
                     localUser.setValue(record["userScore"], forKey: "credit")
+                    
+                    if let photoData = record["userPhoto"] as? Data? {
+                        print("userPhoto is up to date")
+                        localUser.setValue(photoData, forKey: "userPhoto")
+                    }
                 }
                 
                 do {
@@ -725,6 +751,24 @@ class DatabaseConnectUtil: NSObject {
                     let nserror = error as NSError
                     fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
                 }
+            }
+        }
+    }
+    
+    // upload user photo to mysql
+    func uploadUserPhoto(_ image: UIImage) {
+        if checkConnection() == true {
+            if let localUser = retrieveLocalUser() {
+                
+                let imageHelper = AppImageHelper()
+                
+                let id = localUser.userID!
+//                let photoData = image.pngData()
+                let compressedData = imageHelper.compressImageSize(image: image)
+                
+                localUser.userPhoto = compressedData
+                let query = OHMySQLQueryRequestFactory.update("user", set: ["userPhoto": compressedData], condition: "userNo = \(id)")
+                try? context.execute(query)
             }
         }
     }
