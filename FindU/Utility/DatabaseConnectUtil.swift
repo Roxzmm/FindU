@@ -584,6 +584,23 @@ class DatabaseConnectUtil: NSObject {
         return markers
     }
     
+//    func fetchFacility() -> [Facility]{
+//        var facility: [Facility] = []
+//        
+//        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Facility")
+//        
+//        do {
+//            fetchRequest.sortDescriptors = [NSSortDescriptor.init(key: "facilityNo", ascending: true)]
+//             facility = try coredataContext?.fetch(fetchRequest) as! [Facility]
+//            //                        for marker in markers{
+//            //                            print(marker.location!)
+//            //                        }
+//        } catch let error as NSError {
+//            print("Could not fetch. \(error), \(error.userInfo)")
+//        }
+//        return facility
+//    }
+    
     func retrieveLocalUser() -> User? {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")
         

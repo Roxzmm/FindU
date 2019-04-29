@@ -17,9 +17,12 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
    
     var startPosition = [String]()
     var markers: [Marker] = []
+    
     let mysqldatabaseUtil = DatabaseConnectUtil()
     var result = [String]()
     var searching = false
+    
+    var facilityName:[String] = ["Common Room","Drinking Machine","Hot Water","Meeting Room","Men's Room","Microwave","PC Room","Printer","Water Dispenser"]
     
     
     @IBOutlet weak var map: MKMapView!
@@ -28,6 +31,7 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
    
     @IBOutlet weak var FacilitySB: UISearchBar!
     
+    @IBOutlet weak var FacilityTableView: UITableView!
     
     @IBOutlet weak var startPositionView: UITableView!
     
@@ -42,7 +46,14 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
    
     
     override func viewWillAppear(_ animated: Bool) {
+        
+        StartPositionSB.barTintColor = .gray
+        StartPositionSB.searchBarStyle = .minimal
+        
+        FacilitySB.barTintColor = .gray
+        FacilitySB.searchBarStyle = .minimal
         markers = mysqldatabaseUtil.fetchMarkers()
+//        Facility = mysqldatabaseUtil.fetchFacility()
         
         
         for BuildName in self.markers{
@@ -54,7 +65,7 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
         super.viewDidLoad()
         
                 startPositionView.isHidden = true
-//        FacilityTableView.isHidden = true
+                FacilityTableView.isHidden = true
        
         //还需要facility的所有名字
         
@@ -84,70 +95,7 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
     
    
     
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return self.startPosition.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let identify: String = "TableCell"
-//
-//        let cell = tableView.dequeueReusableCell(withIdentifier: identify, for: indexPath) as UITableViewCell
-//        cell.accessoryType = UITableViewCell.AccessoryType.disclosureIndicator
-//        cell.textLabel?.text = self.startPosition[indexPath.row]
-//
-//        return cell
-//    }
-    
-//    private func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-//        StartPositionTableView.isHidden = false
-//        print("[ViewController searchBar] searchText: \(searchText)")
-//
-//        // 没有搜索内容时显示全部内容
-//        if searchText == "" {
-//            for i in 2...markers.count-1{
-//                self.startPosition[i] = self.markers[i].buildingName!
-//            }
-//        } else {
-//
-//            // 匹配用户输入的前缀，不区分大小写
-//            self.startPosition = []
-//
-//            for arr in self.result {
-//
-//                //                let string = "hello Swift"
-//                //                if string.contains("Swift") {
-//                //                    print("exists")
-//                //                }
-//                if arr.contains(searchText){
-//                    self.startPosition.append(arr)
-//                }
-//                self.StartPositionTableView.reloadData()
-//            }
-//        }
-//
-//
-//    }
-//
-//    // 搜索触发事件，点击虚拟键盘上的search按钮时触发此方法
-//    private func searchBarSearchButtonClicked(searchBar: UISearchBar) {
-//
-//        searchBar.resignFirstResponder()
-//    }
-//
-//    // 书签按钮触发事件
-//    private func searchBarBookmarkButtonClicked(searchBar: UISearchBar) {
-//
-//        print("搜索历史")
-//    }
-//
-//    // 取消按钮触发事件
-//    private func searchBarCancelButtonClicked(searchBar: UISearchBar) {
-//        // 搜索内容置空
-//        StartPositionTableView.isHidden = true
-//        searchBar.text = ""
-//        self.startPosition = self.result
-//        self.StartPositionTableView.reloadData()
-//    }
+
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
@@ -300,37 +248,102 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
         
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        var count = 0
+        if tableView == startPositionView{
         if searching{
-            return result.count
+           count  = result.count
         }else{
-        return startPosition.count
+            count = startPosition.count
         }
+        }
+        
+        if tableView == FacilityTableView{
+            if searching{
+                count = result.count
+            }
+            else{
+                count = facilityName.count
+            }
+        }
+        return count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell")
+        if tableView == startPositionView{
         if searching{
             cell?.textLabel?.text = result[indexPath.row]
+            
         }else{
             cell?.textLabel?.text = startPosition[indexPath.row]
         }
-      
+        }
         
+        else if tableView == FacilityTableView{
+           if searching{
+           cell?.textLabel?.text = result[indexPath.row]
+        
+        }else{
+             cell?.textLabel?.text = facilityName[indexPath.row]
+        }
+        }
         return cell!
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         result = []
-        result = startPosition.filter({$0.prefix(searchText.count) == searchText})
+        if searchBar == StartPositionSB{
+        result = startPosition.filter({$0.lowercased().prefix(searchText.count) == searchText.lowercased()})
         searching = true
         startPositionView.isHidden = false
         startPositionView.reloadData()
+        }
+        
+        if searchBar == FacilitySB{
+            result = facilityName.filter({$0.lowercased().prefix(searchText.count) == searchText.lowercased()})
+        searching = true
+        FacilityTableView.isHidden = false
+        FacilityTableView.reloadData()
+        }
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searching = false
         startPositionView.isHidden = true
+        FacilityTableView.isHidden = true
         searchBar.text = ""
         startPositionView.reloadData()
+        FacilityTableView.reloadData()
     }
+    
+    
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searching = false
+        startPositionView.isHidden = true
+        FacilityTableView.isHidden = true
+        startPositionView.reloadData()
+        FacilityTableView.reloadData()
+        
+    }
+    
+  
+    
+    
+    var a = ""
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+
+        tableView.deselectRow(at: indexPath, animated: true)
+
+          if tableView == startPositionView{
+                StartPositionSB.text = result[indexPath.row]
+            startPositionView.isHidden = true
+        }
+        
+        if tableView == FacilityTableView{
+                FacilitySB.text =   result[indexPath.row]
+            FacilityTableView.isHidden = true
+    }
+
+        }
+   
     
 }
 
