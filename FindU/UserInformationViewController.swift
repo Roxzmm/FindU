@@ -12,7 +12,6 @@ class UserInformationViewController: UIViewController {
     @IBOutlet weak var UserInforTitle: UILabel!
     @IBOutlet weak var UserPhoto: UIImageView!
     @IBOutlet weak var addPhotoBtn: UIImageView!
-    @IBOutlet weak var signOutBtn: UIButton!
     
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var id: UILabel!
@@ -55,7 +54,11 @@ class UserInformationViewController: UIViewController {
         let addUserPhoto = UITapGestureRecognizer(target: self, action: #selector(addPhoto(tapGestureRecognizer:)))
         addPhotoBtn.isUserInteractionEnabled = true
         addPhotoBtn.addGestureRecognizer(addUserPhoto)
-        
+        if let photoData = user?.userPhoto {
+            let photo = UIImage(data: photoData)
+            print(photoData)
+            self.UserPhoto.image = photo
+        }
     }
     
     @objc func addPhoto(tapGestureRecognizer: UITapGestureRecognizer) {
@@ -70,8 +73,8 @@ class UserInformationViewController: UIViewController {
             print(data)
             print(resizeImage.pngData())
             print(resizeData)
-            self.UserPhoto.image = UIImage(data: data)
-            self.mysqlConnect.uploadUserPhoto(resizeImage)
+//            self.UserPhoto.image = image
+            self.mysqlConnect.uploadUserPhoto(image)
             
         }
     }

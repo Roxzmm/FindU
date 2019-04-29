@@ -20,7 +20,7 @@
         <attribute name="name" optional="YES" attributeType="String" minValueString="1" maxValueString="20" syncable="YES"/>
         <attribute name="numOfParticipant" optional="YES" attributeType="Integer 32" minValueString="0" maxValueString="999" defaultValueString="1" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="place" optional="YES" attributeType="String" maxValueString="30" syncable="YES"/>
-        <attribute name="poster" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="poster" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <relationship name="beFavorite" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="wishlist" inverseEntity="User" syncable="YES"/>
         <relationship name="comment" optional="YES" toMany="YES" minCount="1" deletionRule="Nullify" ordered="YES" destinationEntity="Comment" inverseName="toEvent" inverseEntity="Comment" syncable="YES"/>
         <relationship name="host" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="createdEvent" inverseEntity="User" syncable="YES"/>
@@ -56,7 +56,7 @@
         <attribute name="name" optional="YES" attributeType="String" minValueString="1" maxValueString="10" syncable="YES"/>
         <attribute name="password" optional="YES" attributeType="String" minValueString="6" maxValueString="15" syncable="YES"/>
         <attribute name="userID" optional="YES" attributeType="String" maxValueString="8" syncable="YES"/>
-        <attribute name="userPhoto" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="userPhoto" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <relationship name="comments" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Comment" inverseName="owner" inverseEntity="Comment" syncable="YES"/>
         <relationship name="createdEvent" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Event" inverseName="host" inverseEntity="Event" syncable="YES"/>
         <relationship name="foundFacility" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Facility" inverseName="founder" inverseEntity="Facility" syncable="YES"/>

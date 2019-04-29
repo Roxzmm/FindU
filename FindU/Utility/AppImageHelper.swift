@@ -15,12 +15,9 @@ public class AppImageHelper: NSObject {
     //图片压缩 1000kb以下的图片控制在100kb-200kb之间
     func compressImageSize(image:UIImage) -> Data{
         
-        let data = image.pngData()!
-        let size = data.count/1024 as Int
         var zipImageData = image.jpegData(compressionQuality: 1.0)!
         let originalImgSize = zipImageData.count/1024 as Int  //获取图片大小
         print("Original jpg size: \(originalImgSize)")
-        print("Original png size: \(size)")
         
         if originalImgSize>1500 {
             

@@ -784,11 +784,21 @@ class DatabaseConnectUtil: NSObject {
                 
                 let id = localUser.userID!
 //                let photoData = image.pngData()
-                let compressedData = imageHelper.compressImageSize(image: image)
+                let resizeImage = imageHelper.resizeImage(originalImg: image)
+                let compressedData = imageHelper.compressImageSize(image: resizeImage)
                 
                 localUser.userPhoto = compressedData
+                print(compressedData)
+            
                 let query = OHMySQLQueryRequestFactory.update("user", set: ["userPhoto": compressedData], condition: "userNo = \(id)")
                 try? context.execute(query)
+                
+                do {
+                    try coredataContext?.save()
+                } catch {
+                    let nserror = error as NSError
+                    fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                }
             }
         }
     }
