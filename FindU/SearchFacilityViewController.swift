@@ -9,12 +9,6 @@ import UIKit
 import MapKit
 import CoreLocation
 
-<<<<<<< HEAD
-class SearchFacilityViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate {
-    @IBOutlet weak var inputStartPosition: UITextField!
-=======
-
-
 
 class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate{
     
@@ -32,8 +26,7 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
     var searching = false
     
     var facilityName:[String] = ["Common Room","Drinking Machine","Hot Water","Meeting Room","Men's Room","Microwave","PC Room","Printer","Water Dispenser"]
-    
->>>>>>> origin/newUI
+
     
     @IBOutlet weak var map: MKMapView!
     

@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "FindU/Utility/DatabaseConnectUtil.swift"
-            timestampString = "578253719.621139"
+            timestampString = "578260060.022732"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "742"
-            endingLineNumber = "742"
+            startingLineNumber = "744"
+            endingLineNumber = "744"
             landmarkName = "addBuilding(_:_:_:)"
             landmarkType = "7">
          </BreakpointContent>

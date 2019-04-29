@@ -189,22 +189,25 @@ class DatabaseConnectUtil: NSObject {
     }
     
     // Sign out and delete user data
-    func signOut() {
+    func signOut() -> Bool{
         if let localUser = retrieveLocalUser() {
             coredataContext?.delete(localUser)
             
             // set state = sign out globally
-            boolSigned = false
+            self.boolSigned = false
             
             do {
                 try coredataContext?.save()
                 print("Local user data deleted.")
+                
+                return true
 
             } catch {
                 let nserror = error as NSError
                 fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
+        return false
     }
     
     // Sync core data with mysql (download data from mysql)
@@ -622,7 +625,7 @@ class DatabaseConnectUtil: NSObject {
  
         return events
     }
-=======
+
 //    func fetchFacility() -> [Facility]{
 //        var facility: [Facility] = []
 //        
@@ -639,7 +642,6 @@ class DatabaseConnectUtil: NSObject {
 //        }
 //        return facility
 //    }
->>>>>>> origin/newUI
     
     func retrieveLocalUser() -> User? {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "User")

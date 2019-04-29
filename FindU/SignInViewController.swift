@@ -22,10 +22,6 @@ class SignInViewController: UIViewController {
     
     let databaseUtil = DatabaseConnectUtil()
     
-//    @IBAction func register(_ sender: Any) {
-////        performSegue(withIdentifier: "ToRegister", sender: self)
-//    }
-    
     func signIn() -> Bool{
         var boolSigned = false
         
@@ -39,7 +35,6 @@ class SignInViewController: UIViewController {
             
             let signStatus = databaseUtil.signIn(identityType, identityInfo, passwordInfo, false)
             if  signStatus.0 == true {
-//                performSegue(withIdentifier: "SignInBacktoMenu", sender: self)
                 boolSigned = true
                 
             }else {
@@ -53,34 +48,33 @@ class SignInViewController: UIViewController {
         return boolSigned
     }
     
-    @IBAction func signIn(_ sender: Any) {
-  
-        let inputHandler = InputHandlerUtil()
-        
-        let identityInfo = UserIDText.text!
-        let passwordInfo = PasswordText.text!
-        
-        if identityInfo.count > 0 && passwordInfo.count > 0 {
-            let identityType = inputHandler.checkIdentityType(identityInfo)
-            
-            let signStatus = databaseUtil.signIn(identityType, identityInfo, passwordInfo, false)
-            if  signStatus.0 == true {
-                let alertController = UIAlertController(title: "Congratulation!", message:
-                    signStatus.identity, preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: "Continue", style: .default))
-                
-                self.present(alertController, animated: true, completion: nil)
-//                performSegue(withIdentifier: "SignInBacktoMenu", sender: self)
-                
-            }else {
-                let alertController = UIAlertController(title: "Sorry!", message:
-                    signStatus.identity, preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: "Understand", style: .default))
-                
-                self.present(alertController, animated: true, completion: nil)
-            }
-        }
-    }
+//    @IBAction func signIn(_ sender: Any) {
+//
+//        let inputHandler = InputHandlerUtil()
+//
+//        let identityInfo = UserIDText.text!
+//        let passwordInfo = PasswordText.text!
+//
+//        if identityInfo.count > 0 && passwordInfo.count > 0 {
+//            let identityType = inputHandler.checkIdentityType(identityInfo)
+//
+//            let signStatus = databaseUtil.signIn(identityType, identityInfo, passwordInfo, false)
+//            if  signStatus.0 == true {
+//                let alertController = UIAlertController(title: "Congratulation!", message:
+//                    signStatus.identity, preferredStyle: .alert)
+//                alertController.addAction(UIAlertAction(title: "Continue", style: .default))
+//
+//                self.present(alertController, animated: true, completion: nil)
+//
+//            }else {
+//                let alertController = UIAlertController(title: "Sorry!", message:
+//                    signStatus.identity, preferredStyle: .alert)
+//                alertController.addAction(UIAlertAction(title: "Understand", style: .default))
+//
+//                self.present(alertController, animated: true, completion: nil)
+//            }
+//        }
+//    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -112,9 +106,6 @@ class SignInViewController: UIViewController {
             self.SignIntitle.center = signIntitleCenter
         },completion: { finished in
             UIView.animate(withDuration: 1){
-                
-               
-                
                 
             }
             print("SignIn page finished")

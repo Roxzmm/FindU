@@ -12,6 +12,7 @@ class UserInformationViewController: UIViewController {
     @IBOutlet weak var UserInforTitle: UILabel!
     @IBOutlet weak var UserPhoto: UIImageView!
     @IBOutlet weak var addPhotoBtn: UIImageView!
+    @IBOutlet weak var signOutBtn: UIButton!
     
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var id: UILabel!
@@ -70,19 +71,24 @@ class UserInformationViewController: UIViewController {
             print(resizeImage.pngData())
             print(resizeData)
             self.UserPhoto.image = UIImage(data: data)
-            self.mysqlConnect.uploadUserPhoto(image)
+            self.mysqlConnect.uploadUserPhoto(resizeImage)
             
         }
     }
     
-    /*
     // MARK: - Navigation
-
+    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
+        if identifier == "SignOutBackToMenu" {
+            return mysqlConnect.signOut()
+        }else {
+            return false
+        }
+    }
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
 
 }

@@ -73,54 +73,6 @@ class RegisterViewController: UIViewController {
     }
     
     
-//    @IBAction func create(_ sender: Any) {
-//
-//        let inputHandler = InputHandlerUtil()
-//
-//        // Store new user info and upload to mysql
-//        let username = userNameInput.text!
-//        let email = emailInput.text!
-//        let password = passwordInput.text!
-//
-//        let checkName = inputHandler.checkUserName(username)
-//        let checkEmail = inputHandler.checkEmail(email)
-//        let checkPassword = inputHandler.checkPassword(password)
-//
-//        if checkName == true && checkEmail == true && checkPassword == true {
-//            response = databaseUtil.createNewUser(username, email, password)
-//            if response.0 == true {
-//
-////                performSegue(withIdentifier: "detailregister", sender: self)
-//                // do sth to tell the user that he created successfully
-//
-//            }else {
-//                // back to main menu or recreate
-//                // need a new back navigator
-//                let alertController = UIAlertController(title: "Sorry", message:
-//                    response.1, preferredStyle: .alert)
-//                alertController.addAction(UIAlertAction(title: "Done", style: .default))
-//
-//                self.present(alertController, animated: true, completion: nil)
-//                emailInput.text = ""
-//                passwordInput.text = ""
-//                userNameInput.text = ""
-//            }
-//        }
-//
-//        if checkName == false {
-//            userNameInput.text = ""
-//            userNameInput.attributedPlaceholder = NSAttributedString(string: "Please do not input more than 10 chars.", attributes:[NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17)])
-//        }
-//        if checkEmail == false {
-//            emailInput.text = ""
-//            emailInput.attributedPlaceholder = NSAttributedString(string: "Please input correct email address.", attributes:[NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17)])
-//        }
-//        if checkPassword == false {
-//            passwordInput.text = ""
-//            passwordNotice.isHighlighted = true
-//        }
-//    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -147,10 +99,7 @@ class RegisterViewController: UIViewController {
             self.registerTitle.center = registerCenter
         },completion: { finished in
             UIView.animate(withDuration: 1){
-                
-                
-                
-                
+
             }
             print("SignIn page finished")
         })

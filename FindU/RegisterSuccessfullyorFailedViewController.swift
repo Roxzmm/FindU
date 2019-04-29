@@ -17,10 +17,6 @@ class RegisterSuccessfullyorFailedViewController: UIViewController {
     var userID: String = ""
     var userName: String = ""
     
-//    @IBAction func backToMenu(_ sender: Any) {
-//         performSegue(withIdentifier: "BackTomenu", sender: self)
-//        
-//    }
     
     override func viewDidLoad() {
         helloLabel.text = "Hello \(userName)"
