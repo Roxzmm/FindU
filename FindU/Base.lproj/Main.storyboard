@@ -464,13 +464,14 @@
                                 <rect key="frame" x="0.0" y="624" width="375" height="105"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IFy-n2-9qu">
-                                <rect key="frame" x="0.0" y="729" width="375" height="49"/>
+                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DjY-Um-iO8">
+                                <rect key="frame" x="0.0" y="763" width="375" height="49"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
-                                    <tabBarItem systemItem="favorites" id="ZBX-3D-pAx"/>
-                                    <tabBarItem systemItem="more" id="cQ0-Tj-sbn"/>
+                                    <tabBarItem systemItem="favorites" id="Mgw-Jw-zZw"/>
+                                    <tabBarItem title="Item" id="Ceu-RL-K4M"/>
+                                    <tabBarItem systemItem="more" id="sDQ-px-mwz"/>
                                 </items>
                             </tabBar>
                         </subviews>
@@ -560,6 +561,16 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Create"/>
                             </button>
+                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hOH-w0-Ekj">
+                                <rect key="frame" x="0.0" y="763" width="375" height="49"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <tabBarItem systemItem="favorites" id="eiU-8N-1Dh"/>
+                                    <tabBarItem title="Item" id="Tqd-y2-par"/>
+                                    <tabBarItem systemItem="more" id="Kf9-5D-1M1"/>
+                                </items>
+                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="v4v-em-Cb1"/>
@@ -690,6 +701,16 @@
                                                     <segue destination="M9j-ZN-BcS" kind="show" identifier="ToJoinIn" id="1aR-uU-cC1"/>
                                                 </connections>
                                             </button>
+                                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cd2-aj-yA1">
+                                                <rect key="frame" x="-8" y="862" width="381" height="49"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <items>
+                                                    <tabBarItem systemItem="favorites" id="WKb-g8-35k"/>
+                                                    <tabBarItem title="Item" id="LUe-mT-nd7"/>
+                                                    <tabBarItem systemItem="more" id="M8B-hE-b2q"/>
+                                                </items>
+                                            </tabBar>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </view>
@@ -752,6 +773,16 @@
                                 <rect key="frame" x="101" y="493" width="172" height="172"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
+                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lwt-ct-YHi">
+                                <rect key="frame" x="0.0" y="763" width="375" height="49"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <tabBarItem systemItem="favorites" id="k51-kg-NZB"/>
+                                    <tabBarItem title="Item" id="jlR-OR-2eN"/>
+                                    <tabBarItem systemItem="more" id="py1-db-qyZ"/>
+                                </items>
+                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="L8t-rV-vFE"/>
@@ -844,6 +875,16 @@
                                     <outlet property="delegate" destination="wsj-UH-f9o" id="O0I-je-DPp"/>
                                 </connections>
                             </tableView>
+                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oCX-KM-SUc">
+                                <rect key="frame" x="0.0" y="761" width="375" height="49"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <tabBarItem systemItem="favorites" id="SLR-BZ-Cmo"/>
+                                    <tabBarItem title="Item" id="xbk-xt-VYF"/>
+                                    <tabBarItem systemItem="more" id="1cF-NU-7kA"/>
+                                </items>
+                            </tabBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="KTp-Dt-Qcz"/>

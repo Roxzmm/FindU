@@ -13,6 +13,11 @@ import CoreLocation
 
 
 class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocationManagerDelegate,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate{
+    
+    var startName = ""
+    var facility = ""
+    
+    var statrAnnotation = MKPointAnnotation()
    
    
     var startPosition = [String]()
@@ -36,9 +41,7 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
     @IBOutlet weak var startPositionView: UITableView!
     
     
-    @IBAction func SearchBtn(_ sender: Any) {
-        
-    }
+
     
     //    @IBOutlet weak var bottomBar: UITabBar!
     
@@ -92,7 +95,39 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
        super.didReceiveMemoryWarning()
     }
     
-    
+    @IBAction func SearchBtn(_ sender: Any) {
+        
+        var aim = [String]()
+        
+        
+        for arr in markers{
+            if arr.buildingName == startName{
+                aim.append(arr.location!)
+            }
+        }
+        
+        let locationOfStartPlace = aim[0].components(separatedBy: ", ")
+        
+        let lat = locationOfStartPlace[0]
+        let latitude = Double(lat)
+        let lon = locationOfStartPlace[1]
+        let longitude = Double(lon)
+        
+        let latDelta: CLLocationDegrees = 0.005
+        let lonDelta: CLLocationDegrees = 0.005
+        let span = MKCoordinateSpan(latitudeDelta: latDelta, longitudeDelta: lonDelta)
+        let location1 = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
+        let region = MKCoordinateRegion(center: location1, span: span)
+        self.map.setRegion(region, animated: true)
+        
+        
+        let coordinate = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
+//        let annotation = MKPointAnnotation()
+        self.statrAnnotation.coordinate = coordinate
+        self.statrAnnotation.title = startName //显示什么？
+        self.map.addAnnotation(self.statrAnnotation)
+        //        facility
+    }
    
     
 
@@ -111,7 +146,7 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
         let region = MKCoordinateRegion(center: location, span: span)
         self.map.setRegion(region, animated: true)
         
-        Arraybylocation()
+//        Arraybylocation()
     }
     
     
@@ -312,6 +347,7 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
         searchBar.text = ""
         startPositionView.reloadData()
         FacilityTableView.reloadData()
+        self.map.removeAnnotation(self.statrAnnotation)
     }
     
     
@@ -334,11 +370,13 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
 
           if tableView == startPositionView{
                 StartPositionSB.text = result[indexPath.row]
+                startName =  result[indexPath.row]
             startPositionView.isHidden = true
         }
         
         if tableView == FacilityTableView{
                 FacilitySB.text =   result[indexPath.row]
+                facility = result[indexPath.row]
             FacilityTableView.isHidden = true
     }
 
