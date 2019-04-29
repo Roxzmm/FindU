@@ -42,10 +42,9 @@ class UserInformationViewController: UIViewController {
         UserPhoto.image = UIImage(named: "userphoto.png")
         
         if let photoData = user?.userPhoto {
-            let photo = UIImage(data: photoData)!
-            
-            let imageHelper = AppImageHelper()
-            self.UserPhoto.image = imageHelper.resizeImage(originalImg: photo)
+            let photo = UIImage(data: photoData)
+            print(photoData)
+            self.UserPhoto.image = photo
         }
         // Do any additional setup after loading the view.
     }
@@ -62,9 +61,17 @@ class UserInformationViewController: UIViewController {
         
         CameraHandlerUtil.shared.showActionSheet(vc: self)
         CameraHandlerUtil.shared.imagePickedBlock = { (image) in
-            self.UserPhoto.image = image
-            
+            let imageHelper = AppImageHelper()
+            let resizeImage = imageHelper.resizeImage(originalImg: image)
+            let data = imageHelper.compressImageSize(image: image)
+            let resizeData = imageHelper.compressImageSize(image: resizeImage)
+            print(image.pngData())
+            print(data)
+            print(resizeImage.pngData())
+            print(resizeData)
+            self.UserPhoto.image = UIImage(data: data)
             self.mysqlConnect.uploadUserPhoto(image)
+            
         }
     }
     

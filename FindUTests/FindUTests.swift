@@ -15,9 +15,19 @@ class FindUTests: XCTestCase {
     let mysqlConnect = DatabaseConnectUtil()
     let imageHelper = AppImageHelper()
     
-    func testImageHelper() {
-        XCTAssertNotNil(imageHelper.compressImageSize(image: "logo.png"))
-    }
+//    func testImageHelper() {
+//        let photo = UIImage(named: "logo.png")!
+//        let resizePhoto = imageHelper.resizeImage(originalImg: photo)
+//
+//        let noresizeData = imageHelper.compressImageSize(image: photo)
+//        let resizeData = imageHelper.compressImageSize(image: resizePhoto)
+//
+//        let newimage = UIImage(data: noresizeData)
+//        print(newimage)
+//        let resizeImage = UIImage(data: resizeData)
+//
+//        XCTAssertNotNil(print("hh"))
+//    }
     
     
 //    func testSaveImage() {
