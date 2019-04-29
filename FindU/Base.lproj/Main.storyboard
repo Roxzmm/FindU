@@ -487,9 +487,20 @@
                                 </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Register Successfully!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nvw-z7-do2">
+                                <rect key="frame" x="74" y="171" width="226" height="43"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="226" id="Din-LY-aDQ"/>
+                                    <constraint firstAttribute="height" constant="43" id="y0w-y3-D1Z"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="nvw-z7-do2" firstAttribute="leading" secondItem="MID-qx-84a" secondAttribute="leading" constant="74" id="7c0-N8-KWn"/>
                             <constraint firstItem="FZr-aE-3l4" firstAttribute="leading" secondItem="MID-qx-84a" secondAttribute="leading" constant="16" id="Et7-2G-4qG"/>
                             <constraint firstItem="MID-qx-84a" firstAttribute="trailing" secondItem="nvw-z7-do2" secondAttribute="trailing" constant="16" id="JUs-HY-K7i"/>
                             <constraint firstItem="nvw-z7-do2" firstAttribute="leading" secondItem="MID-qx-84a" secondAttribute="leading" constant="16" id="OJe-D5-Z7f"/>
@@ -543,14 +554,24 @@
                                 <rect key="frame" x="0.0" y="624" width="375" height="105"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+<<<<<<< HEAD
                             <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="giO-Vp-Tnv">
+=======
+                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DjY-Um-iO8">
+>>>>>>> origin/newUI
                                 <rect key="frame" x="0.0" y="763" width="375" height="49"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
+<<<<<<< HEAD
                                     <tabBarItem systemItem="search" id="hzp-SM-wSA"/>
                                     <tabBarItem title="Event" selectedImage="eventLogo.png" id="R3j-tw-qI3"/>
                                     <tabBarItem title="Me" id="fma-Tc-SBz"/>
+=======
+                                    <tabBarItem systemItem="favorites" id="Mgw-Jw-zZw"/>
+                                    <tabBarItem title="Item" id="Ceu-RL-K4M"/>
+                                    <tabBarItem systemItem="more" id="sDQ-px-mwz"/>
+>>>>>>> origin/newUI
                                 </items>
                             </tabBar>
                         </subviews>
@@ -644,14 +665,24 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <state key="normal" title="Create"/>
                             </button>
+<<<<<<< HEAD
                             <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CPy-3d-PGj">
+=======
+                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hOH-w0-Ekj">
+>>>>>>> origin/newUI
                                 <rect key="frame" x="0.0" y="763" width="375" height="49"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
+<<<<<<< HEAD
                                     <tabBarItem systemItem="search" id="Bzl-ok-81X"/>
                                     <tabBarItem title="Event" selectedImage="eventLogo.png" id="qsr-sC-Pkc"/>
                                     <tabBarItem title="Me" id="ZVm-pw-w83"/>
+=======
+                                    <tabBarItem systemItem="favorites" id="eiU-8N-1Dh"/>
+                                    <tabBarItem title="Item" id="Tqd-y2-par"/>
+                                    <tabBarItem systemItem="more" id="Kf9-5D-1M1"/>
+>>>>>>> origin/newUI
                                 </items>
                             </tabBar>
                         </subviews>
@@ -784,6 +815,7 @@
                                                     <segue destination="M9j-ZN-BcS" kind="show" identifier="ToJoinIn" id="1aR-uU-cC1"/>
                                                 </connections>
                                             </button>
+<<<<<<< HEAD
                                             <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="q0K-gU-qMq">
                                                 <rect key="frame" x="0.0" y="816" width="375" height="49"/>
                                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -792,6 +824,16 @@
                                                     <tabBarItem systemItem="search" id="LMS-In-gVe"/>
                                                     <tabBarItem title="Event" selectedImage="eventLogo.png" id="TNC-2J-EYK"/>
                                                     <tabBarItem title="Me" id="dZE-LH-TUP"/>
+=======
+                                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Cd2-aj-yA1">
+                                                <rect key="frame" x="-8" y="862" width="381" height="49"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <items>
+                                                    <tabBarItem systemItem="favorites" id="WKb-g8-35k"/>
+                                                    <tabBarItem title="Item" id="LUe-mT-nd7"/>
+                                                    <tabBarItem systemItem="more" id="M8B-hE-b2q"/>
+>>>>>>> origin/newUI
                                                 </items>
                                             </tabBar>
                                         </subviews>
@@ -856,6 +898,7 @@
                                 <rect key="frame" x="101" y="493" width="172" height="172"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
+<<<<<<< HEAD
                             <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ve4-pD-9xY">
                                 <rect key="frame" x="0.0" y="729" width="375" height="49"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
@@ -873,6 +916,18 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+=======
+                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lwt-ct-YHi">
+                                <rect key="frame" x="0.0" y="763" width="375" height="49"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <tabBarItem systemItem="favorites" id="k51-kg-NZB"/>
+                                    <tabBarItem title="Item" id="jlR-OR-2eN"/>
+                                    <tabBarItem systemItem="more" id="py1-db-qyZ"/>
+                                </items>
+                            </tabBar>
+>>>>>>> origin/newUI
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="L8t-rV-vFE"/>
@@ -897,22 +952,8 @@
                                 <rect key="frame" x="0.0" y="88" width="375" height="722"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </mapView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Start Position :" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pWC-ZK-zGT" userLabel="InputStartPosition">
-                                <rect key="frame" x="10" y="100" width="269" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Facility Name :" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K6x-9A-FYO" userLabel="InputFacility">
-                                <rect key="frame" x="10" y="138" width="269" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xLQ-nC-Vdr" userLabel="Search">
-                                <rect key="frame" x="311" y="100" width="48" height="30"/>
+                                <rect key="frame" x="301" y="99" width="58" height="35"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Search"/>
@@ -920,6 +961,7 @@
                                     <action selector="SearchBtn:" destination="wsj-UH-f9o" eventType="touchUpInside" id="Ncd-sL-pLG"/>
                                 </connections>
                             </button>
+<<<<<<< HEAD
                             <tabBar contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5ao-Lr-FW8">
                                 <rect key="frame" x="0.0" y="738" width="375" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -931,6 +973,78 @@
                                     <tabBarItem systemItem="search" id="2PZ-4y-Fhb"/>
                                     <tabBarItem title="Event" id="zkI-bs-yxZ"/>
                                     <tabBarItem title="Me" id="qvT-uy-Gmj"/>
+=======
+                            <searchBar contentMode="redraw" fixedFrame="YES" text="" placeholder="Start Position:" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eBx-R8-g6q">
+                                <rect key="frame" x="0.0" y="88" width="279" height="56"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="wsj-UH-f9o" id="pEN-Gb-qWw"/>
+                                </connections>
+                            </searchBar>
+                            <searchBar contentMode="redraw" fixedFrame="YES" text="" placeholder="Facility Name:" showsCancelButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HbK-fM-K2a">
+                                <rect key="frame" x="0.0" y="142" width="279" height="56"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                                <connections>
+                                    <outlet property="delegate" destination="wsj-UH-f9o" id="TPR-oT-l8f"/>
+                                </connections>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Uq2-pU-fQC">
+                                <rect key="frame" x="0.0" y="144" width="279" height="134"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="Uk2-5R-gWe">
+                                        <rect key="frame" x="0.0" y="28" width="279" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Uk2-5R-gWe" id="dDr-PD-lty">
+                                            <rect key="frame" x="0.0" y="0.0" width="279" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="wsj-UH-f9o" id="0cG-Bf-Jh3"/>
+                                    <outlet property="delegate" destination="wsj-UH-f9o" id="24V-fu-f2z"/>
+                                </connections>
+                            </tableView>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="6fk-pr-jAf">
+                                <rect key="frame" x="0.0" y="198" width="279" height="134"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="JEm-Dg-7Ea">
+                                        <rect key="frame" x="0.0" y="28" width="279" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JEm-Dg-7Ea" id="tRa-PA-ONo">
+                                            <rect key="frame" x="0.0" y="0.0" width="279" height="43.666666666666664"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="wsj-UH-f9o" id="r4m-dV-2Ig"/>
+                                    <outlet property="delegate" destination="wsj-UH-f9o" id="O0I-je-DPp"/>
+                                </connections>
+                            </tableView>
+                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="oCX-KM-SUc">
+                                <rect key="frame" x="0.0" y="761" width="375" height="49"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <items>
+                                    <tabBarItem systemItem="favorites" id="SLR-BZ-Cmo"/>
+                                    <tabBarItem title="Item" id="xbk-xt-VYF"/>
+                                    <tabBarItem systemItem="more" id="1cF-NU-7kA"/>
+>>>>>>> origin/newUI
                                 </items>
                             </tabBar>
                         </subviews>
@@ -938,9 +1052,11 @@
                         <viewLayoutGuide key="safeArea" id="KTp-Dt-Qcz"/>
                     </view>
                     <connections>
-                        <outlet property="InputFacility" destination="K6x-9A-FYO" id="2cO-w4-Dkt"/>
-                        <outlet property="inputStartPosition" destination="pWC-ZK-zGT" id="sL2-EH-0l2"/>
+                        <outlet property="FacilitySB" destination="HbK-fM-K2a" id="7sZ-5q-n1d"/>
+                        <outlet property="FacilityTableView" destination="6fk-pr-jAf" id="Bvj-0q-VH7"/>
+                        <outlet property="StartPositionSB" destination="eBx-R8-g6q" id="kuh-is-3z1"/>
                         <outlet property="map" destination="hbT-MX-Kz9" id="4EB-py-Og1"/>
+                        <outlet property="startPositionView" destination="Uq2-pU-fQC" id="F7a-f3-mTu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a9u-ZC-y2T" userLabel="First Responder" sceneMemberID="firstResponder"/>
