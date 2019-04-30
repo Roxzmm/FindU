@@ -15,11 +15,15 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
     var startName = ""
     var facility = ""
     
-    var statrAnnotation = MKPointAnnotation()
+    var startAnnotation = MKPointAnnotation()
+    
+    var facilityAnnotation :[MKPointAnnotation] = []
    
    
     var startPosition = [String]()
     var markers: [Marker] = []
+    var facilities:[Facility] = []
+    var buildings:[Building] = []
     
     let mysqldatabaseUtil = DatabaseConnectUtil()
     var result = [String]()
@@ -53,6 +57,7 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
         
         FacilitySB.barTintColor = .gray
         FacilitySB.searchBarStyle = .minimal
+        
         markers = mysqldatabaseUtil.fetchMarkers()
 //        Facility = mysqldatabaseUtil.fetchFacility()
         
@@ -94,10 +99,8 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
     }
     
     @IBAction func SearchBtn(_ sender: Any) {
-        
+        if startName != "" && facility == ""{
         var aim = [String]()
-        
-        
         for arr in markers{
             if arr.buildingName == startName{
                 aim.append(arr.location!)
@@ -121,13 +124,164 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
         
         let coordinate = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
 //        let annotation = MKPointAnnotation()
-        self.statrAnnotation.coordinate = coordinate
-        self.statrAnnotation.title = startName //显示什么？
-        self.map.addAnnotation(self.statrAnnotation)
+        self.startAnnotation.coordinate = coordinate
+        self.startAnnotation.title = startName //显示什么？
+        self.map.addAnnotation(self.startAnnotation)
         //        facility
+        }
+        
+        if startName != "" && facility != ""{
+            
+            var aim = [String]()
+            for arr in markers{
+                if arr.buildingName == startName{
+                    aim.append(arr.location!)
+                }
+            }
+            
+            let locationOfStartPlace = aim[0].components(separatedBy: ", ")
+            
+            let lat = locationOfStartPlace[0]
+            let latitude = Double(lat)
+            let lon = locationOfStartPlace[1]
+            let longitude = Double(lon)
+            
+            let latDelta: CLLocationDegrees = 0.005
+            let lonDelta: CLLocationDegrees = 0.005
+            let span = MKCoordinateSpan(latitudeDelta: latDelta, longitudeDelta: lonDelta)
+            let location1 = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
+            let region = MKCoordinateRegion(center: location1, span: span)
+            self.map.setRegion(region, animated: true)
+            
+            
+            let coordinate = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
+            //        let annotation = MKPointAnnotation()
+            self.startAnnotation.coordinate = coordinate
+            self.startAnnotation.title = startName //显示什么？
+            self.map.addAnnotation(self.startAnnotation)
+            
+            facilities = mysqldatabaseUtil.fetchFacilities()
+            buildings = mysqldatabaseUtil.fetchBuildings()
+            var facilityAim :[String] = []
+            for arr in facilities{
+                
+                if facility == arr.name{
+                    let a = String((arr.facilityID?.prefix(4))!)
+                    let b = String(a.suffix(3))
+//                    let test4 = String(testStr.prefix(5))
+                  
+                    facilityAim.append(b)
+                }
+            }
+            var Building = [String]()
+            var Buildings: [Building] = []
+            
+            
+           
+            for F in facilityAim{
+                for B in buildings{
+                let a = String(B.buldingID!.prefix(6))
+                let b = String(a.suffix(3))
+                    if F == b{
+                        Building.append(B.position!)
+                        Buildings.append(B)
+                    }
+                }
+            }
+            
+            
+            for i in 0...Building.count-1{
+
+                let location = Building[i]
+
+                if location.count != 0{
+                    let location5 = location.components(separatedBy: ", ")
+
+                    let lat = location5[0]
+                    let latitude = Double(lat)
+                    let lon = location5[1]
+                    let longitude = Double(lon)
+
+
+                    let coordinate = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
+                    let annotation = MKPointAnnotation()
+                    facilityAnnotation.append(annotation)
+                    annotation.coordinate = coordinate
+                    annotation.title = Buildings[i].name //显示什么？
+                    self.map.addAnnotation(annotation)
+
+
+
+                }
+            }
+            
+            
+            
+        
+        }
+        if startName == "" && facility != ""{
+            facilities = mysqldatabaseUtil.fetchFacilities()
+            buildings = mysqldatabaseUtil.fetchBuildings()
+            var facilityAim :[String] = []
+            for arr in facilities{
+                
+                if facility == arr.name{
+                    let a = String((arr.facilityID?.prefix(4))!)
+                    let b = String(a.suffix(3))
+                    //                    let test4 = String(testStr.prefix(5))
+                    
+                    facilityAim.append(b)
+                }
+            }
+            var Building = [String]()
+            var Buildings: [Building] = []
+            
+            
+            
+            for F in facilityAim{
+                for B in buildings{
+                    let a = String(B.buldingID!.prefix(6))
+                    let b = String(a.suffix(3))
+                    if F == b{
+                        Building.append(B.position!)
+                        Buildings.append(B)
+                    }
+                }
+            }
+            
+            
+            for i in 0...Building.count-1{
+                
+                let location = Building[i]
+                
+                if location.count != 0{
+                    let location5 = location.components(separatedBy: ", ")
+                    
+                    let lat = location5[0]
+                    let latitude = Double(lat)
+                    let lon = location5[1]
+                    let longitude = Double(lon)
+                    
+                    
+                    let coordinate = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
+                    let annotation = MKPointAnnotation()
+                    facilityAnnotation.append(annotation)
+                    annotation.coordinate = coordinate
+                    annotation.title = Buildings[i].name //显示什么？
+                    self.map.addAnnotation(annotation)
+                    
+                    
+                    
+                }
+            }
+        }
+            
+            
+        
+        
     }
    
-    
+  
 
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -137,8 +291,8 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
         //            userLoc = locations[0]
         let latitude = locationOfUser.coordinate.latitude
         let longitude = locationOfUser.coordinate.longitude
-        let latDelta: CLLocationDegrees = 0.0005
-        let lonDelta: CLLocationDegrees = 0.0005
+        let latDelta: CLLocationDegrees = 0.005
+        let lonDelta: CLLocationDegrees = 0.005
         let span = MKCoordinateSpan(latitudeDelta: latDelta, longitudeDelta: lonDelta)
         let location = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         let region = MKCoordinateRegion(center: location, span: span)
@@ -344,9 +498,17 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
         startPositionView.isHidden = true
         FacilityTableView.isHidden = true
         searchBar.text = ""
+        startName = ""
+        facility = ""
         startPositionView.reloadData()
         FacilityTableView.reloadData()
-        self.map.removeAnnotation(self.statrAnnotation)
+        self.map.removeAnnotation(self.startAnnotation)
+        
+        for arr in facilityAnnotation{
+            self.map.removeAnnotation(arr)
+        }
+        facilityAnnotation = []
+        
     }
     
     
