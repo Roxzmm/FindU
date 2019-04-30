@@ -9,35 +9,40 @@
 import UIKit
 
 class EventListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+   
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let count = events.count
-        if count <= 10 {
-            return events.count
-        }else {
-            return 10
-        }
+//        let count = events.count
+//        if count <= 10 {
+//            return events.count
+//        }else {
+//            return 10
+//        }
+        return  2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell")
-        
-        cell?.textLabel?.text = events[indexPath.row].name
-
-        if cell?.textLabel?.text == nil {
-            cell?.textLabel?.text = "No events nearby."
-        }
-        
-        var boolDisplayImage = false
-        if let imageData = events[indexPath.row].poster {
-            if let image = UIImage(data: imageData) {
-                boolDisplayImage = true
-                cell?.imageView?.image = image
-            }
-        }
-        if boolDisplayImage == false {
-            cell?.textLabel?.text = events[indexPath.row].eventDescription
-        }
+//        cell?.imag
+        cell?.textLabel?.text = "dasdjkfjakfafhasflksafjlskjfkajflkajsflksajflajsflksajfalksfjalsfjad"
+//        cell?.textLabel?.preferredMaxLayoutWidth = eventTableView.bounds.width
+//        cell?.textLabel?.text = events[indexPath.row].name
+//
+//        if cell?.textLabel?.text == nil {
+//            cell?.textLabel?.text = "No events nearby."
+//        }
+//
+//        var boolDisplayImage = false
+//        if let imageData = events[indexPath.row].poster {
+//            if let image = UIImage(data: imageData) {
+//                boolDisplayImage = true
+//                cell?.imageView?.image = image
+//            }
+//        }
+//        if boolDisplayImage == false {
+//            cell?.textLabel?.text = events[indexPath.row].eventDescription
+//        }
         return cell!
     }
     
@@ -52,6 +57,7 @@ class EventListViewController: UIViewController, UITableViewDataSource, UITableV
     @IBOutlet weak var createNewEvent: UIImageView!
     
     @IBOutlet weak var eventTableView: UITableView!
+    
       
     let mysqlConnect = DatabaseConnectUtil()
     var events: [Event] = []
@@ -60,6 +66,8 @@ class EventListViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        eventTableView.estimatedRowHeight = 44.0
+//        eventTableView.rowHeight = UITableView.automaticDimension
         if mysqlConnect.checkUpdateStatus(table: "event").0 == false {
             mysqlConnect.sync(["Event"])
         }

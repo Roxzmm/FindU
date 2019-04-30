@@ -484,6 +484,7 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
         searching = true
         startPositionView.isHidden = false
         startPositionView.reloadData()
+        
         }
         
         if searchBar == FacilitySB{
@@ -492,8 +493,10 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
         FacilityTableView.isHidden = false
         FacilityTableView.reloadData()
         }
+        
     }
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        
         searching = false
         startPositionView.isHidden = true
         FacilityTableView.isHidden = true
@@ -513,11 +516,14 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
     
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        
         searching = false
         startPositionView.isHidden = true
         FacilityTableView.isHidden = true
         startPositionView.reloadData()
         FacilityTableView.reloadData()
+        StartPositionSB.resignFirstResponder()
+        FacilitySB.resignFirstResponder()
         
     }
     

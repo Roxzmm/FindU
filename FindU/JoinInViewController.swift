@@ -17,12 +17,13 @@ class JoinInViewController: UIViewController {
     
     let mysqlConnect = DatabaseConnectUtil()
     var event: Event? = nil
+    var buildings:[Building] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        showEventLocation()
         // Do any additional setup after loading the view.
-        
+          buildings = mysqlConnect.fetchBuildings()
         //show success message
         let localUser = mysqlConnect.retrieveLocalUser()
         let username = localUser?.name!
@@ -36,6 +37,31 @@ class JoinInViewController: UIViewController {
         // to do: show location
     }
     
+    
+    func showEventLocation(){
+        var buildAim = [String]()
+        let locationName = event?.place
+        for build in buildings{
+            if locationName == build.name{
+                buildAim.append(build.position!)
+            }
+        }
+        
+        let locationOfStartPlace =  buildAim[0].components(separatedBy: ", ")
+        
+        let lat = locationOfStartPlace[0]
+        let latitude = Double(lat)
+        let lon = locationOfStartPlace[1]
+        let longitude = Double(lon)
+        
+        let latDelta: CLLocationDegrees = 0.005
+        let lonDelta: CLLocationDegrees = 0.005
+        let span = MKCoordinateSpan(latitudeDelta: latDelta, longitudeDelta: lonDelta)
+        let location1 = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
+        let region = MKCoordinateRegion(center: location1, span: span)
+        self.eventMap.setRegion(region, animated: true)
+        
+    }
 
     /*
     // MARK: - Navigation
