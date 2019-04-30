@@ -22,6 +22,9 @@
 		3EFE2D5B226CE0B600F93243 /* FindUTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3EFE2D5A226CE0B600F93243 /* FindUTests.swift */; };
 		610081D02274DE8600D4C1DD /* CreatEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610081CF2274DE8600D4C1DD /* CreatEventViewController.swift */; };
 		610081D22274E00300D4C1DD /* UserInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610081D12274E00300D4C1DD /* UserInformationViewController.swift */; };
+		610081D42278B39800D4C1DD /* MapPin.png in Resources */ = {isa = PBXBuildFile; fileRef = 610081D32278B39800D4C1DD /* MapPin.png */; };
+		610081D62278B9C700D4C1DD /* AnnotationPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610081D52278B9C600D4C1DD /* AnnotationPin.swift */; };
+		610081D82278CA8D00D4C1DD /* FacilityDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610081D72278CA8D00D4C1DD /* FacilityDetailViewController.swift */; };
 		6145D3C62271F58B00FE413D /* RegisterSuccessfullyorFailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6145D3C52271F58B00FE413D /* RegisterSuccessfullyorFailedViewController.swift */; };
 		61559BD7224D0998008F77AF /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61559BD6224D0998008F77AF /* RegisterViewController.swift */; };
 		61559BD9224D1115008F77AF /* register.png in Resources */ = {isa = PBXBuildFile; fileRef = 61559BD8224D1115008F77AF /* register.png */; };
@@ -77,6 +80,9 @@
 		5CF9F5E0E75C730968884829 /* Pods_FindUTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FindUTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		610081CF2274DE8600D4C1DD /* CreatEventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatEventViewController.swift; sourceTree = "<group>"; };
 		610081D12274E00300D4C1DD /* UserInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInformationViewController.swift; sourceTree = "<group>"; };
+		610081D32278B39800D4C1DD /* MapPin.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MapPin.png; sourceTree = "<group>"; };
+		610081D52278B9C600D4C1DD /* AnnotationPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnnotationPin.swift; sourceTree = "<group>"; };
+		610081D72278CA8D00D4C1DD /* FacilityDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacilityDetailViewController.swift; sourceTree = "<group>"; };
 		6145D3C52271F58B00FE413D /* RegisterSuccessfullyorFailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterSuccessfullyorFailedViewController.swift; sourceTree = "<group>"; };
 		61559BD6224D0998008F77AF /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		61559BD8224D1115008F77AF /* register.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = register.png; sourceTree = "<group>"; };
@@ -133,6 +139,7 @@
 				3E49773322754D3C006A15AB /* userphoto.png */,
 				61593430224BE5D300E5E7FB /* searchfacility.png */,
 				3E49771E2273CF05006A15AB /* MeLogo.png */,
+				610081D32278B39800D4C1DD /* MapPin.png */,
 				6167A8C3227360DA0079C3D1 /* eventLogo.png */,
 				3E4977202273CF14006A15AB /* searchLogo.png */,
 				61593432224BE5D900E5E7FB /* event.png */,
@@ -192,7 +199,9 @@
 				3EE539B7226CD4FA00181BBB /* Utility */,
 				6158ECFE224A694B00818A1C /* AppDelegate.swift */,
 				6158ED00224A694B00818A1C /* ViewController.swift */,
+				610081D52278B9C600D4C1DD /* AnnotationPin.swift */,
 				6159343A224BF89A00E5E7FB /* SearchFacilityViewController.swift */,
+				610081D72278CA8D00D4C1DD /* FacilityDetailViewController.swift */,
 				61593436224BF43400E5E7FB /* SignInViewController.swift */,
 				61559BD6224D0998008F77AF /* RegisterViewController.swift */,
 				6145D3C52271F58B00FE413D /* RegisterSuccessfullyorFailedViewController.swift */,
@@ -322,6 +331,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				610081D42278B39800D4C1DD /* MapPin.png in Resources */,
 				3E4977212273CF15006A15AB /* searchLogo.png in Resources */,
 				6158ED1C224A8A3F00818A1C /* welcometitle.png in Resources */,
 				6167A8C6227360DB0079C3D1 /* eventLogo.png in Resources */,
@@ -430,12 +440,14 @@
 				3E34D82B2277C5F6004B3611 /* EventListViewController.swift in Sources */,
 				6145D3C62271F58B00FE413D /* RegisterSuccessfullyorFailedViewController.swift in Sources */,
 				61593437224BF43400E5E7FB /* SignInViewController.swift in Sources */,
+				610081D62278B9C700D4C1DD /* AnnotationPin.swift in Sources */,
 				610081D22274E00300D4C1DD /* UserInformationViewController.swift in Sources */,
 				3E49773922775CF7006A15AB /* AppImageHelper.swift in Sources */,
 				3EDAF10A226F72C400BC3032 /* InputHandlerUtil.swift in Sources */,
 				3E4977232273CF1A006A15AB /* EventDetailViewController.swift in Sources */,
 				6158ED01224A694B00818A1C /* ViewController.swift in Sources */,
 				3E4977252273CF1D006A15AB /* JoinInViewController.swift in Sources */,
+				610081D82278CA8D00D4C1DD /* FacilityDetailViewController.swift in Sources */,
 				3E4977362275552E006A15AB /* CameraHandlerUtil.swift in Sources */,
 				610081D02274DE8600D4C1DD /* CreatEventViewController.swift in Sources */,
 				61559BD7224D0998008F77AF /* RegisterViewController.swift in Sources */,

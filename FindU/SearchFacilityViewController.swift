@@ -14,6 +14,7 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
     
     var startName = ""
     var facility = ""
+//    var pin : AnnotationPin!
     
     var startAnnotation = MKPointAnnotation()
     
@@ -32,6 +33,7 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
     var facilityName:[String] = ["Common Room","Drinking Machine","Hot Water","Meeting Room","Men's Room","Microwave","PC Room","Printer","Water Dispenser"]
 
     
+    
     @IBOutlet weak var map: MKMapView!
     
     @IBOutlet weak var StartPositionSB: UISearchBar!
@@ -48,6 +50,7 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
     //    @IBOutlet weak var bottomBar: UITabBar!
     
      var locationManager = CLLocationManager()
+    
    
     
     override func viewWillAppear(_ animated: Bool) {
@@ -70,6 +73,7 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
                 startPositionView.isHidden = true
                 FacilityTableView.isHidden = true
        
@@ -80,14 +84,14 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
 //        self.startPositionView.dataSource = self
 //        self.StartPositionTableView.register(UITableViewCell.self, forCellReuseIdentifier: "TableCell")
         //        self.FacilitySB.delegate = self as? UISearchBarDelegate
-        
+        map.delegate = self
         locationManager.delegate = self as CLLocationManagerDelegate
         locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         
         
-        
+      
         
         //        Arraybylocation()
         
@@ -97,6 +101,7 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
     override func didReceiveMemoryWarning() {
        super.didReceiveMemoryWarning()
     }
+    
     
     @IBAction func SearchBtn(_ sender: Any) {
         if startName != "" && facility == ""{
@@ -121,11 +126,21 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
         let region = MKCoordinateRegion(center: location1, span: span)
         self.map.setRegion(region, animated: true)
         
+//            let coordinate = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
+//
+//        pin = AnnotationPin(title: "StartPosition", subtitle: "", coordinate: coordinate)
+//        self.startAnnotation.coordinate = coordinate
+//        self.startAnnotation.title = startName
+//        map.addAnnotation(pin)
+//
+
         
         let coordinate = CLLocationCoordinate2D(latitude: latitude!, longitude: longitude!)
 //        let annotation = MKPointAnnotation()
         self.startAnnotation.coordinate = coordinate
         self.startAnnotation.title = startName //显示什么？
+        self.startAnnotation.subtitle = "StartPosition"
+        
         self.map.addAnnotation(self.startAnnotation)
         //        facility
         }
@@ -280,8 +295,42 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
         
         
     }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if annotation is MKUserLocation{
+            return nil
+        }
+        let pin = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "pin")
+        
+        pin.canShowCallout = true
+        pin.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        return pin
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        let annView = view.annotation
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let detailVC = storyboard.instantiateInitialViewController() as! FacilityDetailViewController
+        
+        
+        detailVC.facilityName = ((annView?.title!)!)
+        detailVC.facilityPosition = ((annView?.title!)!)
+        detailVC.aVailability = ((annView?.title!)!)
+        
+        self.navigationController?.pushViewController(detailVC, animated: true)
+    }
+    
    
-  
+//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+//
+//        let annotationView =  MKAnnotationView(annotation: startAnnotation, reuseIdentifier: "startAnnotation")
+//        annotationView.image = UIImage(named: "MapPin.png")
+//        let transform = CGAffineTransform(scaleX: 0.08, y: 0.08)
+//        annotationView.transform = transform
+//
+//        return annotationView
+//    }
 
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
