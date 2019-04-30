@@ -16,6 +16,8 @@ class DatabaseConnectUtil: NSObject {
      * Provide APIs to handle kinds of problems need connecting to database
      */
     
+    let inputHandler = InputHandlerUtil()
+    
     //MARK: connect to core data
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     var coredataContext: NSManagedObjectContext?
@@ -125,6 +127,10 @@ class DatabaseConnectUtil: NSObject {
                     
                     let id = userCount + 1
                     userID = String(id)
+                    while userID.count < 3{
+                        userID = "0" + userID
+                    }
+                    userID = "u" + userID
                     
                     let query = OHMySQLQueryRequestFactory.insert("user", set: ["userName": username!, "userEmail": email!, "password": password!, "userNo": userID, "userScore": String(80)])
                     do {
@@ -211,13 +217,13 @@ class DatabaseConnectUtil: NSObject {
     }
     
     // Sync core data with mysql (download data from mysql)
-    func sync() {
-        for table in tables {
-            let check = checkUpdateStatus(table: table.value)
+    func sync(_ tablesNeedSync: [String]) {
+        for table in tablesNeedSync {
+            let check = checkUpdateStatus(table: table)
             if check.0 == false {
-                if updateTable(table: table.value) == true {
-                    if updateTimeStamp(table: table.value, responseTime: check.1) == true {
-                        print("Sync successfully.")
+                if updateTable(table: table) == true {
+                    if updateTimeStamp(table: table, responseTime: check.1) == true {
+                        print("\(table) syncs successfully.")
                     }
                 }
             }
@@ -462,6 +468,8 @@ class DatabaseConnectUtil: NSObject {
             let newRecord = NSEntityDescription.insertNewObject(forEntityName: "Comment", into: coredataContext!) as! Comment
             newRecord.content = (record["content"] as! String)
             newRecord.commentID = (record["commentNo"] as! String)
+            newRecord.ownerName = (record["ownerName"] as! String)
+            newRecord.ownerCredit = (record["ownerCredit"] as! String)
         }
 
     }
@@ -472,6 +480,16 @@ class DatabaseConnectUtil: NSObject {
             newRecord.name = (record["eventName"] as! String)
             newRecord.eventID = (record["eventNo"] as! String)
             // ... properties waiting to be added
+            newRecord.eventDescription = (record["description"] as! String)
+            newRecord.place = (record["eventPlace"] as! String)
+            newRecord.hostName = (record["hostName"] as! String)
+            newRecord.hostCredit = (record["hostCredit"] as! String)
+            newRecord.numOfParticipant = (record["participateSum"] as! String)
+            newRecord.date = inputHandler.stringToDate(record["eventDate"] as! String)
+            
+            if let photoData = record["poster"] as? Data? {
+                newRecord.poster = photoData
+            }
         }
 
     }
@@ -625,6 +643,36 @@ class DatabaseConnectUtil: NSObject {
  
         return events
     }
+    
+    // func to fetch local comments
+    func fetchComments(_ event: Event) -> [Comment]{
+        var comments: [Comment] = []
+        
+        let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Comment")
+        
+        do {
+            fetchRequest.sortDescriptors = [NSSortDescriptor.init(key: "commentID", ascending: true)]
+            let tempComments = try coredataContext?.fetch(fetchRequest) as! [Comment]
+
+            var matchId = event.eventID!.dropFirst(4)
+            matchId = (matchId.dropLast(3))
+            for comment in tempComments {
+                var id = comment.commentID!
+                if id.removeFirst() == "e" {
+                    id = String(id.dropFirst(3))
+                    
+                    if id == matchId {
+                        comments.append(comment)
+                    }
+                }
+            }
+            
+        } catch let error as NSError {
+            print("Could not fetch. \(error), \(error.userInfo)")
+        }
+        
+        return comments
+    }
 
 
     
@@ -726,6 +774,62 @@ class DatabaseConnectUtil: NSObject {
         newRecord.buldingID = (newBuildingID)
         newRecord.position = (newPosition)
         
+    }
+    
+    func uploadEvent(_ eventName: String, _ eventDescription: String, _ location: String, _ time: String, _ poster: UIImage?) -> Bool {
+        var boolUploaded = false
+        
+        let user = retrieveLocalUser()
+        if checkConnection() == true {
+            let imageHelper = AppImageHelper()
+            let resizeImage = imageHelper.resizeImage(originalImg: poster!) as UIImage
+            let posterData = imageHelper.compressImageSize(image: resizeImage)
+            
+            let anoQuery = OHMySQLQueryRequestFactory.select("event", condition: nil)
+            if let response = try? context.executeQueryRequestAndFetchResult(anoQuery) {
+                var eventCount = response.count
+                
+                eventCount = eventCount + 1
+                var eventNo = String(eventCount)
+                while eventNo.count < 3 {
+                    eventNo = "0" + eventNo
+                }
+                eventNo = "e" + eventNo
+                
+                let query = OHMySQLQueryRequestFactory.insert("event", set: ["eventName": eventName, "description": eventDescription, "eventPlace": location, "eventNo": eventNo, "hostCredit": user!.credit!, "hostName": user!.name, "eventDate": time, "participateSum": String(1), "poster": posterData])
+                    
+                try? context.execute(query)
+                boolUploaded = true
+                
+            }
+        }
+        return boolUploaded
+    }
+    
+    func uploadComment(_ matchID: String, _ content: String, _ facilityNo: String) -> Bool {
+        var boolUploaded = false
+        
+        let user = retrieveLocalUser()
+        if checkConnection() == true {
+            let ownerCredit = user?.credit!
+            let ownerName = user?.name!
+            
+            let anoQuery = OHMySQLQueryRequestFactory.select("event", condition: nil)
+            if let response = try? context.executeQueryRequestAndFetchResult(anoQuery) {
+                var commentCount = response.count
+                
+                commentCount = commentCount + 1
+                var commentNo = String(commentCount)
+                commentNo = matchID + commentNo + facilityNo
+                
+                let query = OHMySQLQueryRequestFactory.insert("comment", set: ["content": content, "commentNo": commentNo, "ownerName": ownerName, "ownerCredit": ownerCredit])
+                
+                try? context.execute(query)
+                boolUploaded = true
+                
+            }
+        }
+        return boolUploaded
     }
     
     // update user info from mysql

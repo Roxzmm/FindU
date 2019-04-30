@@ -37,7 +37,7 @@ class ViewController: UIViewController {
                 mysqlConnect.signIn("userEmail", localUser.email, localUser.password, true)
             }
 
-            mysqlConnect.sync()
+            mysqlConnect.sync(["Building", "Marker", "Comment", "Event", "Facility"])
             if mysqlConnect.checkUpdateStatus(table: "user").0 == false && mysqlConnect.boolSigned == true{
                 mysqlConnect.updateUserInfo()
             }

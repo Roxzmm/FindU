@@ -7,10 +7,13 @@
 //
 
 import UIKit
+import MapKit
 
 class JoinInViewController: UIViewController {
 
     @IBOutlet weak var successMessage: UILabel!
+    @IBOutlet weak var eventMap: MKMapView!
+    @IBOutlet weak var posterView: UIImageView!
     
     let mysqlConnect = DatabaseConnectUtil()
     var event: Event? = nil
@@ -23,7 +26,14 @@ class JoinInViewController: UIViewController {
         //show success message
         let localUser = mysqlConnect.retrieveLocalUser()
         let username = localUser?.name!
-        successMessage.text = "Congratulations! \(String(describing: username))"
+        successMessage.text = "Congratulations! \(String(describing: username)))"
+        
+        if let imageData = event?.poster! {
+            let poster = UIImage(data: imageData)
+            posterView.image = poster
+        }
+        
+        // to do: show location
     }
     
 

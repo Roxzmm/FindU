@@ -69,14 +69,33 @@ class InputHandlerUtil: NSObject {
         return emailTest.evaluate(with: email)
     }
     
-    func checkUserName(_ username: String) -> Bool{
-        let count = username.count
+    func checkName(_ name: String, _ type: String) -> Bool{
+        let count = name.count
         var boolCorrect = false
         
-        if count <= 10 && count > 0 {
-            boolCorrect = true
+        switch type.lowercased() {
+        case "user":
+            if count <= 10 && count > 0 {
+                boolCorrect = true
+            }
+        case "event":
+            if count <= 20 && count >= 1 {
+                boolCorrect = true
+            }
+        default:
+            boolCorrect = false
         }
+
         return boolCorrect
+    }
+    
+    func checkEventDescription(_ description: String) -> Bool {
+        let count = description.count
+        if count <= 40 {
+            return true
+        }else {
+            return false
+        }
     }
 
     func checkPassword(_ password: String) -> Bool{
@@ -93,6 +112,13 @@ class InputHandlerUtil: NSObject {
             }
         }
         return boolCorrect
+    }
+    
+    func stringToDate(_ date: String) -> Date {
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeZone = TimeZone(abbreviation: "GMT+0:00")
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        return dateFormatter.date(from: date)!
     }
     
 }

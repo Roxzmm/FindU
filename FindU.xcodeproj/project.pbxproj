@@ -39,7 +39,6 @@
 		61593437224BF43400E5E7FB /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61593436224BF43400E5E7FB /* SignInViewController.swift */; };
 		61593439224BF6EC00E5E7FB /* SignIn.png in Resources */ = {isa = PBXBuildFile; fileRef = 61593438224BF6EB00E5E7FB /* SignIn.png */; };
 		6159343B224BF89A00E5E7FB /* SearchFacilityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6159343A224BF89A00E5E7FB /* SearchFacilityViewController.swift */; };
-		6159343D224BF8B600E5E7FB /* EventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6159343C224BF8B600E5E7FB /* EventViewController.swift */; };
 		6167A8C6227360DB0079C3D1 /* eventLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6167A8C3227360DA0079C3D1 /* eventLogo.png */; };
 		8A92D916567A59F194B6C4F7 /* Pods_FindUTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF9F5E0E75C730968884829 /* Pods_FindUTests.framework */; };
 		D322200EF00030DAE952B95C /* Pods_FindU.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E8BB5EB63A5B98B383C86652 /* Pods_FindU.framework */; };
@@ -97,7 +96,6 @@
 		61593436224BF43400E5E7FB /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
 		61593438224BF6EB00E5E7FB /* SignIn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SignIn.png; sourceTree = "<group>"; };
 		6159343A224BF89A00E5E7FB /* SearchFacilityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFacilityViewController.swift; sourceTree = "<group>"; };
-		6159343C224BF8B600E5E7FB /* EventViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewController.swift; sourceTree = "<group>"; };
 		6167A8C3227360DA0079C3D1 /* eventLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = eventLogo.png; sourceTree = "<group>"; };
 		61EE6FE3226AE3D7003F0A76 /* AshtonBuilding.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = AshtonBuilding.gpx; path = ../../COMP228/sWift/Comp228Assignment2/AshtonBuilding.gpx; sourceTree = "<group>"; };
 		7AEED146AB83C7E403BE2613 /* Pods-FindU.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FindU.debug.xcconfig"; path = "Target Support Files/Pods-FindU/Pods-FindU.debug.xcconfig"; sourceTree = "<group>"; };
@@ -198,7 +196,6 @@
 				61593436224BF43400E5E7FB /* SignInViewController.swift */,
 				61559BD6224D0998008F77AF /* RegisterViewController.swift */,
 				6145D3C52271F58B00FE413D /* RegisterSuccessfullyorFailedViewController.swift */,
-				6159343C224BF8B600E5E7FB /* EventViewController.swift */,
 				3E34D82A2277C5F6004B3611 /* EventListViewController.swift */,
 				610081D12274E00300D4C1DD /* UserInformationViewController.swift */,
 				3E4977222273CF1A006A15AB /* EventDetailViewController.swift */,
@@ -446,7 +443,6 @@
 				6158ED07224A694B00818A1C /* FindU.xcdatamodeld in Sources */,
 				3EE539B9226CD53F00181BBB /* DatabaseConnectUtil.swift in Sources */,
 				6158ECFF224A694B00818A1C /* AppDelegate.swift in Sources */,
-				6159343D224BF8B600E5E7FB /* EventViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

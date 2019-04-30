@@ -30,7 +30,7 @@ class RegisterViewController: UIViewController {
         let email = emailInput.text!
         let password = passwordInput.text!
         
-        let checkName = inputHandler.checkUserName(username)
+        let checkName = inputHandler.checkName(username, "user")
         let checkEmail = inputHandler.checkEmail(email)
         let checkPassword = inputHandler.checkPassword(password)
         
