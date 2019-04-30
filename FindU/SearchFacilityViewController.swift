@@ -14,6 +14,7 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
     
     var startName = ""
     var facility = ""
+    var judgeLocation = true
     
     var startAnnotation = MKPointAnnotation()
     
@@ -99,6 +100,9 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
     }
     
     @IBAction func SearchBtn(_ sender: Any) {
+        
+        judgeLocation = false
+        
         if startName != "" && facility == ""{
         var aim = [String]()
         for arr in markers{
@@ -286,6 +290,8 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
+        if judgeLocation{
+            
         let locationOfUser = locations[0]
         
         //            userLoc = locations[0]
@@ -299,6 +305,7 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
         self.map.setRegion(region, animated: true)
         
 //        Arraybylocation()
+             }
     }
     
     
@@ -478,6 +485,8 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
         return cell!
     }
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        
+        
         result = []
         if searchBar == StartPositionSB{
         result = startPosition.filter({$0.lowercased().prefix(searchText.count) == searchText.lowercased()})
