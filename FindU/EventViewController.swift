@@ -10,7 +10,7 @@ import UIKit
 
 class EventViewController: UIViewController {
 
-    @IBOutlet weak var addFunc: UIImageView!
+    @IBOutlet weak var createNewEvent: UIImageView!
     
     @IBOutlet weak var Event1: UIImageView!
     
@@ -34,32 +34,33 @@ class EventViewController: UIViewController {
         
         self.view.backgroundColor = UIColorFromHex(rgbValue:1029623,alpha: 1)
         
-        self.addFunc.image = UIImage(named: "addFunc.png")
-        let goEvent = UITapGestureRecognizer(target: self, action: #selector(wayToEventDetail(tapGestureRecognizer:)))
+        createNewEvent.image = UIImage(named: "addFunc.png")
+//        let goEvent = UITapGestureRecognizer(target: self, action: #selector(wayToEventDetail(tapGestureRecognizer:)))
+
+//        Event1.image = UIImage(named: "logo.png")
+//        Event1.isUserInteractionEnabled = true
+//        Event1.addGestureRecognizer(goEvent)
+
+//        Event2.isUserInteractionEnabled = true
+//        Event2.addGestureRecognizer(goEvent)
         
-        Event1.image = UIImage(named: "logo.png")
-        Event1.isUserInteractionEnabled = true
-        Event1.addGestureRecognizer(goEvent)
-        
-        Event2.isUserInteractionEnabled = true
-        Event2.addGestureRecognizer(goEvent)
-        
-        let addEvent = UITapGestureRecognizer(target: self, action: #selector(wayToAddEvent(tapGestureRecognizer:)))
-        addFunc.isUserInteractionEnabled = true
-        addFunc.addGestureRecognizer(addEvent)
-        
+        let createEvent = UITapGestureRecognizer(target: self, action: #selector(guideToCreateEvent(tapGestureRecognizer:)))
+        createNewEvent.isUserInteractionEnabled = true
+        createNewEvent.addGestureRecognizer(createEvent)
     }
     
     @objc func wayToEventDetail(tapGestureRecognizer: UITapGestureRecognizer)
     {
-        performSegue(withIdentifier: "EventTodetail", sender: self)
-        
+        performSegue(withIdentifier: "ToEventDetail", sender: self)
+    }
+    
+    @objc func guideToCreateEvent(tapGestureRecognizer: UITapGestureRecognizer) {
+        performSegue(withIdentifier: "ToCreateEvent", sender: self)
     }
     
     @objc func wayToAddEvent(tapGestureRecognizer: UITapGestureRecognizer)
     {
         performSegue(withIdentifier: "ToCreateEvent", sender: self)
-        
     }
     
 

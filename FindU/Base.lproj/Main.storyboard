@@ -67,9 +67,9 @@
                         <outlet property="searchfacility" destination="bJ8-Mf-x8t" id="TAb-i4-3Bp"/>
                         <outlet property="welcometitle" destination="Pgk-KX-dWe" id="w4J-KN-usc"/>
                         <segue destination="wsj-UH-f9o" kind="show" identifier="Tosearchfacility" id="MUd-hT-GPI"/>
-                        <segue destination="Jfv-aP-nQk" kind="show" identifier="Toevent" id="96X-LW-ExQ"/>
                         <segue destination="ymf-SF-ltw" kind="show" identifier="ToMe" id="zPR-D5-stN"/>
                         <segue destination="Ipc-Py-HTW" kind="show" identifier="ToUserInformation" id="pfJ-Pc-CgI"/>
+                        <segue destination="j4G-f3-6Wq" kind="show" identifier="Toevent" id="zYX-Gw-6jT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -515,58 +515,6 @@
             </objects>
             <point key="canvasLocation" x="1704.8" y="1013.7931034482759"/>
         </scene>
-        <!--Event View Controller-->
-        <scene sceneID="EPK-Rs-td2">
-            <objects>
-                <viewController id="Jfv-aP-nQk" customClass="EventViewController" customModule="FindU" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="B5K-33-zXg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nhq-5Y-ugC">
-                                <rect key="frame" x="0.0" y="88" width="375" height="536"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LZa-d3-FmB">
-                                        <rect key="frame" x="0.0" y="0.0" width="374" height="268"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yqi-gW-PrP">
-                                        <rect key="frame" x="1" y="268" width="374" height="268"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
-                                </subviews>
-                            </scrollView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r2e-YB-tPE">
-                                <rect key="frame" x="0.0" y="624" width="375" height="105"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <tabBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="giO-Vp-Tnv">
-                                <rect key="frame" x="0.0" y="763" width="375" height="49"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <items>
-                                    <tabBarItem systemItem="favorites" id="Mgw-Jw-zZw"/>
-                                    <tabBarItem title="Item" id="Ceu-RL-K4M"/>
-                                    <tabBarItem systemItem="more" id="sDQ-px-mwz"/>
-                                </items>
-                            </tabBar>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <viewLayoutGuide key="safeArea" id="i0b-bo-H1V"/>
-                    </view>
-                    <connections>
-                        <outlet property="Event1" destination="LZa-d3-FmB" id="Bt0-mJ-7zC"/>
-                        <outlet property="Event2" destination="Yqi-gW-PrP" id="IJk-id-gAH"/>
-                        <outlet property="addFunc" destination="r2e-YB-tPE" id="DCj-p3-WYA"/>
-                        <segue destination="gIn-kN-cz7" kind="show" identifier="EventTodetail" id="tWh-2Q-y4b"/>
-                        <segue destination="mJX-GS-fEJ" kind="show" identifier="ToCreateEvent" id="qv5-l6-Eqp"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tV7-zu-SyZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="885.60000000000002" y="20.689655172413794"/>
-        </scene>
         <!--Creat Event View Controller-->
         <scene sceneID="geG-BW-EbR">
             <objects>
@@ -671,6 +619,32 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bHa-9f-zi1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1808.8" y="316.99507389162562"/>
+        </scene>
+        <!--Event List View Controller-->
+        <scene sceneID="fJA-jB-5sa">
+            <objects>
+                <viewController id="j4G-f3-6Wq" customClass="EventListViewController" customModule="FindU" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FaC-Ix-Vs7">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="40Y-f2-t48">
+                                <rect key="frame" x="0.0" y="646" width="375" height="83"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="cIf-Pp-Wax"/>
+                    </view>
+                    <connections>
+                        <outlet property="createNewEvent" destination="40Y-f2-t48" id="5sL-LJ-iJs"/>
+                        <segue destination="gIn-kN-cz7" kind="show" identifier="ToVisitEventDetail" id="pju-xE-qeH"/>
+                        <segue destination="mJX-GS-fEJ" kind="show" identifier="ToCreateNewEvent" id="fQg-uR-EMA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SWL-CJ-K9Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="885.60000000000002" y="20.689655172413794"/>
         </scene>
         <!--Event Detail View Controller-->
         <scene sceneID="yrq-3Y-RP0">
@@ -822,7 +796,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3g8-Uh-lx1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1776.8" y="-480.29556650246309"/>
+            <point key="canvasLocation" x="1809" y="-531"/>
         </scene>
         <!--Join In View Controller-->
         <scene sceneID="mYH-Jh-ZHf">

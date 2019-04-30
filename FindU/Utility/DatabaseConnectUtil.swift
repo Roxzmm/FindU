@@ -553,7 +553,7 @@ class DatabaseConnectUtil: NSObject {
         
     }
     
-    // func to fetch local markers
+    // func to fetch local buildings
     func fetchBuildings() -> [Building]{
         var buildings: [Building] = []
         
@@ -596,7 +596,7 @@ class DatabaseConnectUtil: NSObject {
         let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "Facility")
         
         do {
-            fetchRequest.sortDescriptors = [NSSortDescriptor.init(key: "facilityNo", ascending: true)]
+            fetchRequest.sortDescriptors = [NSSortDescriptor.init(key: "facilityID", ascending: true)]
             facilities = try coredataContext?.fetch(fetchRequest) as! [Facility]
             //                        for marker in markers{
             //                            print(marker.location!)
