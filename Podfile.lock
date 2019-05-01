@@ -1,20 +1,20 @@
 PODS:
+  - IQKeyboardManagerSwift (6.2.1)
   - OHMySQL (2.1.3)
-  - Sync (5.1.0)
 
 DEPENDENCIES:
+  - IQKeyboardManagerSwift
   - OHMySQL
-  - Sync (~> 5)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - IQKeyboardManagerSwift
     - OHMySQL
-    - Sync
 
 SPEC CHECKSUMS:
+  IQKeyboardManagerSwift: 0f0ae8935360b4003e6ea1ac7c19898f01e2f7c7
   OHMySQL: 8bc54d2b8b9e1acfa0e652b18856a9cdbb24c431
-  Sync: 0412c2b068eb7cf1a04607e948ef92cbd6114d0f
 
-PODFILE CHECKSUM: f345a4b9338f533d043776e0fe4eca302f3d8ccc
+PODFILE CHECKSUM: 87fdcbf4b263d4a672f47276e96cfa6cfb7cf8c8
 
 COCOAPODS: 1.6.1

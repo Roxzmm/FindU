@@ -8,8 +8,8 @@ target 'FindU' do
   use_frameworks!
 
   # Pods for FindU
-  pod 'Sync', '~> 5'
   pod 'OHMySQL'
+  pod 'IQKeyboardManagerSwift'
 
   target 'FindUTests' do
     inherit! :search_paths
