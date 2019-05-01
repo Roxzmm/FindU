@@ -35,6 +35,10 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
     
     @IBOutlet weak var commentsTableView: UITableView!
     
+    @IBOutlet weak var eventTimeLabel: UILabel!
+    
+    @IBOutlet weak var eventLocationLabel: UILabel!
+    
     let mysqlConnect = DatabaseConnectUtil()
     var event: Event? = nil
     
@@ -43,31 +47,32 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        
         if mysqlConnect.checkUpdateStatus(table: "comment").0 == false {
             mysqlConnect.sync(["Comment"])
         }
-        
-        eventNameLabel.text = event?.name
-        let hostname = event?.hostName
-        let hostcredit = event?.hostCredit
-        eventHostLabel.text = "Organizer: @\(String(describing: hostname))/\(String(describing: hostcredit))"
-        
-        eventDescriptionLabel.text = event?.eventDescription
-        
-        if let imageData = event?.poster! {
-            let poster = UIImage(data: imageData)
-            posterView.image = poster
-        }
-        // Do any additional setup after loading the view.
         if event != nil {
+            eventNameLabel.text = event!.name!
+            let hostname = event!.hostName!
+            let hostcredit = event!.hostCredit!
+            
+            eventHostLabel.text = "Organizer: @\( hostname)/\(hostcredit)"
+            print(event?.date)
+            eventTimeLabel.text = event!.date!.description
+            eventLocationLabel.text = event!.place
+            eventDescriptionLabel.text = event!.eventDescription
+            
+            if let imageData = event?.poster {
+                let poster = UIImage(data: imageData)
+                posterView.image = poster
+            }
+            // Do any additional setup after loading the view.
             comments = mysqlConnect.fetchComments(event!)
             commentsTableView.reloadData()
         }
     }
     
     @IBAction func createComment(_ sender: Any) {
-        if mysqlConnect.boolSigned == true{
+        if DatabaseConnectUtil.boolSigned == true{
             
             
             
@@ -81,7 +86,7 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func likeComment(_ Comment: Comment) {
-        if mysqlConnect.boolSigned == true {
+        if DatabaseConnectUtil.boolSigned == true {
             
         }else {
             let alertController = UIAlertController(title: "Sorry", message:
@@ -95,7 +100,22 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
     // MARK: - Navigation
     override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
         if identifier == "ToJoinIn" {
-            if mysqlConnect.boolSigned == true {
+            if DatabaseConnectUtil.boolSigned == true {
+                let user = mysqlConnect.retrieveLocalUser()
+                let userNo = user!.userID
+                let membersNo = event?.membersID
+                let members = membersNo?.components(separatedBy: ", ")
+                
+                for member in members! {
+                    if member == userNo {
+                        let alertController = UIAlertController(title: "Sorry", message:
+                            "you are already in.", preferredStyle: .alert)
+                        alertController.addAction(UIAlertAction(title: "Done", style: .default))
+                        
+                        self.present(alertController, animated: true, completion: nil)
+                        return false
+                    }
+                }
                 return true
             }else {
                 let alertController = UIAlertController(title: "Sorry", message:
@@ -118,6 +138,7 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
         // pass userId to register successfully view
         if let vc = segue.destination as? JoinInViewController{
             vc.event = event
+            mysqlConnect.joinInEvent(event!)
         }
     }
 

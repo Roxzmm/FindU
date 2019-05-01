@@ -53,7 +53,7 @@ class DatabaseConnectUtil: NSObject {
     let SQLServerName = "findu.cowp9uradhbe.us-east-2.rds.amazonaws.com"
     let SQLServerPort: UInt = 3306
     
-    var boolSigned = false
+    static var boolSigned = false
     
     // to do: need to improve access control
     override init() {
@@ -68,7 +68,7 @@ class DatabaseConnectUtil: NSObject {
         var SQLPassword = SQLVisitorPassword
         
         // access control
-        if boolSigned == true{
+        if DatabaseConnectUtil.boolSigned == true{
             SQLUserName = SQLRegisteredName
             SQLPassword = SQLRegisteredPassword
         }
@@ -132,7 +132,7 @@ class DatabaseConnectUtil: NSObject {
                     }
                     userID = "u" + userID
                     
-                    let query = OHMySQLQueryRequestFactory.insert("user", set: ["userName": username!, "userEmail": email!, "password": password!, "userNo": userID, "userScore": String(80)])
+                    let query = OHMySQLQueryRequestFactory.insert("user", set: ["userName": username!, "userEmail": email!, "password": password, "userNo": userID, "userScore": String(80)])
                     do {
                         try? context.execute(query)
                         boolCreated = true
@@ -164,7 +164,7 @@ class DatabaseConnectUtil: NSObject {
                             identity = "Welcome \(username)."
                             
                             // set state = signed globally
-                            self.boolSigned = true
+                            DatabaseConnectUtil.boolSigned = true
                             
                             if auto == false {
                                 let newRecord = NSEntityDescription.insertNewObject(forEntityName: "User", into: coredataContext!) as! User
@@ -200,7 +200,7 @@ class DatabaseConnectUtil: NSObject {
             coredataContext?.delete(localUser)
             
             // set state = sign out globally
-            self.boolSigned = false
+            DatabaseConnectUtil.boolSigned = false
             
             do {
                 try coredataContext?.save()
@@ -486,6 +486,7 @@ class DatabaseConnectUtil: NSObject {
             newRecord.hostCredit = (record["hostCredit"] as! String)
             newRecord.numOfParticipant = (record["participateSum"] as! String)
             newRecord.date = inputHandler.stringToDate(record["eventDate"] as! String)
+            newRecord.membersID = (record["membersNo"] as! String)
             
             if let photoData = record["poster"] as? Data? {
                 newRecord.poster = photoData
@@ -776,15 +777,28 @@ class DatabaseConnectUtil: NSObject {
         
     }
     
-    func uploadEvent(_ eventName: String, _ eventDescription: String, _ location: String, _ time: String, _ poster: UIImage?) -> Bool {
+    func joinInEvent(_ event: Event) {
+        let user = retrieveLocalUser()
+        
+        if checkConnection() == true {
+            var num = event.numOfParticipant!
+            num = String(Int(num)! + 1)
+            
+            var members = event.membersID
+            members = members! + ", " + user!.userID!
+            
+            let query = OHMySQLQueryRequestFactory.update("event", set: ["participateSum": num, "membersNo": members], condition: "eventNo = \(event.eventID)")
+            try? context.execute(query)
+        }
+    }
+    
+    func uploadEvent(_ eventName: String, _ eventDescription: String, _ location: String, _ time: Date, _ poster: UIImage?) -> Bool {
         var boolUploaded = false
         
         let user = retrieveLocalUser()
         if checkConnection() == true {
             let imageHelper = AppImageHelper()
-            let resizeImage = imageHelper.resizeImage(originalImg: poster!) as UIImage
-            let posterData = imageHelper.compressImageSize(image: resizeImage)
-            
+
             let anoQuery = OHMySQLQueryRequestFactory.select("event", condition: nil)
             if let response = try? context.executeQueryRequestAndFetchResult(anoQuery) {
                 var eventCount = response.count
@@ -796,7 +810,16 @@ class DatabaseConnectUtil: NSObject {
                 }
                 eventNo = "e" + eventNo
                 
-                let query = OHMySQLQueryRequestFactory.insert("event", set: ["eventName": eventName, "description": eventDescription, "eventPlace": location, "eventNo": eventNo, "hostCredit": user!.credit!, "hostName": user!.name, "eventDate": time, "participateSum": String(1), "poster": posterData])
+                let members = user?.userID
+                
+                var set = ["eventName": eventName, "description": eventDescription, "eventPlace": location, "eventNo": eventNo, "hostCredit": user!.credit!, "hostName": user!.name, "eventDate": time, "participateSum": String(1), "membersNo": members] as [String : Any]
+                if poster != nil {
+                    let resizeImage = imageHelper.resizeImage(originalImg: poster!) as UIImage
+                    let posterData = imageHelper.compressImageSize(image: resizeImage)
+//                    set = set + ["posetr": posterData]
+                }
+                
+                let query = OHMySQLQueryRequestFactory.insert("event", set: set as [String : Any])
                     
                 try? context.execute(query)
                 boolUploaded = true

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SignInViewController: UIViewController {
+class SignInViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var SignIntitle: UIImageView!
@@ -21,6 +21,12 @@ class SignInViewController: UIViewController {
     @IBOutlet weak var signInBtn: UIButton!
     
     let databaseUtil = DatabaseConnectUtil()
+    
+    // to dismiss the keyboard when user click return
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
     func signIn() -> Bool{
         var boolSigned = false
@@ -78,7 +84,9 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        UserIDText.delegate = self
+        PasswordText.delegate = self
         // Do any additional setup after loading the view.
     }
     

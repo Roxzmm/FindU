@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RegisterViewController: UIViewController {
+class RegisterViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var registerTitle: UILabel!
@@ -19,6 +19,12 @@ class RegisterViewController: UIViewController {
     
     let databaseUtil = DatabaseConnectUtil()
     var response: (Bool, String) = (false, "")
+    
+    // to dismiss the keyboard when user click return
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     
     func createAccount() -> Bool{
         var boolCreated = false
@@ -76,6 +82,9 @@ class RegisterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        userNameInput.delegate = self
+        emailInput.delegate = self
+        passwordInput.delegate = self
         // Do any additional setup after loading the view.
     }
     

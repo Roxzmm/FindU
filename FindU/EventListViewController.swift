@@ -8,24 +8,25 @@
 
 import UIKit
 
+//class eventPrototypeCell: UITableViewCell {
+//
+//}
+
 class EventListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-   
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        let count = events.count
-//        if count <= 10 {
-//            return events.count
-//        }else {
-//            return 10
-//        }
-        return  2
+        let count = events.count
+        if count <= 10 {
+            return events.count
+        }else {
+            return 10
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell")
-//        cell?.imag
-        cell?.textLabel?.text = "dasdjkfjakfafhasflksafjlskjfkajflkajsflksajflajsflksajfalksfjalsfjad"
+        let cell = tableView.dequeueReusableCell(withIdentifier: "eventCell", for: indexPath)
+
 //        cell?.textLabel?.preferredMaxLayoutWidth = eventTableView.bounds.width
 //        cell?.textLabel?.text = events[indexPath.row].name
 //
@@ -43,7 +44,14 @@ class EventListViewController: UIViewController, UITableViewDataSource, UITableV
 //        if boolDisplayImage == false {
 //            cell?.textLabel?.text = events[indexPath.row].eventDescription
 //        }
-        return cell!
+        
+        cell.textLabel?.text = events[indexPath.row].name
+        cell.detailTextLabel?.text = events[indexPath.row].eventDescription
+        
+        if let photoData = events[indexPath.row].poster {
+            cell.imageView?.image = UIImage(data: photoData)
+        }
+        return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -81,22 +89,24 @@ class EventListViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        eventTableView.reloadData()
+        
         let createEvent = UITapGestureRecognizer(target: self, action: #selector(wayToCreateNewEvent(tapGestureRecognizer:)))
         createNewEvent.isUserInteractionEnabled = true
         createNewEvent.addGestureRecognizer(createEvent)
         
         let viewEvent = UITapGestureRecognizer(target: self, action: #selector(wayToSpecificEvent(tapGestureRecognize:)))
-        for eachVisibleCell in eventTableView.visibleCells {
-            eachVisibleCell.isUserInteractionEnabled = true
-            eachVisibleCell.addGestureRecognizer(viewEvent)
-            if let index = eventTableView.indexPath(for: eachVisibleCell) {
-                print(index)
-            }
-        }
+//        for eachVisibleCell in eventTableView.visibleCells {
+//            eachVisibleCell.isUserInteractionEnabled = true
+//            eachVisibleCell.addGestureRecognizer(viewEvent)
+//            if let index = eventTableView.indexPath(for: eachVisibleCell) {
+//                print(index)
+//            }
+//        }
     }
     
     @objc func wayToCreateNewEvent(tapGestureRecognizer: UITapGestureRecognizer) {
-        if mysqlConnect.boolSigned == true {
+        if DatabaseConnectUtil.boolSigned == true {
             performSegue(withIdentifier: "ToCreateNewEvent", sender: self)
         }else {
             let alertController = UIAlertController(title: "Sorry", message:
@@ -120,7 +130,5 @@ class EventListViewController: UIViewController, UITableViewDataSource, UITableV
         if let vc = segue.destination as? EventDetailViewController{
             vc.event = eventSelected
         }
-
-        
     }
 }

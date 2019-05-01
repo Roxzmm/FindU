@@ -91,7 +91,7 @@ class InputHandlerUtil: NSObject {
     
     func checkEventDescription(_ description: String) -> Bool {
         let count = description.count
-        if count <= 40 {
+        if count <= 40 && count >= 1{
             return true
         }else {
             return false
@@ -114,11 +114,12 @@ class InputHandlerUtil: NSObject {
         return boolCorrect
     }
     
-    func stringToDate(_ date: String) -> Date {
+    func stringToDate(_ date: String) -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.timeZone = TimeZone(abbreviation: "GMT+0:00")
         dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-        return dateFormatter.date(from: date)!
+//        dateFormatter.dateFormat = "yyyy-MM-dd"
+        return dateFormatter.date(from: date)
     }
     
 }

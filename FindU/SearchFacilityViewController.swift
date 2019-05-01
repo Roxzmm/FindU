@@ -511,7 +511,8 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
             self.map.removeAnnotation(arr)
         }
         facilityAnnotation = []
-        
+//        StartPositionSB.resignFirstResponder()
+//        FacilitySB.resignFirstResponder()
     }
     
     
@@ -526,9 +527,6 @@ class SearchFacilityViewController: UIViewController,MKMapViewDelegate,CLLocatio
         FacilitySB.resignFirstResponder()
         
     }
-    
-  
-    
     
     var a = ""
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

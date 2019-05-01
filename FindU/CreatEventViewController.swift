@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CreatEventViewController: UIViewController {
+class CreatEventViewController: UIViewController, UITextFieldDelegate, UITextViewDelegate {
 
     @IBOutlet weak var eventNameText: UITextField!
     
@@ -24,19 +24,36 @@ class CreatEventViewController: UIViewController {
     
     @IBOutlet weak var posterView: UIImageView!
     
+    @IBOutlet weak var posterLabel: UILabel!
+    
     let mysqlConnect = DatabaseConnectUtil()
+    
+    // to dismiss the keyboard when user click return
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
+        textView.resignFirstResponder()
+        return true
+    }
     
     @IBAction func addPosterAction(_ sender: Any) {
         CameraHandlerUtil.shared.showActionSheet(vc: self)
         CameraHandlerUtil.shared.imagePickedBlock = { (image) in
+            self.posterLabel.isHidden = true
             self.posterView.image = image
-            self.mysqlConnect.uploadUserPhoto(image)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        // Dismiss keyboard after clikcing return
+        eventNameText.delegate = self
+        locationText.delegate = self
+        
         showDatePicker()
         // Do any additional setup after loading the view.
     }
@@ -90,11 +107,16 @@ class CreatEventViewController: UIViewController {
         if location.count <= 30 {
             checkLocation = true
         }
-
-        if checkName == true && checkDescription == true && checkLocation == true {
-            if boolCreated == mysqlConnect.uploadEvent(eventName, eventDescription, location, time, posterView.image) {
-                boolCreated = true
-            }else {
+        var checkTime = false
+        var dateAndTime = Date.init()
+        if let temp = inputHandler.stringToDate(time)  {
+            dateAndTime = temp
+            checkTime = true
+        }
+    
+        if checkName == true && checkDescription == true && checkLocation == true && checkTime == true {
+            boolCreated = mysqlConnect.uploadEvent(eventName, eventDescription, location, dateAndTime, posterView.image)
+           if boolCreated == false {
                 let alertController = UIAlertController(title: "Sorry", message:
                     "event creation fails.", preferredStyle: .alert)
                 alertController.addAction(UIAlertAction(title: "Done", style: .default))
@@ -109,7 +131,6 @@ class CreatEventViewController: UIViewController {
         }
         if checkDescription == false {
             descriptionText.text = ""
-
             let alertController = UIAlertController(title: "Sorry", message:
                 "Please do not input more than 40 chars in description field.", preferredStyle: .alert)
             alertController.addAction(UIAlertAction(title: "Done", style: .default))
@@ -119,6 +140,10 @@ class CreatEventViewController: UIViewController {
         if checkLocation == false {
             locationText.text = ""
             locationText.attributedPlaceholder = NSAttributedString(string: "Please do not input more than 30 chars.", attributes:[NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17)])
+        }
+        if checkTime == false {
+            dateText.text = ""
+            dateText.attributedPlaceholder = NSAttributedString(string: "Please choose a date and time", attributes:[NSAttributedString.Key.foregroundColor: UIColor.lightGray, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 17)])
         }
         
         return boolCreated

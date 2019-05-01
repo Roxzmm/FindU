@@ -41,11 +41,11 @@ class UserInformationViewController: UIViewController {
         addPhotoBtn.image = UIImage(named: "camera.png")
         UserPhoto.image = UIImage(named: "userphoto.png")
         
-        if let photoData = user?.userPhoto {
-            let photo = UIImage(data: photoData)
-            print(photoData)
-            self.UserPhoto.image = photo
-        }
+//        if let photoData = user?.userPhoto {
+//            let photo = UIImage(data: photoData)
+//            print(photoData)
+//            self.UserPhoto.image = photo
+//        }
         // Do any additional setup after loading the view.
     }
 
@@ -54,26 +54,26 @@ class UserInformationViewController: UIViewController {
         let addUserPhoto = UITapGestureRecognizer(target: self, action: #selector(addPhoto(tapGestureRecognizer:)))
         addPhotoBtn.isUserInteractionEnabled = true
         addPhotoBtn.addGestureRecognizer(addUserPhoto)
-        if let photoData = user?.userPhoto {
-            let photo = UIImage(data: photoData)
-            print(photoData)
-            self.UserPhoto.image = photo
-        }
+//        if let photoData = user?.userPhoto {
+//            let photo = UIImage(data: photoData)
+//            print(photoData)
+//            self.UserPhoto.image = photo
+//        }
     }
     
     @objc func addPhoto(tapGestureRecognizer: UITapGestureRecognizer) {
         
         CameraHandlerUtil.shared.showActionSheet(vc: self)
         CameraHandlerUtil.shared.imagePickedBlock = { (image) in
-            let imageHelper = AppImageHelper()
-            let resizeImage = imageHelper.resizeImage(originalImg: image)
-            let data = imageHelper.compressImageSize(image: image)
-            let resizeData = imageHelper.compressImageSize(image: resizeImage)
-            print(image.pngData())
-            print(data)
-            print(resizeImage.pngData())
-            print(resizeData)
-//            self.UserPhoto.image = image
+//            let imageHelper = AppImageHelper()
+//            let resizeImage = imageHelper.resizeImage(originalImg: image)
+//            let data = imageHelper.compressImageSize(image: image)
+//            let resizeData = imageHelper.compressImageSize(image: resizeImage)
+//            print(image.pngData())
+//            print(data)
+//            print(resizeImage.pngData())
+//            print(resizeData)
+            self.UserPhoto.image = image
             self.mysqlConnect.uploadUserPhoto(image)
             
         }

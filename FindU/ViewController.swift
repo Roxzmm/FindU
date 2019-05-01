@@ -27,6 +27,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.hidesBackButton = true
+        
         mysqlConnect.configureMySQL()
 
         if loadCount == 0 {
@@ -38,11 +40,12 @@ class ViewController: UIViewController {
             }
 
             mysqlConnect.sync(["Building", "Marker", "Comment", "Event", "Facility"])
-            if mysqlConnect.checkUpdateStatus(table: "user").0 == false && mysqlConnect.boolSigned == true{
+            if mysqlConnect.checkUpdateStatus(table: "user").0 == false && DatabaseConnectUtil.boolSigned == true{
                 mysqlConnect.updateUserInfo()
             }
 
             self.loadCount = loadCount + 1
+            print("loadCount: \(loadCount)")
         }
         
     }
@@ -140,7 +143,7 @@ class ViewController: UIViewController {
     
     @objc func wayToMe(tapGestureRecognizer: UITapGestureRecognizer)
     {
-        if mysqlConnect.boolSigned == false {
+        if DatabaseConnectUtil.boolSigned == false {
             performSegue(withIdentifier: "ToMe", sender: self)
             
         }else {
