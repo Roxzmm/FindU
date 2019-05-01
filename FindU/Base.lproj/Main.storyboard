@@ -66,7 +66,7 @@
                         <outlet property="me" destination="1lj-TA-3mv" id="UZ8-gp-cPU"/>
                         <outlet property="searchfacility" destination="bJ8-Mf-x8t" id="TAb-i4-3Bp"/>
                         <outlet property="welcometitle" destination="Pgk-KX-dWe" id="w4J-KN-usc"/>
-                        <segue destination="wsj-UH-f9o" kind="show" identifier="Tosearchfacility" id="MUd-hT-GPI"/>
+                        <segue destination="ahQ-MR-eg5" kind="show" identifier="Tosearchfacility" id="MUd-hT-GPI"/>
                         <segue destination="ymf-SF-ltw" kind="show" identifier="ToMe" id="zPR-D5-stN"/>
                         <segue destination="Ipc-Py-HTW" kind="show" identifier="ToUserInformation" id="pfJ-Pc-CgI"/>
                         <segue destination="j4G-f3-6Wq" kind="show" identifier="Toevent" id="zYX-Gw-6jT"/>
@@ -74,7 +74,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="47.200000000000003" y="20.689655172413794"/>
+            <point key="canvasLocation" x="989.60000000000002" y="20.689655172413794"/>
         </scene>
         <!--User Information View Controller-->
         <scene sceneID="w2u-om-pyO">
@@ -670,7 +670,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bHa-9f-zi1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1808.8" y="316.99507389162562"/>
+            <point key="canvasLocation" x="2751.1999999999998" y="316.99507389162562"/>
         </scene>
         <!--Event List View Controller-->
         <scene sceneID="fJA-jB-5sa">
@@ -767,7 +767,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SWL-CJ-K9Q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="885.60000000000002" y="20.689655172413794"/>
+            <point key="canvasLocation" x="1828" y="20.689655172413794"/>
         </scene>
         <!--Event Detail View Controller-->
         <scene sceneID="yrq-3Y-RP0">
@@ -919,7 +919,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3g8-Uh-lx1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1808.8" y="-531.2807881773399"/>
+            <point key="canvasLocation" x="2751.1999999999998" y="-531.2807881773399"/>
         </scene>
         <!--Join In View Controller-->
         <scene sceneID="mYH-Jh-ZHf">
@@ -982,6 +982,70 @@
             </objects>
             <point key="canvasLocation" x="2596" y="-583.00492610837443"/>
         </scene>
+        <!--Facility Detail View Controller-->
+        <scene sceneID="FkX-eX-dtH">
+            <objects>
+                <viewController id="HsP-C2-KBD" customClass="FacilityDetailViewController" customModule="FindU" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="Detail" id="jzC-Ta-7oP">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Facility Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h3a-tj-g2r">
+                                <rect key="frame" x="53" y="101" width="157" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Printer" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M1R-HI-5N2">
+                                <rect key="frame" x="53" y="145" width="157" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Facility Position" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7JT-jv-zen">
+                                <rect key="frame" x="53" y="275" width="157" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="EE first floor" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="R5f-Fz-inL">
+                                <rect key="frame" x="53" y="319" width="157" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Availability" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G26-pR-8RV">
+                                <rect key="frame" x="53" y="472" width="157" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Useable" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0cx-QE-dkE">
+                                <rect key="frame" x="53" y="516" width="157" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="kh4-yx-VZn"/>
+                    </view>
+                    <connections>
+                        <outlet property="FacilityName" destination="M1R-HI-5N2" id="aRx-Vj-agO"/>
+                        <outlet property="FacilityPosition" destination="R5f-Fz-inL" id="9DG-Xx-XEV"/>
+                        <outlet property="availability" destination="0cx-QE-dkE" id="C4k-5z-Qhm"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8wV-yC-ApH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2351.1999999999998" y="150"/>
+        </scene>
         <!--Search Facility View Controller-->
         <scene sceneID="NSp-5H-kGe">
             <objects>
@@ -993,6 +1057,9 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hbT-MX-Kz9">
                                 <rect key="frame" x="0.0" y="88" width="375" height="722"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="wsj-UH-f9o" id="xnI-QI-znu"/>
+                                </connections>
                             </mapView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xLQ-nC-Vdr" userLabel="Search">
                                 <rect key="frame" x="301" y="99" width="58" height="35"/>
@@ -1084,15 +1151,34 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="KTp-Dt-Qcz"/>
                     </view>
+                    <navigationItem key="navigationItem" id="Inr-wh-08U"/>
                     <connections>
                         <outlet property="FacilitySB" destination="HbK-fM-K2a" id="7sZ-5q-n1d"/>
                         <outlet property="FacilityTableView" destination="6fk-pr-jAf" id="Bvj-0q-VH7"/>
                         <outlet property="StartPositionSB" destination="eBx-R8-g6q" id="kuh-is-3z1"/>
-                        <outlet property="map" destination="hbT-MX-Kz9" id="4EB-py-Og1"/>
+                        <outlet property="map" destination="hbT-MX-Kz9" id="m7y-IC-yin"/>
                         <outlet property="startPositionView" destination="Uq2-pU-fQC" id="F7a-f3-mTu"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a9u-ZC-y2T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-476" y="150"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Kjy-LY-Gq6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ahQ-MR-eg5" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ITA-F5-h2F">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="wsj-UH-f9o" kind="relationship" relationship="rootViewController" id="iOB-T2-IlH"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XD8-46-LdV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1418.4000000000001" y="150"/>
         </scene>
