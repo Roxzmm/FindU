@@ -116,6 +116,7 @@ class EventDetailViewController: UIViewController, UITableViewDataSource, UITabl
                         return false
                     }
                 }
+                mysqlConnect.joinInEvent(event!)
                 return true
             }else {
                 let alertController = UIAlertController(title: "Sorry", message:

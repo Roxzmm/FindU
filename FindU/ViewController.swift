@@ -32,7 +32,7 @@ class ViewController: UIViewController {
         mysqlConnect.configureMySQL()
 
         if loadCount == 0 {
-//            let mysqlConnect = DatabaseConnectUtil()
+            let mysqlConnect = DatabaseConnectUtil()
 
             // Try to retrieve local user data and sign in automatically
             if let localUser = mysqlConnect.retrieveLocalUser() {

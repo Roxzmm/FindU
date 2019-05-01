@@ -488,9 +488,9 @@ class DatabaseConnectUtil: NSObject {
             newRecord.date = inputHandler.stringToDate(record["eventDate"] as! String)
             newRecord.membersID = (record["membersNo"] as! String)
             
-            if let photoData = record["poster"] as? Data? {
-                newRecord.poster = photoData
-            }
+//            if let photoData = record["poster"] as? Data? {
+//                newRecord.poster = photoData
+//            }
         }
 
     }
@@ -751,12 +751,24 @@ class DatabaseConnectUtil: NSObject {
         
     }
     
-    func addEvent(_ eventName:String,_ eventID:String) {
+    func addEvent(_ attribute: [String: Any]) {
+        let record = attribute
         
         let newRecord = NSEntityDescription.insertNewObject(forEntityName: "Event", into: coredataContext!) as! Event
-        newRecord.name = (eventName)
-        newRecord.eventID = (eventID)
+        newRecord.name = (record["eventName"] as! String)
+        newRecord.eventID = (record["eventNo"] as! String)
+        // ... properties waiting to be added
+        newRecord.eventDescription = (record["description"] as! String)
+        newRecord.place = (record["eventPlace"] as! String)
+        newRecord.hostName = (record["hostName"] as! String)
+        newRecord.hostCredit = (record["hostCredit"] as! String)
+        newRecord.numOfParticipant = (record["participateSum"] as! String)
+        newRecord.date = inputHandler.stringToDate(record["eventDate"] as! String)
+        newRecord.membersID = (record["membersNo"] as! String)
         
+        if let photoData = record["poster"] as? Data? {
+            newRecord.poster = photoData
+        }
     }
     
     func addComment(_ content:String,_ commentID:String) {
@@ -814,8 +826,12 @@ class DatabaseConnectUtil: NSObject {
                 
                 var set = ["eventName": eventName, "description": eventDescription, "eventPlace": location, "eventNo": eventNo, "hostCredit": user!.credit!, "hostName": user!.name, "eventDate": time, "participateSum": String(1), "membersNo": members] as [String : Any]
                 if poster != nil {
-                    let resizeImage = imageHelper.resizeImage(originalImg: poster!) as UIImage
-                    let posterData = imageHelper.compressImageSize(image: resizeImage)
+                    let originalData = poster?.pngData()
+                    set = ["eventName": eventName, "description": eventDescription, "eventPlace": location, "eventNo": eventNo, "hostCredit": user!.credit!, "hostName": user!.name, "eventDate": time, "participateSum": String(1), "membersNo": members, "poster": originalData]
+                    
+                    addEvent(set)
+//                    let resizeImage = imageHelper.resizeImage(originalImg: poster!) as UIImage
+//                    let posterData = imageHelper.compressImageSize(image: resizeImage)
 //                    set = set + ["posetr": posterData]
                 }
                 
@@ -859,8 +875,8 @@ class DatabaseConnectUtil: NSObject {
     func updateUserInfo() {
         if let localUser = retrieveLocalUser() {
             
-            let id = localUser.userID!
-            let query = OHMySQLQueryRequestFactory.select("user", condition: "userNo = \(id)")
+            let email = localUser.email!
+            let query = OHMySQLQueryRequestFactory.select("user", condition: "userEmail = \"\(email)\"")
             if let response = try? context.executeQueryRequestAndFetchResult(query) {
                 
                 if response.count == 1 {
@@ -1097,6 +1113,11 @@ class DatabaseConnectUtil: NSObject {
 //
 //        let buildings = fetchBuildings()
 //        let markers = fetchMarkers()
+//        //
+//        let users = retrieveLocalUser()
+//        let facilities = fetchFacilities()
+//        let events = fetchEvents()
+//
 //        if checkConnection() == true {
 //            for building in buildings{
 //                let id = (building.buldingID! as String?)!
@@ -1135,6 +1156,75 @@ class DatabaseConnectUtil: NSObject {
 //
 //                let query = OHMySQLQueryRequestFactory.insert("marker", set: attribute)
 //                try? context.execute(query)
+//            }
+            
+            
+//                let id = (user.userID! as String?)!
+//                let name = (user.name as String?)!
+//                //            var position = ""
+//                //            if marker.location?.count != 0 {
+//                //                position = (marker.location as String?)!
+//                //            }
+//                let position = (building.position as String?)!
+//                var temp = ""
+//
+//                let attribute = ["buildingNo": id, "position": temp, "buildingName": name]
+//                print(attribute)
+//
+//                let query = OHMySQLQueryRequestFactory.insert("user", set: attribute)
+//                try? context.execute(query)
+            
+          
+         
+//            for facility in facilities{
+//                let id = (facility.facilityID as String?)!
+//                let name = (facility.name as String?)!
+//                let state = (facility.state as String?)!
+//                let floor = (facility.floor as String?)!
+//                //            var position = ""
+//                //            if marker.location?.count != 0 {
+//                //                position = (marker.location as String?)!
+//                //            }
+//                let position = (facility.position as String?)!
+//                var temp = ""
+//                if position.count != 0 {
+//                    temp = inputHandler.convertLocation(position)
+//                }
+         
+//                if name.contains("'"){
+//                    print(name)
+//                    let temp = name.replacingOccurrences(of: "'", with: "")
+//                    print(temp)
+//
+//
+//                    let attribute = ["facilityNo": id, "position": position, "facilityName": temp, "state": state, "floor": floor]
+//                    print(attribute)
+//
+//                    let query = OHMySQLQueryRequestFactory.insert("facility", set: attribute)
+//                    try? context.execute(query)
+//                }
+//            }
+//            for event in events{
+//                let id = (event.eventID! as String?)!
+//                let name = (event.name as String?)!
+//
+//                //            var position = ""
+//                //            if marker.location?.count != 0 {
+//                //                position = (marker.location as String?)!
+//                //            }
+//
+//                let hostName = (event.name as String?)!
+//                let hostCredit = (event.name as String?)!
+//                let eventDate = (event.name as String?)!
+//                let eventPlace = (event.name as String?)!
+//                let participat = (event.name as String?)!
+//
+//                let attribute = ["eventNo": id, "eventName": name]
+//                print(attribute)
+//
+//                let query = OHMySQLQueryRequestFactory.insert("event", set: attribute)
+//                try? context.execute(query)
+//
 //            }
 //        }
 //    }

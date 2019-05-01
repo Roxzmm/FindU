@@ -44,13 +44,12 @@ class EventListViewController: UIViewController, UITableViewDataSource, UITableV
 //        if boolDisplayImage == false {
 //            cell?.textLabel?.text = events[indexPath.row].eventDescription
 //        }
-        
         cell.textLabel?.text = events[indexPath.row].name
         cell.detailTextLabel?.text = events[indexPath.row].eventDescription
         
-        if let photoData = events[indexPath.row].poster {
-            cell.imageView?.image = UIImage(data: photoData)
-        }
+//        if let photoData = events[indexPath.row].poster {
+//            cell.imageView?.image = UIImage(data: photoData)
+//        }
         return cell
     }
     
@@ -95,7 +94,7 @@ class EventListViewController: UIViewController, UITableViewDataSource, UITableV
         createNewEvent.isUserInteractionEnabled = true
         createNewEvent.addGestureRecognizer(createEvent)
         
-        let viewEvent = UITapGestureRecognizer(target: self, action: #selector(wayToSpecificEvent(tapGestureRecognize:)))
+//        let viewEvent = UITapGestureRecognizer(target: self, action: #selector(wayToSpecificEvent(tapGestureRecognize:)))
 //        for eachVisibleCell in eventTableView.visibleCells {
 //            eachVisibleCell.isUserInteractionEnabled = true
 //            eachVisibleCell.addGestureRecognizer(viewEvent)
