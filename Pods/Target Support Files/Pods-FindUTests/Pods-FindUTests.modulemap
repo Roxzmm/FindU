@@ -1,0 +1,6 @@
+framework module Pods_FindUTests {
+  umbrella header "Pods-FindUTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

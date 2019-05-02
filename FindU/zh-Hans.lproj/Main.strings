@@ -1,0 +1,48 @@
+
+/* Class = "UILabel"; text = "Register"; ObjectID = "Ff3-tP-E5R"; */
+"Ff3-tP-E5R.text" = "Register";
+
+/* Class = "UILabel"; text = "Create your personal account"; ObjectID = "Ft6-V2-F4Z"; */
+"Ft6-V2-F4Z.text" = "Create your personal account";
+
+/* Class = "UILabel"; text = "Username"; ObjectID = "J9r-8g-24s"; */
+"J9r-8g-24s.text" = "Username";
+
+/* Class = "UITextField"; placeholder = "Facility Name :"; ObjectID = "K6x-9A-FYO"; */
+"K6x-9A-FYO.placeholder" = "Facility Name :";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "PPi-zP-bOc"; */
+"PPi-zP-bOc.text" = "Password";
+
+/* Class = "UIButton"; normalTitle = "   Sign In   "; ObjectID = "Wy3-Dz-WkE"; */
+"Wy3-Dz-WkE.normalTitle" = "   Sign In   ";
+
+/* Class = "UIButton"; normalTitle = "Register"; ObjectID = "bVV-Wh-Gym"; */
+"bVV-Wh-Gym.normalTitle" = "Register";
+
+/* Class = "UIButton"; normalTitle = "Create Account"; ObjectID = "eKF-ip-wx0"; */
+"eKF-ip-wx0.normalTitle" = "Create Account";
+
+/* Class = "UILabel"; text = "Make sure it's more than 15 characters and at least 8 characters including a number and a lowercase letter."; ObjectID = "kzp-4V-xbC"; */
+"kzp-4V-xbC.text" = "Make sure it's more than 15 characters and at least 8 characters including a number and a lowercase letter.";
+
+/* Class = "UITextField"; placeholder = "Start Position :"; ObjectID = "pWC-ZK-zGT"; */
+"pWC-ZK-zGT.placeholder" = "Start Position :";
+
+/* Class = "UITabBarItem"; title = "Me"; ObjectID = "qvT-uy-Gmj"; */
+"qvT-uy-Gmj.title" = "Me";
+
+/* Class = "UILabel"; text = "Email address"; ObjectID = "riG-nw-bvc"; */
+"riG-nw-bvc.text" = "Email address";
+
+/* Class = "UILabel"; text = "UserID or email address"; ObjectID = "rsv-9j-85T"; */
+"rsv-9j-85T.text" = "UserID or email address";
+
+/* Class = "UILabel"; text = "Password"; ObjectID = "t0W-0C-xac"; */
+"t0W-0C-xac.text" = "Password";
+
+/* Class = "UIButton"; normalTitle = "Search"; ObjectID = "xLQ-nC-Vdr"; */
+"xLQ-nC-Vdr.normalTitle" = "Search";
+
+/* Class = "UITabBarItem"; title = "Event"; ObjectID = "zkI-bs-yxZ"; */
+"zkI-bs-yxZ.title" = "Event";
