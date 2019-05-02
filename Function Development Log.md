@@ -128,3 +128,10 @@
 #### \# 2019/4/29
 
 1. 
+
+---
+
+#### \# 2019/5/2
+
+1. Fix user can join in the same event twice
+2. update comment function

@@ -84,7 +84,7 @@ class EventListViewController: UIViewController, UITableViewDataSource, UITableV
 //        eventTableView.estimatedRowHeight = 44.0
 //        eventTableView.rowHeight = UITableView.automaticDimension
         if mysqlConnect.checkUpdateStatus(table: "event").0 == false {
-            mysqlConnect.sync(["Event"])
+           mysqlConnect.syncEvents()
         }
             
         createNewEvent.image = UIImage(named: "addFunc.png")

@@ -38,10 +38,14 @@ class ViewController: UIViewController {
             if let localUser = mysqlConnect.retrieveLocalUser() {
                 mysqlConnect.signIn("userEmail", localUser.email, localUser.password, true)
             }
-
-            mysqlConnect.sync(["Building", "Marker", "Comment", "Event", "Facility"])
-            if mysqlConnect.checkUpdateStatus(table: "user").0 == false && DatabaseConnectUtil.boolSigned == true{
+            
+            mysqlConnect.sync(["Building", "Marker", "Comment", "Facility"])
+            let check = mysqlConnect.checkUpdateStatus(table: "user")
+            if check.0 == false && DatabaseConnectUtil.boolSigned == true{
                 mysqlConnect.updateUserInfo()
+                if mysqlConnect.updateTimeStamp(table: "user", responseTime: check.1) == true {
+                    print("User syncs successfully.")
+                }
             }
 
             self.loadCount = loadCount + 1

@@ -11,6 +11,7 @@
         <attribute name="commentID" optional="YES" attributeType="String" maxValueString="10" syncable="YES"/>
         <attribute name="content" optional="YES" attributeType="String" maxValueString="100" syncable="YES"/>
         <attribute name="ownerCredit" optional="YES" attributeType="String" minValueString="1" maxValueString="3" syncable="YES"/>
+        <attribute name="ownerID" optional="YES" attributeType="String" maxValueString="8" syncable="YES"/>
         <attribute name="ownerName" optional="YES" attributeType="String" minValueString="1" maxValueString="10" syncable="YES"/>
         <attribute name="toFacilityNo" optional="YES" attributeType="String" minValueString="4" maxValueString="15" syncable="YES"/>
         <relationship name="owner" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="comments" inverseEntity="User" syncable="YES"/>
@@ -22,6 +23,7 @@
         <attribute name="eventDescription" optional="YES" attributeType="String" maxValueString="40" syncable="YES"/>
         <attribute name="eventID" optional="YES" attributeType="String" maxValueString="4" syncable="YES"/>
         <attribute name="hostCredit" optional="YES" attributeType="String" minValueString="1" maxValueString="3" syncable="YES"/>
+        <attribute name="hostID" optional="YES" attributeType="String" maxValueString="8" syncable="YES"/>
         <attribute name="hostName" optional="YES" attributeType="String" maxValueString="10" syncable="YES"/>
         <attribute name="membersID" optional="YES" attributeType="String" maxValueString="1000" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" minValueString="1" maxValueString="20" syncable="YES"/>
@@ -57,6 +59,7 @@
         <relationship name="toBuilding" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Building" inverseName="toMarker" inverseEntity="Building" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
+        <attribute name="commentTimes" optional="YES" attributeType="String" maxValueString="3" syncable="YES"/>
         <attribute name="credit" optional="YES" attributeType="String" minValueString="1" maxValueString="3" defaultValueString="80" syncable="YES"/>
         <attribute name="email" optional="YES" attributeType="String" minValueString="1" maxValueString="40" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" minValueString="1" maxValueString="10" syncable="YES"/>
@@ -71,11 +74,11 @@
     </entity>
     <elements>
         <element name="Building" positionX="215.11328125" positionY="-1.62109375" width="128" height="120"/>
-        <element name="Comment" positionX="-35.01171875" positionY="441.96875" width="128" height="165"/>
-        <element name="Event" positionX="-34.11328125" positionY="-160.6328125" width="128" height="240"/>
+        <element name="Comment" positionX="-35.01171875" positionY="441.96875" width="128" height="180"/>
+        <element name="Event" positionX="-34.11328125" positionY="-160.6328125" width="128" height="255"/>
         <element name="Facility" positionX="240.359375" positionY="417.0703125" width="128" height="165"/>
         <element name="LastUpdateTime" positionX="117" positionY="-18" width="128" height="135"/>
         <element name="Marker" positionX="212.73046875" positionY="-185.2890625" width="128" height="105"/>
-        <element name="User" positionX="109.9453125" positionY="130.640625" width="128" height="210"/>
+        <element name="User" positionX="109.9453125" positionY="130.640625" width="128" height="225"/>
     </elements>
 </model>

@@ -26,6 +26,10 @@ class JoinInViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if mysqlConnect.checkUpdateStatus(table: "event").0 == false {
+            mysqlConnect.syncEvents()
+        }
         MapNoResultLable.isHidden = true
         // Do any additional setup after loading the view.
           buildings = mysqlConnect.fetchBuildings()
@@ -36,7 +40,7 @@ class JoinInViewController: UIViewController {
         let username = localUser?.name! as! String
         successMessage.text = "Congratulations! \(username)"
         
-        if let imageData = event?.poster! {
+        if let imageData = event?.poster {
             let poster = UIImage(data: imageData)
             posterView.image = poster
         }

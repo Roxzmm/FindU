@@ -85,6 +85,9 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         userNameInput.delegate = self
         emailInput.delegate = self
         passwordInput.delegate = self
+        
+        
+        passwordNotice.text = "Please make sure it's at least 6 characters and not more than 15 characters including a number and an uppercase letter."
         // Do any additional setup after loading the view.
     }
     
